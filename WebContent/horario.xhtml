@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet
+		name="webjars/font-awesome/4.4.0/css/font-awesome.css" />
+	<h:outputScript library="js" name="jsfcrud.js" />
+</h:head>
+<body>
+	<p:dataTable id="caltable" var="stream" value="#{dtCalendario.streams}">
+		<p:column headerText="Name">
+			<h:outputText value="#{stream.name}" />
+		</p:column>
+		<p:column headerText="Horario">
+			<h:outputText
+				value="#{stream.starting_hour} : #{stream.starting_minutes}" />
+		</p:column>
+		<p:column id="payt" headerText="Pago">
+			<h:outputText id="pt"
+				value="#{dtCalendario.givePaymentType(stream.pay_per_view)}" />
+		</p:column>
+		<p:column headerText="Ver">
+			<p:button icon="fa fa-play" />
+		</p:column>
+	</p:dataTable>
+	<h:form>
+		<p:commandButton action="saldo" value="Saldo" />
+	</h:form>
+</body>
+</html>
