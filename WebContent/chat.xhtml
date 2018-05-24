@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<script type="text/javascript">
+
+    var ws = null;
+
+    function connect() {
+        var URL = 'ws://' + location.host  + '/Mostar/chatroomEndPoint';
+        if ('WebSocket' in window) {
+            ws = new WebSocket(URL);
+        } else if ('MozWebSocket' in window) {
+            ws = new MozWebSocket(URL);
+        } else {
+            alert('Tu navegador no soporta WebSockets');
+            return;
+        }
+        ws.onopen = function () {
+            addMessage('Concectado!');
+        };
+        ws.onmessage = function (event) {
+            var message = event.data;
+            addMessage(message);
+        };
+
+        ws.onclose = function () {
+            addMessage('Desconectado!');
+        };
+        
+        window.onbeforeunload = function() {
+            ws.onclose = function () {
+            	addMessage('Desconectado!');
+            };
+            ws.close()
+        };
+
+        ws.onerror = function (event) {
+            addMessage('Se produjo un error!');
+        };
+    }
+
+    function disconnect() {
+        if (ws != null) {
+            ws.close();
+            ws = null;
+        }
+    }
+
+    function sendMessage(message) {
+        if (ws != null) {
+            ws.send(message);
+            document.getElementById('input').value="";
+        }
+    }
+
+    function addMessage(message) {
+        var messages = document.getElementById('messages').value;
+        messages += (message + '\n');
+        document.getElementById('messages').value = messages;
+    }
+
+</script>
+
+<button onclick="connect()">Conectar</button>
+<button onclick="disconnect()">Desconectar</button><br/>
+<input id="input" type="text"/>
+<button onclick="sendMessage(document.getElementById('input').value)">Enviar mensaje</button>
+<br/><br/>
+<textarea rows="5" cols="50" id="messages"></textarea>
+
+</body>
+</html>
