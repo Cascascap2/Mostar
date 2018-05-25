@@ -1,7 +1,7 @@
 package logica;
-import eventos.StreamAlert;
+import logica.eventos.StreamAlert;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
@@ -19,14 +19,19 @@ public class Calendario {
 	public static void main(String[] args) throws SchedulerException{
 		JobDetail evento = JobBuilder.newJob(StreamAlert.class).withIdentity("test").build();
 		
-		Date triggerTime = new Date();
-		triggerTime.setHours(16);
-		triggerTime.setMinutes(7);
-		triggerTime.setSeconds(0);
+		
+		int hour 	= 12;
+		int minutes = 00;
+		int seconds = 00;
+		
+		Calendar triggerTime = Calendar.getInstance();
+		triggerTime.set(Calendar.HOUR, hour);
+		triggerTime.set(Calendar.MINUTE, minutes);
+		triggerTime.set(Calendar.SECOND, seconds);
 		
 		
 		Trigger trigger = TriggerBuilder.newTrigger().withIdentity("CroneTrigger2")
-							.startAt(triggerTime).forJob("test").build();
+							.startAt(triggerTime.getTime()).forJob("test").build();
 		
 		Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 		scheduler.start();
