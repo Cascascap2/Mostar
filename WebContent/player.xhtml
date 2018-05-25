@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:s="http://jboss.com/products/seam/taglib">
+    
+
+<h:body>
+<script type="text/javascript" src="js/flowplayer-3.1.1.min.js"></script>
+	<s:fragment rendered="true">
+		<div id="player" style="width:350px; height:250px"></div>
+						
+	</s:fragment>
+	<div id="live" style="width:350px; height:250px"> </div>
+          <script>
+           $f("live", "flowplayer/flowplayer-3.1.1.swf", {
+           	 
+               clip: {
+                   url: 'livestream',
+                   live: true,
+                   // configure clip to use influxis as our provider, it uses our rtmp plugin
+                   provider: 'lucas'
+               },
+            
+               // streaming plugins are configured under the plugins node
+               plugins: {
+            
+                   // here is our rtpm plugin configuration
+                   lucas: {
+                       url: "flowplayer/flowplayer.rtmp-3.2.13.swf",
+            
+                       // netConnectionUrl defines where the streams are found
+                       netConnectionUrl: 'rtmp://192.168.56.1:1935/live'
+                   }
+               }
+           });
+           </script>
+		
+		<script>
+			flowplayer("player", "flowplayer/flowplayer-3.1.1.swf", {
+				clip:{         
+					url: 'flowplayer/videoplayback.mp4',                  
+					autoPlay: true,          
+					autoBuffering: true       
+					}			
+				}
+				);
+		</script>	 
+	</h:body>
+
+	
+</html>
