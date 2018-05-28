@@ -5,7 +5,7 @@ public class test {
 	public static void main(String[] args) {
 		System.out.println("testing...");
 		UsuarioControlador uc = new UsuarioControlador();
-		uc.crearUsuarioDePrueba();
+		uc.registrarUsuario("testing", "testing@mail.com", "testpass");
 		System.out.println("Usuario de prueba creado con exito");
 	}
 
