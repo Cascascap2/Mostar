@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:s="http://jboss.com/products/seam/taglib">
+
+<head>
+<script src="js/flowplayer-3.2.13.min.js"></script>
+</head>
+
+
+<h:body>
+
+
+	<s:fragment rendered="true">
+		<div id="player" style="width: 350px; height: 250px"></div>
+
+	</s:fragment>
+	<script>
+		flowplayer("player", "flowplayer/flowplayer-3.2.18.swf", {
+			
+			
+			clip : {
+				url : 'flowplayer/videoplayback.mp4',
+				autoPlay : false,
+				autoBuffering : true
+			}
+		});
+	</script>
+
+</h:body>
+
+
+</html>

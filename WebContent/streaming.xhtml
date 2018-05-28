@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:s="http://jboss.com/products/seam/taglib">
+
+<head>
+<script src="js/flowplayer-3.2.13.min.js"></script>
+</head>
+
+<h:body>
+
+
+	<a id="rtmp" class="rtmp"></a>
+
+	<script>
+		$f("rtmp", "flowplayer/flowplayer-3.2.18.swf",
+				{
+
+					clip : {
+						url : 'live',
+						provider : 'rtmp',
+						live : true,
+						autoplay : true
+					},
+
+					plugins : {
+						
+						controls: {
+							url:"flowplayer/flowplayer.controls-3.2.16.swf"
+						},
+						
+						rtmp : {
+							url : "flowplayer/flowplayer.rtmp-3.2.13.swf",
+							netConnectionUrl : 'rtmp://192.168.1.5/live'
+						}
+					}
+
+				});
+	</script>
+
+</h:body>
+
+
+</html>
