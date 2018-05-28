@@ -7,37 +7,47 @@ import org.hibernate.cfg.Configuration;
 import logica.modelos.Usuario;
 //Interactua con la base de datos y objetos del dao
 
-public class UsuarioDB {	
+public class UsuarioDB {
 
-    private static UsuarioDB instance = null;
-
-    public static UsuarioDB getInstance() {
-        if(instance == null) {
-            instance = new UsuarioDB();
-        }
-        return instance;
-    }
-	
-	public void registrarUsuario(Usuario tempUser) {
-		
-	SessionFactory factory = new Configuration().configure("hibernate.cfg.xml")
-			.addAnnotatedClass(Usuario.class)
+	private static UsuarioDB instance = null;
+	private SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Usuario.class)
 			.buildSessionFactory();
-	
-	Session session = factory.getCurrentSession();
 
-	try {
+	public static UsuarioDB getInstance() {
+		if (instance == null) {
+			instance = new UsuarioDB();
+		}
+		return instance;
+	}
+
+	public void registrarUsuario(Usuario tempUser) {
+		Session session = this.factory.getCurrentSession();
 		session.beginTransaction();
 		session.save(tempUser);
 		session.getTransaction().commit();
-	} finally {
-		factory.close();
+		session.close();
 	}
-}
+
+	// modificar
 	
-	//modificar
-	//borrar
-	//listar
-	//get
+	public void borrarUsuario(Usuario tempUser) {
+		Session session = this.factory.getCurrentSession();
+		session.beginTransaction();
+		System.out.println("test1");
+		session.delete(tempUser.getId());
+		System.out.println("test2");
+		session.getTransaction().commit();
+		session.close();
+	}
+	
+	// listar
+
+	public Usuario getUsuario(String nickname) {
+		Session session = this.factory.getCurrentSession();
+		session.beginTransaction();
+		Usuario tempUser = session.byNaturalId(Usuario.class).using("nickname", nickname).load();
+		session.close();
+		return tempUser;
+	}
 
 }

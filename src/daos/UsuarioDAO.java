@@ -14,7 +14,17 @@ public class UsuarioDAO {
 	
 	//crear
 	//modificar
-	//borrar
+	
+	public void borrarUsuario(Usuario tempUser) {
+		UsuarioDB udb = UsuarioDB.getInstance();
+		udb.borrarUsuario(tempUser);
+	}
+	
 	//listar
-	//get
+	
+	public Usuario getUsuario(String nickname) {
+		UsuarioDB udb = UsuarioDB.getInstance();
+		Usuario tempUser = udb.getUsuario(nickname);
+		return tempUser;
+	}
 }

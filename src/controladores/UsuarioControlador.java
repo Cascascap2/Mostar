@@ -11,8 +11,28 @@ public class UsuarioControlador {
 		udao.registrarUsuario(tempUser);
 	}
 	
+	
 	//modificiar
-	//borrar
+	
+	public void modificarUsuario(String nickname) {
+		//UsuarioDAO udao = new UsuarioDAO();
+		//Usuario tempUser = new Usuario();
+		
+	}
+	
+	public void borrarUsuario(String nickname) {
+		UsuarioDAO udao = new UsuarioDAO();
+		Usuario tempUser = udao.getUsuario(nickname);
+		udao.borrarUsuario(tempUser);				
+		System.out.println("Borrado usuario con nickname: " + nickname + " Y id: " + tempUser.getId());
+	}
+	
 	//listar
-	//get
+
+
+	public Usuario getUsuario(String nickname) {
+		UsuarioDAO udao = new UsuarioDAO();
+		Usuario user = udao.getUsuario(nickname);
+		return user;
+	}
 }

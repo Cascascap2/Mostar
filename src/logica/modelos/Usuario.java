@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NaturalId;
+
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
@@ -13,6 +15,7 @@ public class Usuario {
 	@Column(name = "id")
 	private int id;
 
+	@NaturalId
 	@Column(name = "nickname")
 	private String nickname;
 
