@@ -6,6 +6,7 @@ public class test {
 		System.out.println("testing...");
 		UsuarioControlador uc = new UsuarioControlador();
 		uc.crearUsuarioDePrueba();
+		System.out.println("Usuario de prueba creado con exito");
 	}
 
 }

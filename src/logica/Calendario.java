@@ -20,8 +20,8 @@ public class Calendario {
 		JobDetail evento = JobBuilder.newJob(StreamAlert.class).withIdentity("test").build();
 		
 		
-		int hour 	= 12;
-		int minutes = 00;
+		int hour 	= 02;
+		int minutes = 12;
 		int seconds = 00;
 		
 		Calendar triggerTime = Calendar.getInstance();
