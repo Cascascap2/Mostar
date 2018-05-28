@@ -7,7 +7,7 @@ public class test {
 		UsuarioControlador uc = new UsuarioControlador();
 		uc.registrarUsuario("testing6", "testing6@mail.com", "testpass");
 		System.out.println("Usuario de prueba creado con exito");
-		uc.borrarUsuario("testing");
+		uc.borrarUsuario("testing6");
 	}
 
 }

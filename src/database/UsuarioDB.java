@@ -33,9 +33,7 @@ public class UsuarioDB {
 	public void borrarUsuario(Usuario tempUser) {
 		Session session = this.factory.getCurrentSession();
 		session.beginTransaction();
-		System.out.println("test1");
-		session.delete(tempUser.getId());
-		System.out.println("test2");
+		session.delete(tempUser);
 		session.getTransaction().commit();
 		session.close();
 	}
