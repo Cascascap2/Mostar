@@ -10,9 +10,10 @@ public class UsuarioControlador {
 
 	public void crearUsuarioDePrueba() {
 
-		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Usuario.class)
+		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml")
+				.addAnnotatedClass(Usuario.class)
 				.buildSessionFactory();
-
+		
 		Session session = factory.getCurrentSession();
 
 		try {
