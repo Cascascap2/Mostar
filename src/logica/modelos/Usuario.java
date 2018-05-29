@@ -1,5 +1,8 @@
 package logica.modelos;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,18 +15,33 @@ import org.hibernate.annotations.NaturalId;
 public class Usuario {
 
 	@Id
-	@Column(name = "id")
 	private int id;
 
 	@NaturalId
-	@Column(name = "nickname")
 	private String nickname;
 
-	@Column(name = "mail")
 	private String mail;
 
-	@Column(name = "password")
 	private String password;
+	
+	private ArrayList<Integer> favorites;
+	
+	private Float wallet;
+	
+	private Date DateExpiration;
+	
+	private int PermissionId;
+	
+	
+	
+
+	public int getPermissionId() {
+		return PermissionId;
+	}
+
+	public void setPermissionId(int permissionId) {
+		PermissionId = permissionId;
+	}
 
 	public Usuario() {
 
@@ -65,6 +83,32 @@ public class Usuario {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+
+	
+	public ArrayList<Integer> getFavorites() {
+		return favorites;
+	}
+
+	public void setFavorites(ArrayList<Integer> favorites) {
+		this.favorites = favorites;
+	}
+
+	public Float getWallet() {
+		return wallet;
+	}
+
+	public void setWallet(Float wallet) {
+		this.wallet = wallet;
+	}
+
+	public Date getDateExpiration() {
+		return DateExpiration;
+	}
+
+	public void setDateExpiration(Date dateExpiration) {
+		DateExpiration = dateExpiration;
 	}
 
 	@Override
