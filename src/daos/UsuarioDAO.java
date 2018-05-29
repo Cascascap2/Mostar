@@ -27,4 +27,10 @@ public class UsuarioDAO {
 		Usuario tempUser = udb.getUsuario(nickname);
 		return tempUser;
 	}
+	
+	public Usuario getUsuarioPorMail(String mail) {
+		UsuarioDB udb = UsuarioDB.getInstance();
+		Usuario tempUser = udb.getUsuarioPorMail(mail);
+		return tempUser;
+	}
 }

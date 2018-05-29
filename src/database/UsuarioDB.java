@@ -1,5 +1,7 @@
 package database;
 
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -46,6 +48,13 @@ public class UsuarioDB {
 		Usuario tempUser = session.byNaturalId(Usuario.class).using("nickname", nickname).load();
 		session.close();
 		return tempUser;
+	}
+	
+	public Usuario getUsuarioPorMail(String mail) {
+		Session session = this.factory.getCurrentSession();
+		  Query q1 = session.createQuery("SELECT `mail` FROM `usuarios` WHERE `mail`=\""+ mail +"\"");
+		  Usuario user = (Usuario) q1.getSingleResult();
+		  return user;
 	}
 
 }
