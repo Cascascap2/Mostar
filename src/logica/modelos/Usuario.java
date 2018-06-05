@@ -2,10 +2,12 @@ package logica.modelos;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NaturalId;
@@ -24,17 +26,18 @@ public class Usuario {
 
 	private String password;
 	
-	private ArrayList<Integer> favorites;
+	@OneToMany
+	private Set<Contenido> favorites;
 	
-	private Float wallet;
-	
+	private Double wallet;
+
+	@Column(name= "date_expiration")
 	private Date DateExpiration;
 	
+	@Column(name= "permission_id")
 	private int PermissionId;
 	
 	
-	
-
 	public int getPermissionId() {
 		return PermissionId;
 	}
@@ -47,10 +50,14 @@ public class Usuario {
 
 	}
 
-	public Usuario(String nickname, String mail, String password) {
+	public Usuario(String nickname, String mail, String password,
+					Double wallet, Date expiration, int permission) {
 		this.nickname = nickname;
 		this.mail = mail;
 		this.password = password;
+		this.wallet = wallet;
+		this.DateExpiration = expiration;
+		this.PermissionId = permission;
 	}
 
 	public int getId() {
@@ -84,22 +91,20 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
 
-	
-	public ArrayList<Integer> getFavorites() {
+	public Set<Contenido> getFavorites() {
 		return favorites;
 	}
 
-	public void setFavorites(ArrayList<Integer> favorites) {
+	public void setFavorites(Set<Contenido> favorites) {
 		this.favorites = favorites;
 	}
-
-	public Float getWallet() {
+	
+	public Double getWallet() {
 		return wallet;
 	}
 
-	public void setWallet(Float wallet) {
+	public void setWallet(Double wallet) {
 		this.wallet = wallet;
 	}
 

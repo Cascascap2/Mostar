@@ -1,14 +1,17 @@
 package logica.modelos;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-
+@Table(name = "contenidos")
 public class Contenido {
 	@Id
 	private int id;
-	private String Name;
+	@Column
+	private String name;
 	private int ProviderId;
 	public int getId() {
 		return id;
@@ -17,10 +20,10 @@ public class Contenido {
 		this.id = id;
 	}
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 	public int getProviderId() {
 		return ProviderId;
@@ -30,11 +33,11 @@ public class Contenido {
 	}
 	@Override
 	public String toString() {
-		return "Contenido [id=" + id + ", Name=" + Name + ", ProviderId=" + ProviderId + "]";
+		return "Contenido [id=" + id + ", Name=" + name + ", ProviderId=" + ProviderId + "]";
 	}
 	public Contenido(String name, int providerId) {
 		super();
-		Name = name;
+		this.name = name;
 		ProviderId = providerId;
 	}
 	
