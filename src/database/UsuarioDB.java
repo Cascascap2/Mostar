@@ -1,5 +1,7 @@
 package database;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.persistence.Query;
@@ -47,13 +49,21 @@ public class UsuarioDB {
 	}
 
 	public void registrarUsuario(Usuario tempUser) {
-		Contenido con = new Contenido("Robocop", 30);
-		//Contenido con2 = new Contenido("Robocop2", 30);
-		tempUser.addFavorito(con);
-		//tempUser.addFavorito(con2);
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
-		//session.save(con);
+		Contenido con = new Contenido("Robocop", 30);
+		//Contenido con2 = new Contenido("Robocop2", 30);
+		Set<Contenido> favs = new HashSet<Contenido>();
+		favs.add(con);
+		tempUser.setFavorites(favs);
+		System.out.println("Prueba de favoritos:");
+		Set<Contenido> favsTest = tempUser.getFavorites();
+		Iterator it = favsTest.iterator();
+		while(it.hasNext()) {
+			Contenido conTest = (Contenido) it.next();
+			System.out.println(conTest.getName());
+		}
+		//tempUser.addFavorito(con2);
 		session.save(tempUser);
 		session.getTransaction().commit();
 		session.close();
@@ -97,7 +107,8 @@ public class UsuarioDB {
 	}
 	
 	public Set<Contenido> getFavorites(int id){
-		Usuario user = getUsuarioPorId(id);
+		Usuario user = new Usuario();
+		//Usuario tempUser = getUsuarioPorId(id);
 		return user.getFavorites();
 	}
 
