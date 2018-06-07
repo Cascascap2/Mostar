@@ -1,16 +1,19 @@
 package database;
 
+import java.util.Set;
+
 import javax.persistence.Query;
 
-
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.service.ServiceRegistry;
 
 import logica.modelos.Contenido;
-import logica.modelos.Favoritos;
+import logica.modelos.Favorito;
 import logica.modelos.Usuario;
 //Interactua con la base de datos y objetos del dao
 
@@ -21,9 +24,6 @@ public class UsuarioDB {
 
 	private SessionFactory SessionFactory = new Configuration()
 									.configure("hibernate.cfg.xml")
-									.addAnnotatedClass(Usuario.class)
-									.addAnnotatedClass(Favoritos.class)
-									.addAnnotatedClass(Contenido.class)
 									.buildSessionFactory();
 
 /*
@@ -47,8 +47,13 @@ public class UsuarioDB {
 	}
 
 	public void registrarUsuario(Usuario tempUser) {
+		Contenido con = new Contenido("Robocop", 30);
+		//Contenido con2 = new Contenido("Robocop2", 30);
+		tempUser.addFavorito(con);
+		//tempUser.addFavorito(con2);
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
+		//session.save(con);
 		session.save(tempUser);
 		session.getTransaction().commit();
 		session.close();
@@ -66,6 +71,14 @@ public class UsuarioDB {
 	
 	// listar
 
+	public Usuario getUsuarioPorId(int id) {
+		  Session session = this.SessionFactory.getCurrentSession();
+		  session.beginTransaction();
+		  Usuario user = (Usuario) session.get(Usuario.class, id);
+		  session.close();
+		  return user;
+	}
+	
 	public Usuario getUsuario(String nickname) {
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
@@ -75,10 +88,17 @@ public class UsuarioDB {
 	}
 	
 	public Usuario getUsuarioPorMail(String mail) {
-		Session session = this.SessionFactory.getCurrentSession();
-		  Query q1 = session.createQuery("SELECT `mail` FROM `usuarios` WHERE `mail`=\""+ mail +"\"");
-		  Usuario user = (Usuario) q1.getSingleResult();
+		  Session session = this.SessionFactory.getCurrentSession();
+		  session.beginTransaction();
+		  Criteria criteria = session.createCriteria(Usuario.class);
+		  Usuario user = (Usuario) criteria.add(Restrictions.eq("mail", mail)).uniqueResult();
+		  session.close();
 		  return user;
+	}
+	
+	public Set<Contenido> getFavorites(int id){
+		Usuario user = getUsuarioPorId(id);
+		return user.getFavorites();
 	}
 
 }

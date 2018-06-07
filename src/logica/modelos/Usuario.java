@@ -1,53 +1,46 @@
 package logica.modelos;
 
-import java.util.ArrayList;
+
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
+import org.hibernate.Hibernate;
 import org.hibernate.annotations.NaturalId;
 
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
 
-	@Id
 	private int id;
 
-	@NaturalId
 	private String nickname;
 
 	private String mail;
 
 	private String password;
 	
-	@OneToMany
 	private Set<Contenido> favorites;
 	
 	private Double wallet;
 
-	@Column(name= "date_expiration")
 	private Date DateExpiration;
 	
-	@Column(name= "permission_id")
 	private int PermissionId;
 	
 	
-	public int getPermissionId() {
-		return PermissionId;
-	}
-
-	public void setPermissionId(int permissionId) {
-		PermissionId = permissionId;
-	}
-
 	public Usuario() {
-
+		this.favorites = new HashSet<Contenido>();
 	}
 
 	public Usuario(String nickname, String mail, String password,
@@ -58,8 +51,20 @@ public class Usuario {
 		this.wallet = wallet;
 		this.DateExpiration = expiration;
 		this.PermissionId = permission;
+		this.favorites = new HashSet<Contenido>();
+	}
+	
+	@Column(name= "permission_id")
+	public int getPermissionId() {
+		return PermissionId;
 	}
 
+	public void setPermissionId(int permissionId) {
+		PermissionId = permissionId;
+	}
+
+	@Id
+    @Column(name = "usuario_id")
 	public int getId() {
 		return id;
 	}
@@ -67,7 +72,8 @@ public class Usuario {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
+	@NaturalId
 	public String getNickname() {
 		return nickname;
 	}
@@ -92,8 +98,14 @@ public class Usuario {
 		this.password = password;
 	}
 
+	@OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "favoritos",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "contenido_id")
+    )
 	public Set<Contenido> getFavorites() {
-		return favorites;
+		return this.favorites;
 	}
 
 	public void setFavorites(Set<Contenido> favorites) {
@@ -108,6 +120,7 @@ public class Usuario {
 		this.wallet = wallet;
 	}
 
+	@Column(name= "date_expiration")
 	public Date getDateExpiration() {
 		return DateExpiration;
 	}
@@ -115,6 +128,11 @@ public class Usuario {
 	public void setDateExpiration(Date dateExpiration) {
 		DateExpiration = dateExpiration;
 	}
+	
+	public void addFavorito(Contenido con) {
+		this.favorites.add(con);
+	}
+	
 
 	@Override
 	public String toString() {

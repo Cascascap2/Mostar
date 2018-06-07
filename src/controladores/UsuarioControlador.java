@@ -1,8 +1,10 @@
 package controladores;
 
 import java.util.Date;
+import java.util.Set;
 
 import daos.UsuarioDAO;
+import logica.modelos.Contenido;
 import logica.modelos.Usuario;
 
 public class UsuarioControlador {
@@ -31,10 +33,27 @@ public class UsuarioControlador {
 	
 	//listar
 
+	public Set<Contenido> getFavorites(int id){
+		UsuarioDAO udao = new UsuarioDAO();
+		Set<Contenido> favs = udao.getFavorites(id);
+		return favs;
+	}
+	
+	public Usuario getUsuarioPorId(int id) {
+		UsuarioDAO udao = new UsuarioDAO();
+		Usuario user = udao.getUsuarioPorId(id);
+		return user;
+	}
 
 	public Usuario getUsuario(String nickname) {
 		UsuarioDAO udao = new UsuarioDAO();
 		Usuario user = udao.getUsuario(nickname);
+		return user;
+	}
+	
+	public Usuario getUsuarioPorMail(String mail) {
+		UsuarioDAO udao = new UsuarioDAO();
+		Usuario user = udao.getUsuarioPorMail(mail);
 		return user;
 	}
 }
