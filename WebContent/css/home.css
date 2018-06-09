@@ -1,0 +1,44 @@
+@charset "ISO-8859-1";
+div.ContaineContent{
+    width: 70%;
+    min-height: 100vh;
+    margin: 0;
+    margin-left: 3%;
+    display: inline-block;
+}
+
+
+body{
+    margin: 0;
+   
+}
+
+
+* {
+    margin:0px;
+    padding:0px;
+}
+
+#butonjumbo{
+	float:left;
+	
+}
+
+.containerInfo{
+	border-style: solid;
+	border-radius: 6px;
+	
+}
+.contentImage{
+	width: 100%;
+	height: 250px;
+	border-radius: 20px;
+	margin: auto;
+	padding: auto;
+	
+	
+}
+.content-info{
+
+	
+}
