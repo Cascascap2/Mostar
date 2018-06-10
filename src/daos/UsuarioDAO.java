@@ -1,6 +1,9 @@
 package daos;
 
+import java.util.Set;
+
 import database.UsuarioDB;
+import logica.modelos.Contenido;
 import logica.modelos.Usuario;
 
 public class UsuarioDAO {
@@ -22,6 +25,12 @@ public class UsuarioDAO {
 	
 	//listar
 	
+	public Usuario getUsuarioPorId(int id) {
+		UsuarioDB udb = UsuarioDB.getInstance();
+		Usuario tempUser = udb.getUsuarioPorId(id);
+		return tempUser;
+	}
+	
 	public Usuario getUsuario(String nickname) {
 		UsuarioDB udb = UsuarioDB.getInstance();
 		Usuario tempUser = udb.getUsuario(nickname);
@@ -32,5 +41,11 @@ public class UsuarioDAO {
 		UsuarioDB udb = UsuarioDB.getInstance();
 		Usuario tempUser = udb.getUsuarioPorMail(mail);
 		return tempUser;
+	}
+	
+	public Set<Contenido> getFavorites(int id){
+		UsuarioDB udb = UsuarioDB.getInstance();
+		Set<Contenido> favs = udb.getFavorites(id);
+		return favs;
 	}
 }
