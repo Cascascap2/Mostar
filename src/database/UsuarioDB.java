@@ -1,6 +1,7 @@
 package database;
 
 import java.util.HashSet;
+
 import java.util.Iterator;
 import java.util.Set;
 
@@ -15,7 +16,6 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.service.ServiceRegistry;
 
 import logica.modelos.Contenido;
-import logica.modelos.Favorito;
 import logica.modelos.Usuario;
 //Interactua con la base de datos y objetos del dao
 

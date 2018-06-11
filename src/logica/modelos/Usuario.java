@@ -31,6 +31,12 @@ public class Usuario {
 
 	private String password;
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "favoritos",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "contenido_id")
+    )
 	private Set<Contenido> favorites;
 	
 	private Double wallet;
@@ -99,12 +105,7 @@ public class Usuario {
 		this.password = password;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "favoritos",
-            joinColumns = @JoinColumn(name = "usuario_id"),
-            inverseJoinColumns = @JoinColumn(name = "contenido_id")
-    )
+	
 	public Set<Contenido> getFavorites() {
 		return this.favorites;
 	}

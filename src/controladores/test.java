@@ -2,6 +2,7 @@ package controladores;
 
 import java.util.Date;
 
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -10,7 +11,6 @@ import java.util.Set;
 import org.hibernate.Hibernate;
 
 import logica.modelos.Contenido;
-import logica.modelos.Favorito;
 import logica.modelos.Usuario;
 
 public class test {
