@@ -4,6 +4,7 @@ package logica.modelos;
 import java.util.Date;
 
 
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,8 +17,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
-
-import org.hibernate.annotations.NaturalId;
 
 @Entity
 @Table(name = "usuarios")

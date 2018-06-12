@@ -62,4 +62,3 @@
 //    messages.add("Node collapsed: '" + event.getNode().getText() + "'");
 //  }
  
-}

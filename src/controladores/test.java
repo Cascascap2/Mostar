@@ -8,7 +8,7 @@ public class test {
 		System.out.println("testing...");
 		Date expdate = new Date();
 		UsuarioControlador uc = new UsuarioControlador();
-		uc.registrarUsuario("testing", "testing@mail.com", "testpass",
+		uc.registrarUsuario("testing2", "testing2@mail.com", "testpass",
 								250.50, expdate, 3);
 		
 		
