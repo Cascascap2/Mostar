@@ -11,7 +11,6 @@ import javax.persistence.Table;
 @Table(name = "contenidos")
 public class Contenido {
 	
-	private int id;
 	private String name;
 	private int provider_id;
 	
@@ -21,17 +20,8 @@ public class Contenido {
 		this.name = name;
 		provider_id = providerId;
 	}
-	
-	@Id
-	@Column(name="contenido_id")
-	public int getId() {
-		return id;
-	}
-	
-	public void setId(int id) {
-		this.id = id;
-	}
 
+	@Id
 	@Column(name="nombre")
 	public String getName() {
 		return name;
@@ -53,7 +43,7 @@ public class Contenido {
 	
 	@Override
 	public String toString() {
-		return "Contenido [id=" + id + ", Name=" + name + ", ProviderId=" + provider_id + "]";
+		return "Contenido [id=" + ", Name=" + name + ", ProviderId=" + provider_id + "]";
 	}
 		
 }

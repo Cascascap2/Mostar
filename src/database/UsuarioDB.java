@@ -16,6 +16,7 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.service.ServiceRegistry;
 
 import logica.modelos.Contenido;
+import logica.modelos.Favorito;
 import logica.modelos.Usuario;
 //Interactua con la base de datos y objetos del dao
 
@@ -65,6 +66,8 @@ public class UsuarioDB {
 		}
 		//tempUser.addFavorito(con2);
 		session.save(tempUser);
+		//Favorito fav = new Favorito(, 3);
+		//session.save(fav);
 		session.getTransaction().commit();
 		session.close();
 	}
@@ -92,8 +95,9 @@ public class UsuarioDB {
 	public Usuario getUsuario(String nickname) {
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
-		Usuario tempUser = session.byNaturalId(Usuario.class).using("nickname", nickname).load();
+		//Usuario tempUser = session.get(Usuario.class).using("nickname", nickname).load();
 		session.close();
+		Usuario tempUser = new Usuario(); 
 		return tempUser;
 	}
 	

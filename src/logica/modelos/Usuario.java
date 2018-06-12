@@ -2,6 +2,8 @@ package logica.modelos;
 
 
 import java.util.Date;
+
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,34 +11,23 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
-import org.hibernate.Hibernate;
 import org.hibernate.annotations.NaturalId;
 
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
-
-	private int id;
-
 	private String nickname;
 
 	private String mail;
 
 	private String password;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "favoritos",
-            joinColumns = @JoinColumn(name = "usuario_id"),
-            inverseJoinColumns = @JoinColumn(name = "contenido_id")
-    )
 	private Set<Contenido> favorites;
 	
 	private Double wallet;
@@ -69,18 +60,10 @@ public class Usuario {
 	public void setPermissionId(int permissionId) {
 		PermissionId = permissionId;
 	}
-
-	@Id
-    @Column(name = "usuario_id")
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 	
-	@NaturalId
+	@Id
+    @Column(name = "nickname")
+	//@NaturalId
 	public String getNickname() {
 		return nickname;
 	}
@@ -106,6 +89,11 @@ public class Usuario {
 	}
 
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "favoritos",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "contenido_id"))
 	public Set<Contenido> getFavorites() {
 		return this.favorites;
 	}
@@ -138,7 +126,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nickname=" + nickname + ", mail=" + mail + ", password=" + password + "]";
+		return "Usuario [id=" + ", nickname=" + nickname + ", mail=" + mail + ", password=" + password + "]";
 	}
 	
 }
