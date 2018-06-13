@@ -49,4 +49,9 @@ public class UsuarioControlador {
 		Usuario user = udao.getUsuarioPorMail(mail);
 		return user;
 	}
+	
+	public void agregarFavorito(Usuario user, Contenido con){
+		UsuarioDAO udao = new UsuarioDAO();
+		udao.agregarFavorito(user, con);
+	}
 }

@@ -2,6 +2,8 @@ package daos;
 
 import java.util.Set;
 
+import org.hibernate.Session;
+
 import database.UsuarioDB;
 import logica.modelos.Contenido;
 import logica.modelos.Usuario;
@@ -42,4 +44,10 @@ public class UsuarioDAO {
 		Set<Contenido> favs = udb.getFavorites(nickname);
 		return favs;
 	}
+	
+	public void agregarFavorito(Usuario user, Contenido con){
+		UsuarioDB udb = UsuarioDB.getInstance();
+		udb.agregarFavorito(user, con);
+	}
+
 }

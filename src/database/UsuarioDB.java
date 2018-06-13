@@ -3,6 +3,7 @@ package database;
 import java.util.Set;
 
 
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -57,6 +58,15 @@ public class UsuarioDB {
 		return tempUser;
 	}
 	
+	public void agregarFavorito(Usuario user, Contenido con){
+		Session session = this.SessionFactory.getCurrentSession();
+		session.beginTransaction();
+		user.addFavorito(con);
+		session.update(user);
+		session.getTransaction().commit();
+		session.close();
+	}
+	
 	public Usuario getUsuarioPorMail(String mail) {
 		  Session session = this.SessionFactory.getCurrentSession();
 		  session.beginTransaction();
@@ -68,8 +78,7 @@ public class UsuarioDB {
 	}
 	
 	public Set<Contenido> getFavorites(String nickname){
-		Usuario user = new Usuario();
-		user = this.getUsuario(nickname);
+		Usuario user = this.getUsuario(nickname);
 		return user.getFavorites();
 	}
 

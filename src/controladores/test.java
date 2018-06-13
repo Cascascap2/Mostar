@@ -2,19 +2,28 @@ package controladores;
 
 import java.util.Date;
 
+import logica.modelos.Contenido;
+import logica.modelos.Usuario;
+
 public class test {
 
 	public static void main(String[] args) {
 		System.out.println("testing...");
 		Date expdate = new Date();
+		
 		UsuarioControlador uc = new UsuarioControlador();
-		uc.registrarUsuario("testing2", "testing2@mail.com", "testpass",
-								250.50, expdate, 3);
+		ContenidoControlador cc = new ContenidoControlador();
 		
+		//uc.registrarUsuario("testing", "testing2@mail.com", "testpass", 250.50, expdate, 3);		
+		//cc.altaContenido("ContenidoTest", "HBO");
 		
-		System.out.println("Usuario de prueba creado con exito");
-		//uc.borrarUsuario("testing");
-		//System.out.println("Usuario de prueba borrado con exito");
+		Usuario user = uc.getUsuario("testing");
+		Contenido con = cc.getContenido("ContenidoTest");
+		
+		//uc.agregarFavorito(user, con);
+		
+		//uc.borrarUsuario("testing");		
+		cc.borrarContenido("ContenidoTest");
 	}
 
 }

@@ -88,7 +88,7 @@ public class Usuario {
 	}
 
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "favoritos",
             joinColumns = @JoinColumn(name = "usuario_id"),
@@ -121,7 +121,6 @@ public class Usuario {
 	public void addFavorito(Contenido con) {
 		this.favorites.add(con);
 	}
-	
 
 	@Override
 	public String toString() {
