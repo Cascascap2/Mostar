@@ -23,7 +23,7 @@ public class test {
 		//uc.agregarFavorito(user, con);
 		
 		//uc.borrarUsuario("testing");		
-		cc.borrarContenido("ContenidoTest");
+		//cc.borrarContenido("ContenidoTest");
 	}
 
 }
