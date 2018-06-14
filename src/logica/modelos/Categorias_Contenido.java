@@ -6,7 +6,6 @@ import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 import database.CategoriasKey;
-import database.FavoritesKey;
 
 @Entity
 @IdClass(CategoriasKey.class)

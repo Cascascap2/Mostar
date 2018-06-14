@@ -11,14 +11,18 @@ public class test {
 		System.out.println("testing...");
 		Date expdate = new Date();
 		
-		UsuarioControlador uc = new UsuarioControlador();
-		ContenidoControlador cc = new ContenidoControlador();
+		Manejador manejador = Manejador.getInstance();
+		UsuarioControlador uc = manejador.getUsuarioControlador();
+		ContenidoControlador cc = manejador.getContenidoControlador();
+		CategoriaControlador cac = manejador.getCategoriaControlador();
+		
+		cac.altaCategoria("Terror");
 		
 		//uc.registrarUsuario("testing", "testing2@mail.com", "testpass", 250.50, expdate, 3);		
 		//cc.altaContenido("ContenidoTest", "HBO");
 		
-		Usuario user = uc.getUsuario("testing");
-		Contenido con = cc.getContenido("ContenidoTest");
+		//Usuario user = uc.getUsuario("testing");
+		//Contenido con = cc.getContenido("ContenidoTest");
 		
 		//uc.agregarFavorito(user, con);
 		

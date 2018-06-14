@@ -2,8 +2,6 @@ package daos;
 
 import java.util.Set;
 
-import org.hibernate.Session;
-
 import database.UsuarioDB;
 import logica.modelos.Contenido;
 import logica.modelos.Usuario;

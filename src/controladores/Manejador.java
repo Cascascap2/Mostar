@@ -11,8 +11,10 @@ public class Manejador {
 	
 	private Set<Categorias> categorias;
 
+	
 	protected Manejador() {
-		
+		CategoriaControlador cc = new CategoriaControlador();
+		this.categorias = cc.getAllCategorias();
 	}
 
 	public static Manejador getInstance() {
@@ -21,6 +23,16 @@ public class Manejador {
 		}
 		return instance;
 	}
-
 	
+	public CategoriaControlador getCategoriaControlador(){
+		return new CategoriaControlador();
+	}
+	
+	public ContenidoControlador getContenidoControlador(){
+		return new ContenidoControlador();
+	}
+
+	public UsuarioControlador getUsuarioControlador(){
+		return new UsuarioControlador();
+	}
 }

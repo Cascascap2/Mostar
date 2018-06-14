@@ -15,6 +15,10 @@ public class Categorias {
 	public Categorias() {
 	}
 	
+	public Categorias(String categoria_name) {
+		this.categoria_name = categoria_name;
+	}
+
 	@Id
 	public String getName() {
 		return categoria_name;
