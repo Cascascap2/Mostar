@@ -1,7 +1,10 @@
 package controladores;
 
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
+import logica.modelos.Categorias;
 import logica.modelos.Contenido;
 import logica.modelos.Usuario;
 
@@ -16,7 +19,13 @@ public class test {
 		ContenidoControlador cc = manejador.getContenidoControlador();
 		CategoriaControlador cac = manejador.getCategoriaControlador();
 		
-		cac.altaCategoria("Terror");
+		List<Categorias> categorias = cac.getAllCategorias();
+		Iterator it = categorias.iterator();
+		Categorias cat = new Categorias();
+		while(it.hasNext()){
+			cat = (Categorias) it.next();
+			System.out.println(cat.getName());
+		}
 		
 		//uc.registrarUsuario("testing", "testing2@mail.com", "testpass", 250.50, expdate, 3);		
 		//cc.altaContenido("ContenidoTest", "HBO");

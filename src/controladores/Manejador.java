@@ -1,5 +1,6 @@
 package controladores;
 
+import java.util.List;
 import java.util.Set;
 
 import logica.modelos.Categorias;
@@ -9,7 +10,7 @@ public class Manejador {
 
 	private static Manejador instance = null;
 	
-	private Set<Categorias> categorias;
+	private List<Categorias> categorias;
 
 	
 	protected Manejador() {

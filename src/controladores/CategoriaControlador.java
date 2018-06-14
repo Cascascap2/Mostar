@@ -1,5 +1,6 @@
 package controladores;
 
+import java.util.List;
 import java.util.Set;
 
 import daos.CategoriaDAO;
@@ -18,7 +19,7 @@ public class CategoriaControlador {
 		cdao.deleteCategoria(c);
 	}
 
-	public Set<Categorias> getAllCategorias(){
+	public List<Categorias> getAllCategorias(){
 		CategoriaDAO cdao = new CategoriaDAO();
 		return cdao.getAllCategorias();
 	}

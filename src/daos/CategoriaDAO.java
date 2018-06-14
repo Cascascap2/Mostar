@@ -1,5 +1,6 @@
 package daos;
 
+import java.util.List;
 import java.util.Set;
 
 import database.CategoriaDB;
@@ -17,7 +18,7 @@ public class CategoriaDAO {
 		cdb.deleteCategoria(c);
 	}
 
-	public Set<Categorias> getAllCategorias(){
+	public List<Categorias> getAllCategorias(){
 		CategoriaDB cdb = CategoriaDB.getInstance();
 		return cdb.getAllCategorias();
 	}

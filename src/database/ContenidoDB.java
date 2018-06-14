@@ -8,7 +8,7 @@ import logica.modelos.Contenido;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
+//TODO add try and catches
 public class ContenidoDB {
 	
 	private static ContenidoDB instance = null;

@@ -13,7 +13,7 @@ import org.hibernate.criterion.Restrictions;
 import logica.modelos.Contenido;
 import logica.modelos.Usuario;
 
-//Interactua con la base de datos y objetos del dao
+//TODO add try and catches
 public class UsuarioDB {
 
 	private static UsuarioDB instance = null;

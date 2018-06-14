@@ -1,6 +1,8 @@
 package database;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -13,7 +15,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import logica.modelos.Categorias;
-
+//TODO add try and catches
 public class CategoriaDB {
 	
 	private static CategoriaDB instance = null;
@@ -31,10 +33,15 @@ public class CategoriaDB {
 
 	public void altaCategoria(Categorias c){
 		Session session = this.SessionFactory.getCurrentSession();
-		session.beginTransaction();
-		session.save(c);
-		session.getTransaction().commit();
-		session.close();
+		try{
+			session.beginTransaction();
+			session.save(c);
+			session.getTransaction().commit();
+			session.close();
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			session.close();
+		}
 	}
 	
 	public void deleteCategoria(Categorias c){
@@ -46,18 +53,19 @@ public class CategoriaDB {
 	}
 	
 
-	public Set<Categorias> getAllCategorias(){
+	public List<Categorias> getAllCategorias(){
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
-		//Set<Categorias> categorias = new HashSet<Categorias>();
 		try{
 			Criteria criteria = session.createCriteria(Categorias.class);
-			Set<Categorias> list = (Set<Categorias>) criteria.list();
+			List<Categorias> list = criteria.list();
 			session.getTransaction().commit();
 			session.close();
 			return list;
 		}catch(Exception e){
-			return new HashSet<Categorias>();
+			System.out.println(e.getMessage());
+			session.close();
+			return new ArrayList<Categorias>();
 		}		
 	}
 }
