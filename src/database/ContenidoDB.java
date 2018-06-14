@@ -8,7 +8,7 @@ import logica.modelos.Contenido;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-//TODO add try and catches
+//TODO modificar, listar contenido
 public class ContenidoDB {
 	
 	private static ContenidoDB instance = null;
@@ -27,9 +27,15 @@ public class ContenidoDB {
 	public void altaContenido(Contenido con){
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
-		session.save(con);
-		session.getTransaction().commit();
-		session.close();
+		try{
+			session.save(con);
+			session.getTransaction().commit();
+			session.close();
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			session.close();
+		}
+		
 	}
 	
 	// modificar
@@ -37,9 +43,15 @@ public class ContenidoDB {
 		public void borrarContenido(Contenido con_name) {
 			Session session = this.SessionFactory.getCurrentSession();
 			session.beginTransaction();
-			session.delete(con_name);
-			session.getTransaction().commit();
-			session.close();
+			try{				
+				session.delete(con_name);
+				session.getTransaction().commit();
+				session.close();
+			}catch(Exception e){
+				System.out.println(e.getMessage());
+				session.close();
+			}
+			
 		}
 		
 		// listar
@@ -47,9 +59,15 @@ public class ContenidoDB {
 		public Contenido getContenido(String con_name) {
 			Session session = this.SessionFactory.getCurrentSession();
 			session.beginTransaction();
-			Contenido cont = session.get(Contenido.class, con_name);
-			session.close(); 
-			return cont;
+			try{
+				Contenido cont = session.get(Contenido.class, con_name);
+				session.close(); 
+				return cont;
+			}catch(Exception e){
+				System.out.println(e.getMessage());
+				session.close();
+				return null;
+			}
 		}
 		
 		public Set<Categorias> getCategorias(String con_name){

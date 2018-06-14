@@ -15,7 +15,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import logica.modelos.Categorias;
-//TODO add try and catches
+//TODO modificacion
 public class CategoriaDB {
 	
 	private static CategoriaDB instance = null;
@@ -33,8 +33,8 @@ public class CategoriaDB {
 
 	public void altaCategoria(Categorias c){
 		Session session = this.SessionFactory.getCurrentSession();
+		session.beginTransaction();
 		try{
-			session.beginTransaction();
 			session.save(c);
 			session.getTransaction().commit();
 			session.close();
@@ -47,12 +47,17 @@ public class CategoriaDB {
 	public void deleteCategoria(Categorias c){
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
-		session.delete(c);
-		session.getTransaction().commit();
-		session.close();
+		try{
+			session.delete(c);
+			session.getTransaction().commit();
+			session.close();
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			session.close();
+		}
+		
 	}
 	
-
 	public List<Categorias> getAllCategorias(){
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();

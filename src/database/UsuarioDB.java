@@ -13,11 +13,10 @@ import org.hibernate.criterion.Restrictions;
 import logica.modelos.Contenido;
 import logica.modelos.Usuario;
 
-//TODO add try and catches
+//TODO add modificar y listar usuarios
 public class UsuarioDB {
 
 	private static UsuarioDB instance = null;
-//	private SessionFactory SessionFactory;
 
 	private SessionFactory SessionFactory = new Configuration()
 									.configure("hibernate.cfg.xml")
@@ -33,9 +32,15 @@ public class UsuarioDB {
 	public void registrarUsuario(Usuario tempUser) {
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
-		session.save(tempUser);
-		session.getTransaction().commit();
-		session.close();
+		try{			
+			session.save(tempUser);
+			session.getTransaction().commit();
+			session.close();
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			session.close();
+		}
+		
 	}
 
 	// modificar
@@ -43,9 +48,15 @@ public class UsuarioDB {
 	public void borrarUsuario(Usuario tempUser) {
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
-		session.delete(tempUser);
-		session.getTransaction().commit();
-		session.close();
+		try{			
+			session.delete(tempUser);
+			session.getTransaction().commit();
+			session.close();
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			session.close();
+		}
+		
 	}
 	
 	// listar
@@ -53,28 +64,46 @@ public class UsuarioDB {
 	public Usuario getUsuario(String nickname) {
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
-		Usuario tempUser = session.get(Usuario.class, nickname);
-		session.close(); 
-		return tempUser;
+		try{			
+			Usuario tempUser = session.get(Usuario.class, nickname);
+			session.close(); 
+			return tempUser;
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			session.close();
+			return null;
+		}		
 	}
 	
 	public void agregarFavorito(Usuario user, Contenido con){
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
-		user.addFavorito(con);
-		session.update(user);
-		session.getTransaction().commit();
-		session.close();
+		try{			
+			user.addFavorito(con);
+			session.update(user);
+			session.getTransaction().commit();
+			session.close();
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			session.close();
+		}
+		
 	}
 	
 	public Usuario getUsuarioPorMail(String mail) {
 		  Session session = this.SessionFactory.getCurrentSession();
 		  session.beginTransaction();
-		  @SuppressWarnings("deprecation")
-		  Criteria criteria = session.createCriteria(Usuario.class);
-		  Usuario user = (Usuario) criteria.add(Restrictions.eq("mail", mail)).uniqueResult();
-		  session.close();
-		  return user;
+		  try{
+			  @SuppressWarnings("deprecation")
+			  Criteria criteria = session.createCriteria(Usuario.class);
+			  Usuario user = (Usuario) criteria.add(Restrictions.eq("mail", mail)).uniqueResult();
+			  session.close();
+			  return user; 
+		  }catch(Exception e){
+			  session.close();
+			  return null;
+		  }
+		  
 	}
 	
 	public Set<Contenido> getFavorites(String nickname){

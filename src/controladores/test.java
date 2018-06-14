@@ -22,6 +22,7 @@ public class test {
 		List<Categorias> categorias = cac.getAllCategorias();
 		Iterator it = categorias.iterator();
 		Categorias cat = new Categorias();
+		System.out.println("Lista de categorias: ");
 		while(it.hasNext()){
 			cat = (Categorias) it.next();
 			System.out.println(cat.getName());
