@@ -1,16 +1,11 @@
 package controladores;
 
 import java.util.Date;
-
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
 
-import org.hibernate.Hibernate;
-
+import logica.modelos.Categorias;
 import logica.modelos.Contenido;
-import logica.modelos.Favorito;
 import logica.modelos.Usuario;
 
 public class test {
@@ -18,23 +13,31 @@ public class test {
 	public static void main(String[] args) {
 		System.out.println("testing...");
 		Date expdate = new Date();
-		UsuarioControlador uc = new UsuarioControlador();
-		uc.registrarUsuario("testing", "testing@mail.com", "testpass",
-								250.50, expdate, 3);
 		
+		Manejador manejador = Manejador.getInstance();
+		UsuarioControlador uc = manejador.getUsuarioControlador();
+		ContenidoControlador cc = manejador.getContenidoControlador();
+		CategoriaControlador cac = manejador.getCategoriaControlador();
 		
-		System.out.println("Usuario de prueba creado con exito");
-		//uc.borrarUsuario("testing");
-		//System.out.println("Usuario de prueba borrado con exito");
-		Usuario user = uc.getUsuario("testing");
-		System.out.println("User: " + user.getNickname() + " of id: " + user.getId());
-		System.out.println("Prueba de favoritos2:");
-		Set<Contenido> favsTest = user.getFavorites();
-		Iterator it = favsTest.iterator();
-		while(it.hasNext()) {
-			Contenido conTest = (Contenido) it.next();
-			System.out.println(conTest.getName());
+		List<Categorias> categorias = cac.getAllCategorias();
+		Iterator it = categorias.iterator();
+		Categorias cat = new Categorias();
+		System.out.println("Lista de categorias: ");
+		while(it.hasNext()){
+			cat = (Categorias) it.next();
+			System.out.println(cat.getName());
 		}
+		
+		//uc.registrarUsuario("testing", "testing2@mail.com", "testpass", 250.50, expdate, 3);		
+		//cc.altaContenido("ContenidoTest", "HBO");
+		
+		//Usuario user = uc.getUsuario("testing");
+		//Contenido con = cc.getContenido("ContenidoTest");
+		
+		//uc.agregarFavorito(user, con);
+		
+		//uc.borrarUsuario("testing");		
+		//cc.borrarContenido("ContenidoTest");
 	}
 
 }

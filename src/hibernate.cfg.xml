@@ -15,5 +15,7 @@
         <mapping class="logica.modelos.Usuario"/>
     	<mapping class="logica.modelos.Contenido"/>
     	<mapping class="logica.modelos.Categorias"/>
+    	<mapping class="logica.modelos.Categorias_Contenido"/>
+    	<mapping class="logica.modelos.Favorito"/>
     </session-factory>
 </hibernate-configuration>

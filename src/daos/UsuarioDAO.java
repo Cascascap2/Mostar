@@ -25,12 +25,6 @@ public class UsuarioDAO {
 	
 	//listar
 	
-	public Usuario getUsuarioPorId(int id) {
-		UsuarioDB udb = UsuarioDB.getInstance();
-		Usuario tempUser = udb.getUsuarioPorId(id);
-		return tempUser;
-	}
-	
 	public Usuario getUsuario(String nickname) {
 		UsuarioDB udb = UsuarioDB.getInstance();
 		Usuario tempUser = udb.getUsuario(nickname);
@@ -43,9 +37,15 @@ public class UsuarioDAO {
 		return tempUser;
 	}
 	
-	public Set<Contenido> getFavorites(int id){
+	public Set<Contenido> getFavorites(String nickname){
 		UsuarioDB udb = UsuarioDB.getInstance();
-		Set<Contenido> favs = udb.getFavorites(id);
+		Set<Contenido> favs = udb.getFavorites(nickname);
 		return favs;
 	}
+	
+	public void agregarFavorito(Usuario user, Contenido con){
+		UsuarioDB udb = UsuarioDB.getInstance();
+		udb.agregarFavorito(user, con);
+	}
+
 }
