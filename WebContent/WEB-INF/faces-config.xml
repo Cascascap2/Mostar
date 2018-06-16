@@ -10,6 +10,15 @@
 		<managed-bean-class>TestBean</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>
 	</managed-bean>
+	<navigation-rule>
+		<display-name>templates/home.xhtml</display-name>
+		<from-view-id>/templates/home.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>login</from-outcome>
+			<to-view-id>/templates/Usuarios/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 	
 
 </faces-config>

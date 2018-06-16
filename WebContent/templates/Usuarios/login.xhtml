@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+			<title>Mostar</title>
+		    <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script> 
+	</h:head>
+	<h:body>
+		<div id="Header">
+			<ui:insert name="header">
+				<ui:include  src="header.xhtml"></ui:include>
+			</ui:insert>
+		</div>
+		<div id="content">
+			<b:container fluid="true">
+			  <b:row>
+			    <b:column medium-screen="2">
+			      <h:outputText value="Username:"/>
+			    </b:column>
+			    <b:column medium-screen="4">
+			      <b:inputText placeholder="Username" />
+			    </b:column>
+			    <b:column medium-screen="6">
+			      <b:message/>
+			    </b:column>
+			  </b:row>
+			  <b:row>
+			    <b:column medium-screen="2">
+			      <h:outputText value="Password:" />
+			    </b:column>
+			    <b:column medium-screen="4">
+			      <b:inputSecret placeholder="Password" />
+			    </b:column>
+			    <b:column medium-screen="6">
+			      <b:message />
+			    </b:column>
+			  </b:row>
+			  <b:row>
+			    <b:column span="2" offset="2">
+			      <b:commandButton value="login" look="primary" style="width:100%" />
+			    </b:column>
+			    <b:column span="2">
+			      <b:commandButton value="password forgotten" look="danger" style="width:100%" />
+			    </b:column>
+			  </b:row>
+			</b:container>
+		</div>
+		
+		
+
+		<div id="footer">
+		    <ui:insert name="footer">
+		        <ui:include src="footer.xhtml"/>
+		    </ui:insert>
+		</div>
+
+	
+	</h:body>
+</html>
