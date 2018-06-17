@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15281471690110" configfile="/Mostar/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="templates/home.xhtml" x="40" y="34" id="pf15288424025060" outlinks="pf15288424025071" path="/templates/home.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/Usuarios/login.xhtml" x="425" y="60" id="pf15288424025072" inlinks="pf15288424025071" path="/templates/Usuarios/login.xhtml"/>
-  <links id="pf15288424025071" target="pf15288424025072" source="pf15288424025060" outcome="login" redirect="true"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/home.xhtml" x="122" y="370" id="pf15291948030760" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" outlinks="pf15291950747893 pf15291965500385 pf15291965500386" inlinks="pf15291965500386" path="/templates/home.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/login.xhtml" x="338" y="178" id="pf15291950747894" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15291950747893" path="/templates/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/register.xhtml" x="338" y="562" id="pf15291965500387" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf15291965500385" path="/templates/register.xhtml"/>
+  <links id="pf15291950747893" target="pf15291950747894" source="pf15291948030760" outcome="login" redirect="true"/>
+  <links id="pf15291965500385" target="pf15291965500387" source="pf15291948030760" outcome="register" redirect="true"/>
+  <links id="pf15291965500386" target="pf15291948030760" source="pf15291948030760" outcome="home" redirect="true">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
 </pageflow:Pageflow>

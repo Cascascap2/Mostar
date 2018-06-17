@@ -10,12 +10,32 @@
 		<managed-bean-class>TestBean</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>userController</managed-bean-name>
+		<managed-bean-class>beans.userController</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>registerController</managed-bean-name>
+		<managed-bean-class>beans.registerController</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
 	<navigation-rule>
 		<display-name>templates/home.xhtml</display-name>
 		<from-view-id>/templates/home.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>login</from-outcome>
-			<to-view-id>/templates/Usuarios/login.xhtml</to-view-id>
+			<to-view-id>/templates/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>register</from-outcome>
+			<to-view-id>/templates/register.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/templates/home.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
 	</navigation-rule>

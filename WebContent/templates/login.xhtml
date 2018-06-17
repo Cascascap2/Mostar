@@ -13,10 +13,11 @@
 	<h:body>
 		<div id="Header">
 			<ui:insert name="header">
-				<ui:include  src="header.xhtml"></ui:include>
+				<ui:include  src="Generales/header.xhtml"></ui:include>
 			</ui:insert>
 		</div>
-		<div id="content">
+		
+		<h:form id="logueo">
 			<b:container fluid="true">
 			  <b:row>
 			    <b:column medium-screen="2">
@@ -26,7 +27,7 @@
 			      <b:inputText placeholder="Username" />
 			    </b:column>
 			    <b:column medium-screen="6">
-			      <b:message/>
+			      <b:messages/>
 			    </b:column>
 			  </b:row>
 			  <b:row>
@@ -37,7 +38,7 @@
 			      <b:inputSecret placeholder="Password" />
 			    </b:column>
 			    <b:column medium-screen="6">
-			      <b:message />
+			      <b:messages />
 			    </b:column>
 			  </b:row>
 			  <b:row>
@@ -49,13 +50,13 @@
 			    </b:column>
 			  </b:row>
 			</b:container>
-		</div>
+		</h:form>
 		
 		
 
 		<div id="footer">
 		    <ui:insert name="footer">
-		        <ui:include src="footer.xhtml"/>
+		        <ui:include src="Generales/footer.xhtml"/>
 		    </ui:insert>
 		</div>
 
