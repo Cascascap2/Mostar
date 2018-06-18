@@ -1,12 +1,15 @@
 package beans;
 
+import java.io.Serializable;
 import java.util.Date;
+
+
 
 import controladores.Manejador;
 import controladores.UsuarioControlador;
 import logica.modelos.Usuario;
 
-public class registerController {
+public class registerController implements Serializable{
 	private String nickname;
 
 	private String mail;
@@ -97,12 +100,12 @@ public class registerController {
 			
 	}
 	
-	public String registerUser() {
+	public void registerUser() {
 //		if(validateNick() && validateMail() && validatePassword()){
 			Manejador man = Manejador.getInstance(); 
 			UsuarioControlador controllerUser = man.getUsuarioControlador();
 			controllerUser.registrarUsuario(nickname, mail, password, 0.0,new Date(),0);
-			return "home";
+			//return "home";
 //		}
 //		else {
 //			return "register";
