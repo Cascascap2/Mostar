@@ -21,10 +21,10 @@
 			<b:container fluid="true">
 			  <b:row>
 			    <b:column medium-screen="2">
-			      <h:outputText value="Username:"/>
+			      <h:outputText value="Correo Electronico:"/>
 			    </b:column>
 			    <b:column medium-screen="4">
-			      <b:inputText placeholder="Username" />
+			      <b:inputText placeholder="Correo Electronico" value="#{userController.mail}" />
 			    </b:column>
 			    <b:column medium-screen="6">
 			      <b:messages/>
@@ -32,21 +32,22 @@
 			  </b:row>
 			  <b:row>
 			    <b:column medium-screen="2">
-			      <h:outputText value="Password:" />
+			      <h:outputText value="Contraseña:" />
 			    </b:column>
 			    <b:column medium-screen="4">
-			      <b:inputSecret placeholder="Password" />
+			      <b:inputSecret placeholder="Contraseña:" value="#{userController.password}" />
 			    </b:column>
 			    <b:column medium-screen="6">
 			      <b:messages />
 			    </b:column>
 			  </b:row>
 			  <b:row>
-			    <b:column span="2" offset="2">
-			      <b:commandButton value="login" look="primary" style="width:100%" />
+			    <b:column medium-screen="2">
 			    </b:column>
-			    <b:column span="2">
-			      <b:commandButton value="password forgotten" look="danger" style="width:100%" />
+			    <b:column medium-screen="4">
+			    <b:column>
+			      <b:commandButton value="Registrarme" look="success" style="width:100%" action="#{userController.login}"/>
+			    </b:column>
 			    </b:column>
 			  </b:row>
 			</b:container>
