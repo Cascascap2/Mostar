@@ -1,7 +1,6 @@
 package controladores;
 
 import java.util.List;
-import java.util.Set;
 
 import logica.modelos.Categorias;
 

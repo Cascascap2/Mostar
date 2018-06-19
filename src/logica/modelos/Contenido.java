@@ -1,5 +1,7 @@
 package logica.modelos;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -23,12 +25,15 @@ public class Contenido {
 	private boolean visible_adm_cont;
 	private boolean visible_adm_sist;
 	private String descripcion;
+	private String tipo;
+	private Date hora_de_alta;
+	private Date hora_streaming;
 	private Set<Categorias> categorias;
 	
 	public Contenido(){		
 	}
 		
-	public Contenido(String name, String provider_name, String ruta, String descripcion) {
+	public Contenido(String name, String provider_name, String ruta, String descripcion, String tipo) {
 		this.name = name;
 		this.provider_name = provider_name;
 		this.ruta = ruta;
@@ -37,6 +42,11 @@ public class Contenido {
 		this.visible_adm_cont = false;
 		this.visible_adm_sist = false;
 		this.descripcion = descripcion;
+		this.tipo = tipo;
+		Calendar cal = Calendar.getInstance();		
+		this.hora_de_alta = new Date();
+		this.hora_de_alta = cal.getTime();
+		this.hora_streaming = null;
 	}
 
 
@@ -48,15 +58,6 @@ public class Contenido {
 	
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-	@Column(name="provider_id")
-	public String getProviderName() {
-		return this.provider_name;
-	}
-	
-	public void setProviderName(String providerName) {
-		this.provider_name = providerName;
 	}
 
 	@OneToMany(fetch = FetchType.EAGER)
@@ -72,7 +73,7 @@ public class Contenido {
 		this.categorias = categorias;
 	}
 	
-
+	@Column(name="provider_name")
 	public String getProvider_name() {
 		return provider_name;
 	}
@@ -130,6 +131,32 @@ public class Contenido {
 		this.descripcion = descripcion;
 	}
 
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
+
+	public Date getHora_de_alta() {
+		return hora_de_alta;
+	}
+
+	public void setHora_de_alta(Date hora_de_alta) {
+		this.hora_de_alta = hora_de_alta;
+	}
+
+	public Date getHora_streaming() {
+		return hora_streaming;
+	}
+
+	public void setHora_streaming(Date hora_streaming) {
+		this.hora_streaming = hora_streaming;
+	}
+
 	@Override
 	public String toString() {
 		return "Contenido [name=" + name + ", provider_name=" + provider_name
@@ -138,7 +165,6 @@ public class Contenido {
 				+ ", visible_adm_sist=" + visible_adm_sist + ", descripcion="
 				+ descripcion + ", categorias=" + categorias + "]";
 	}
-	
 	
 		
 }

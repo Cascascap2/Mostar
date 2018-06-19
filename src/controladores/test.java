@@ -31,10 +31,18 @@ public class test {
 		*/
 		
 		//uc.registrarUsuario("testing", "testing2@mail.com", "testpass", 250.50, expdate, 3);		
-		cc.altaContenido("ContenidoTest", "HBO", "WebContent/videos/Avangers Infinity War.mp4", "Beware spoilers");
+		//cc.altaContenido("ContenidoTest", "HBO", "WebContent/videos/Avangers Infinity War.mp4", "Beware spoilers", "Pelicula");
+		//cc.altaContenido("StreamTest", "HBO", "", "A stream","Evento");
 		
 		//Usuario user = uc.getUsuario("testing");
-		//Contenido con = cc.getContenido("ContenidoTest");
+		
+		Contenido con = cc.getContenido("StreamTest");
+		con.setTipo("Evento");
+		cc.modificarContenido(con);
+		
+		Usuario user = uc.getUsuario("pepe");
+		user.setWallet(200.00);
+		uc.modificarUsuario(user);
 		
 		//uc.agregarFavorito(user, con);
 		

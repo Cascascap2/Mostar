@@ -54,4 +54,10 @@ public class UsuarioControlador {
 		UsuarioDAO udao = new UsuarioDAO();
 		udao.agregarFavorito(user, con);
 	}
+
+	public void modificarUsuario(Usuario user) {
+		UsuarioDAO udao = new UsuarioDAO();
+		udao.modificarUsuario(user);
+		
+	}
 }

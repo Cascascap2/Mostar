@@ -48,4 +48,9 @@ public class UsuarioDAO {
 		udb.agregarFavorito(user, con);
 	}
 
+	public void modificarUsuario(Usuario user) {
+		UsuarioDB udb = UsuarioDB.getInstance();
+		udb.modificarUsuario(user);		
+	}
+
 }

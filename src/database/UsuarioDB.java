@@ -4,6 +4,7 @@ import java.util.Set;
 
 
 
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -43,7 +44,14 @@ public class UsuarioDB {
 		
 	}
 
-	// modificar
+	public void modificarUsuario(Usuario user){
+		System.out.println("Updating user...");
+		Session session = this.SessionFactory.getCurrentSession();
+		session.beginTransaction();
+		session.merge(user);
+		session.getTransaction().commit();
+		session.close();
+	}
 	
 	public void borrarUsuario(Usuario tempUser) {
 		Session session = this.SessionFactory.getCurrentSession();

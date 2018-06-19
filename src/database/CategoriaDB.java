@@ -1,13 +1,7 @@
 package database;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -15,7 +9,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import logica.modelos.Categorias;
-//TODO modificacion
 public class CategoriaDB {
 	
 	private static CategoriaDB instance = null;
@@ -44,6 +37,15 @@ public class CategoriaDB {
 		}
 	}
 	
+	public void modificarCategoria(Categorias cat){
+		System.out.println("Updating category...");
+		Session session = this.SessionFactory.getCurrentSession();
+		session.beginTransaction();
+		session.merge(cat);
+		session.getTransaction().commit();
+		session.close();
+	}
+	
 	public void deleteCategoria(Categorias c){
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
@@ -62,7 +64,9 @@ public class CategoriaDB {
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
 		try{
+			@SuppressWarnings("deprecation")
 			Criteria criteria = session.createCriteria(Categorias.class);
+			@SuppressWarnings("unchecked")
 			List<Categorias> list = criteria.list();
 			session.getTransaction().commit();
 			session.close();

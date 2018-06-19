@@ -36,4 +36,10 @@ public class ContenidoDAO {
 		return categorias;
 	}
 
+
+	public void modificarContenido(Contenido con) {
+		ContenidoDB cdb = ContenidoDB.getInstance();
+		cdb.modificarContenido(con);
+	}
+
 }

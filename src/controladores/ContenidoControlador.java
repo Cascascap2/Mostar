@@ -8,9 +8,9 @@ import daos.ContenidoDAO;
 
 public class ContenidoControlador {
 
-	public void altaContenido(String name, String empresa_name, String ruta, String descripcion){
+	public void altaContenido(String name, String empresa_name, String ruta, String descripcion, String tipo){
 		ContenidoDAO cdao = new ContenidoDAO();
-		Contenido contenido = new Contenido(name, empresa_name, ruta, descripcion);
+		Contenido contenido = new Contenido(name, empresa_name, ruta, descripcion, tipo);
 		cdao.altaContenido(contenido);
 	}
 	
@@ -34,6 +34,11 @@ public class ContenidoControlador {
 		ContenidoDAO cdao = new ContenidoDAO();
 		Contenido user = cdao.getContenido(name);
 		return user;
+	}
+	
+	public void modificarContenido(Contenido con){
+		ContenidoDAO cdao = new ContenidoDAO();
+		cdao.modificarContenido(con);
 	}
 
 }

@@ -2,13 +2,14 @@ package database;
 
 import java.util.Set;
 
+
 import logica.modelos.Categorias;
 import logica.modelos.Contenido;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-//TODO modificar, listar contenido
+//TODO listar contenido
 public class ContenidoDB {
 	
 	private static ContenidoDB instance = null;
@@ -27,20 +28,29 @@ public class ContenidoDB {
 	public void altaContenido(Contenido con){
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
-		try{
+		
 			session.save(con);
 			System.out.println(con.toString());
+		try{
 			session.getTransaction().commit();
 			session.close();
 		}catch(Exception e){
 			System.out.println("Error al persistir un contenido.");
 			System.out.println(e.getMessage());
+			System.out.println(e.getCause());
 			session.close();
 		}
 		
 	}
 	
-	// modificar
+	public void modificarContenido(Contenido con){
+		System.out.println("Updating content...");
+		Session session = this.SessionFactory.getCurrentSession();
+		session.beginTransaction();
+		session.merge(con);
+		session.getTransaction().commit();
+		session.close();
+	}
 	
 		public void borrarContenido(Contenido con_name) {
 			Session session = this.SessionFactory.getCurrentSession();
