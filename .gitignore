@@ -1,1 +1,11 @@
 /build/
+
+WebContent/WEB-INF/lib/bson-3\.7\.1\.jar
+
+WebContent/WEB-INF/lib/mongodb-driver-core-3\.7\.1\.jar
+
+WebContent/WEB-INF/lib/mongodb-driver-sync-3\.7\.1-javadoc\.jar
+
+WebContent/WEB-INF/lib/mongodb-driver-sync-3\.7\.1-sources\.jar
+
+WebContent/WEB-INF/lib/mongodb-driver-sync-3\.7\.1\.jar
