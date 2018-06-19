@@ -12,7 +12,6 @@ public class test {
 
 	public static void main(String[] args) {
 		System.out.println("testing...");
-		Date expdate = new Date();
 		
 		Manejador manejador = Manejador.getInstance();
 		UsuarioControlador uc = manejador.getUsuarioControlador();
@@ -36,6 +35,7 @@ public class test {
 		
 		//Usuario user = uc.getUsuario("testing");
 		
+		/*
 		Contenido con = cc.getContenido("StreamTest");
 		con.setTipo("Evento");
 		cc.modificarContenido(con);
@@ -43,6 +43,7 @@ public class test {
 		Usuario user = uc.getUsuario("pepe");
 		user.setWallet(200.00);
 		uc.modificarUsuario(user);
+		*/
 		
 		//uc.agregarFavorito(user, con);
 		
