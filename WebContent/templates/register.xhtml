@@ -24,10 +24,14 @@
 			      <h:outputText value="Nombre de Usuario:" type="text"/>
 			    </b:column>
 			    <b:column medium-screen="4">
-			      <b:inputText placeholder="Nombre de Usuario" value="#{registerController.nickname}" />
+			      <b:inputText placeholder="Nombre de Usuario" value="#{registerController.nickname}" ajax="true" autocomplete="false" update="@(.message)" onkeyup="ayax:registerController.validateNick()">
+
+			      </b:inputText>
 			    </b:column>
 			    <b:column medium-screen="6">
-			      <b:messages/>
+			      <b:messages StyleClass="message" id="messagesNick"
+		            globalOnly="true"
+		            severity="error,fatal"/>
 			    </b:column>
 			  </b:row>
 			  <b:row>
@@ -38,7 +42,9 @@
 			      <b:inputText placeholder="Correo Electronico" type="email" value="#{registerController.mail}" />
 			    </b:column>
 			    <b:column medium-screen="6">
-			      <b:messages/>
+			      <b:messages id="messagesMail"
+		            globalOnly="true"
+		            severity="error,fatal"/>
 			    </b:column>
 			  </b:row>
 			  <b:row>
@@ -46,10 +52,16 @@
 			      <h:outputText value="Contraseña:" />
 			    </b:column>
 			    <b:column medium-screen="4">
-			      <b:inputSecret placeholder="Contraseña" value="#{registerController.password}"/>
+			      <b:inputSecret placeholder="Contraseña" value="#{registerController.password}">
+			      <f:facet name="prepend">
+			        <b:iconAwesome name="key" />
+			      </f:facet>
+			      </b:inputSecret>
 			    </b:column>
 			    <b:column medium-screen="6">
-			      <b:messages />
+			      <b:messages id="messagesPass"
+		            globalOnly="true"
+		            severity="error,fatal"/>
 			    </b:column>
 			  </b:row>
 			  <b:row>
@@ -60,7 +72,9 @@
 			      <b:inputSecret placeholder="Repetir Contraseña" value="#{registerController.repeatPassword}" />
 			    </b:column>
 			    <b:column medium-screen="6">
-			      <b:messages />
+			      <b:messages id="messagesRePass"
+		            globalOnly="true"
+		            severity="error,fatal"/>
 			    </b:column>
 			  </b:row>
 			  <b:row>
@@ -68,9 +82,6 @@
 			      <h:outputText value="Usuarios de empresa" />
 			    </b:column>
 			    	<b:switch value="#" offColor="success" offText="SI" onColor="warning" onText="NO"/>
-			    <b:column medium-screen="4">
-			      <b:messages />
-			    </b:column>
 			  </b:row>
 			  <b:row>
 			    <b:column medium-screen="2">
@@ -80,7 +91,6 @@
 			      <b:inputSecret placeholder="Nombre de Empresa" />
 			    </b:column>
 			    <b:column medium-screen="6">
-			      <b:messages />
 			    </b:column>
 			  </b:row>
 			  <b:row>
@@ -90,7 +100,6 @@
 			    <b:column>
 			      <b:commandButton value="Registrarme" look="primary" style="width:100%" action="#{registerController.registerUser}"/>
 			    </b:column>
-			      <b:messages />
 			    </b:column>
 			  </b:row>
 			</b:container>

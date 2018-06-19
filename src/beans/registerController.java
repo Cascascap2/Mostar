@@ -16,10 +16,19 @@ public class registerController implements Serializable{
 
 	private String password;
 	private String repeatPassword;
+	private String Messages;
 	
 	
 	
 	
+	public String getMessages() {
+		return Messages;
+	}
+
+	public void setMessages(String messages) {
+		Messages = messages;
+	}
+
 	public String getNickname() {
 		return nickname;
 	}
@@ -52,19 +61,19 @@ public class registerController implements Serializable{
 		this.repeatPassword = repeatPassword;
 	}
 
-	public boolean validateNick() {
+	public void validateNick() {
 		Usuario NewUser = new Usuario();
 		Manejador man = Manejador.getInstance(); 
 		UsuarioControlador controllerUser = man.getUsuarioControlador();
 		if(nickname != null) {
 			NewUser = controllerUser.getUsuario(nickname);
 			if(NewUser!= null) {
-				return false;
+				this.setMessages("El Nickname ya exisite.");
 			}else {
-				return true;	
+				this.setMessages("Nickname Valido.");	
 			}
 		}else {
-			return false;
+			this.setMessages("El Nickname no debe ser vacio.");
 		}
 	}
 	

@@ -8,22 +8,22 @@
 
 	<b:navBar brand="Mostar" fluid="true" inverse="true" outcome="home"  >
 		  <b:navbarLinks>
-		    <b:navLink value="Transmisiones en vivo" id="live" href="#"></b:navLink>
-		    <b:navLink value="Pagar Suscripcion" id="payment" href="#"></b:navLink>
+		    <b:navLink value="Transmisiones en vivo" id="live"  rendered="#{userController.logged}"></b:navLink>
+		    <b:navLink value="Pagar Suscripcion" id="payment" rendered="#{userController.logged}"></b:navLink>
 		  </b:navbarLinks>
-		  <form class="navbar-form navbar-left hidden-md hidden-sm hidden-xs" role="search" id="search">
-			  <div class="form-group">
+		  <h:form class="navbar-form navbar-left hidden-md hidden-sm hidden-xs" role="search" id="search">
+			  <div class="form-group" style="margin: auto;" >
 			    <input type="text" class="form-control" placeholder="Buscar..."/>
 			  </div>
 			  <button type="submit" class="btn btn-success">Buscar</button>
-		  </form>
-	 	<b:navbarLinks pull="right" styleClass="hidden-xs" name="loginOff">
+		  </h:form>
+	 	<b:navbarLinks pull="right" styleClass="hidden-xs" name="loginOff" >
 		    <b:navLink value="Iniciar Sesion" id="login" outcome="login"></b:navLink>
 		    <b:navLink value="Registrarme" id="register" outcome="register"></b:navLink>
 		</b:navbarLinks>
-		<b:navbarLinks pull="right" styleClass="hidden-xs" name="loginOn">
-		    <b:navLink value="Notificaciones" id="notification"></b:navLink>
-		     <b:dropMenu value="Cuenta" id="cuenta">
+		<b:navbarLinks pull="right" styleClass="hidden-xs" name="loginOn" >
+		    <b:navLink value="Notificaciones" id="notification" rendered="#{userController.logged}"></b:navLink>
+		     <b:dropMenu value="Cuenta" id="cuenta" rendered="#{userController.logged}" >
 			      <b:navLink value="Billetera" href="#"></b:navLink>
 			      <b:navLink value="Perfil" href="#"></b:navLink>
 			      <b:navLink value="Cerrar Sesion" href="#"></b:navLink>

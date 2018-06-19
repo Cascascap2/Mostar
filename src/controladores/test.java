@@ -15,8 +15,17 @@ public class test {
 		
 		Manejador manejador = Manejador.getInstance();
 		UsuarioControlador uc = manejador.getUsuarioControlador();
-		ContenidoControlador cc = manejador.getContenidoControlador();
-		CategoriaControlador cac = manejador.getCategoriaControlador();
+//		ContenidoControlador cc = manejador.getContenidoControlador();
+//		CategoriaControlador cac = manejador.getCategoriaControlador();
+//		
+//		List<Categorias> categorias = cac.getAllCategorias();
+//		Iterator it = categorias.iterator();
+//		Categorias cat = new Categorias();
+//		System.out.println("Lista de categorias: ");
+//		while(it.hasNext()){
+//			cat = (Categorias) it.next();
+//			System.out.println(cat.getName());
+//		}
 		
 		/*
 		List<Categorias> categorias = cac.getAllCategorias();
