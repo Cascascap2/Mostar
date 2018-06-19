@@ -29,9 +29,11 @@ public class ContenidoDB {
 		session.beginTransaction();
 		try{
 			session.save(con);
+			System.out.println(con.toString());
 			session.getTransaction().commit();
 			session.close();
 		}catch(Exception e){
+			System.out.println("Error al persistir un contenido.");
 			System.out.println(e.getMessage());
 			session.close();
 		}

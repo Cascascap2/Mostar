@@ -19,6 +19,7 @@ public class test {
 		ContenidoControlador cc = manejador.getContenidoControlador();
 		CategoriaControlador cac = manejador.getCategoriaControlador();
 		
+		/*
 		List<Categorias> categorias = cac.getAllCategorias();
 		Iterator it = categorias.iterator();
 		Categorias cat = new Categorias();
@@ -27,9 +28,10 @@ public class test {
 			cat = (Categorias) it.next();
 			System.out.println(cat.getName());
 		}
+		*/
 		
 		//uc.registrarUsuario("testing", "testing2@mail.com", "testpass", 250.50, expdate, 3);		
-		//cc.altaContenido("ContenidoTest", "HBO");
+		cc.altaContenido("ContenidoTest", "HBO", "WebContent/videos/Avangers Infinity War.mp4", "Beware spoilers");
 		
 		//Usuario user = uc.getUsuario("testing");
 		//Contenido con = cc.getContenido("ContenidoTest");

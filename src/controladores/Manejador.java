@@ -5,7 +5,6 @@ import java.util.Set;
 
 import logica.modelos.Categorias;
 
-//TODO crear CategoriasDB, DAO y controlador, cargar las categorias al crear manejador
 public class Manejador {
 
 	private static Manejador instance = null;
