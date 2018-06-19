@@ -6,7 +6,10 @@
       xmlns:f="http://java.sun.com/jsf/core">
 
 
-	<b:navBar brand="Mostar" fluid="true" inverse="true" outcome="home"  >
+	<b:navBar brand="Mostar" fluid="true" inverse="true" outcome="home">
+	
+		<b:navbarLinks>
+		  </b:navbarLinks>
 		  <b:navbarLinks>
 		    <b:navLink value="Transmisiones en vivo" id="live"  rendered="#{userController.logged}"></b:navLink>
 		    <b:navLink value="Pagar Suscripcion" id="payment" rendered="#{userController.logged}"></b:navLink>

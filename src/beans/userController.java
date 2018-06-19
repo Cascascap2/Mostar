@@ -3,11 +3,16 @@ package beans;
 import java.util.Date;
 import java.util.Set;
 
+import javax.annotation.PostConstruct;
+
+import org.primefaces.push.annotation.Singleton;
+
 import controladores.Manejador;
 import controladores.UsuarioControlador;
 import logica.modelos.Contenido;
 import logica.modelos.Usuario;
 
+@Singleton
 public class userController {
 	
 	private String nickname;
@@ -82,7 +87,21 @@ public class userController {
 		this.massages = massages;
 	}
 	
+	@Override
+	public String toString() {
+		return "userController [nickname=" + nickname + ", mail=" + mail
+				+ ", password=" + password + ", favorites=" + favorites
+				+ ", wallet=" + wallet + ", DateExpiration=" + DateExpiration
+				+ ", PermissionId=" + PermissionId + ", Logged=" + Logged
+				+ ", massages=" + massages + "]";
+	}
+	
+	public void debug(){
+		java.lang.System.out.println(this.toString());
+	}
+	
 	public String login(){
+		java.lang.System.out.println("loging...");
 		Usuario NewUser = new Usuario();
 		Manejador man = Manejador.getInstance(); 
 		UsuarioControlador controllerUser = man.getUsuarioControlador();
@@ -92,6 +111,8 @@ public class userController {
 				if(NewUser.getPassword().equals(password)) {
 					this.setMassages("Usuario Logueado Correctamente...");
 					this.Logged = true;
+					java.lang.System.out.println("logged in");
+					java.lang.System.out.println(this.toString());
 					return "home";
 				}else {
 					this.setMassages("Contraseña incorrecta ...");
