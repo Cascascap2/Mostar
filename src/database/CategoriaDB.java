@@ -68,7 +68,7 @@ public class CategoriaDB {
 			Criteria criteria = session.createCriteria(Categorias.class);
 			@SuppressWarnings("unchecked")
 			List<Categorias> list = criteria.list();
-			session.getTransaction().commit();
+			//session.getTransaction().commit(); Si da problemas, sacar el comentario
 			session.close();
 			return list;
 		}catch(Exception e){

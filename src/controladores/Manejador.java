@@ -38,4 +38,8 @@ public class Manejador {
 	public UsuarioControlador getUsuarioControlador(){
 		return new UsuarioControlador();
 	}
+	
+	public ComentarioControlador getComentarioControlador(){
+		return new ComentarioControlador();
+	}
 }

@@ -107,8 +107,10 @@ public class userController {
 			NewUser = controllerUser.getUsuarioPorMail(mail);
 			if(NewUser!= null) {
 				if(NewUser.getPassword().equals(password)) {
-					this.setMassages("Usuario Logueado Correctamente...");
+					this.setMassages("Usuario Logueado Correctamente...");					
+					this.PermissionId = NewUser.getPermissionId();
 					this.Logged = true;
+					java.lang.System.out.println(this.toString());	
 					return "home";
 				}else {
 					this.setMassages("Contraseña incorrecta ...");
@@ -129,8 +131,7 @@ public class userController {
 	}
 	
 	public String cerrarSession(){
-		java.lang.System.out.println("logged out");
-		
+		java.lang.System.out.println("logged out");		
 		this.nickname = null;
 		this.mail = null;
 		this.password = null;
