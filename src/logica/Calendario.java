@@ -17,17 +17,19 @@ import org.quartz.impl.StdSchedulerFactory;
 public class Calendario {
 	
 	public static void main(String[] args) throws SchedulerException{
+		System.out.println("Testing event");
 		JobDetail evento = JobBuilder.newJob(StreamAlert.class).withIdentity("test").build();
 		
-		
-		int hour 	= 02;
-		int minutes = 12;
+		int hour 	= 06;
+		int minutes = 24;
 		int seconds = 00;
 		
 		Calendar triggerTime = Calendar.getInstance();
 		triggerTime.set(Calendar.HOUR, hour);
 		triggerTime.set(Calendar.MINUTE, minutes);
 		triggerTime.set(Calendar.SECOND, seconds);
+		
+		System.out.println(triggerTime.getTime());
 		
 		
 		Trigger trigger = TriggerBuilder.newTrigger().withIdentity("CroneTrigger2")

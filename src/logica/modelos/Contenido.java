@@ -163,8 +163,12 @@ public class Contenido {
 				+ ", ruta=" + ruta + ", vistas=" + vistas + ", calificacion="
 				+ calificacion + ", visible_adm_cont=" + visible_adm_cont
 				+ ", visible_adm_sist=" + visible_adm_sist + ", descripcion="
-				+ descripcion + ", categorias=" + categorias + "]";
+				+ descripcion + ", tipo=" + tipo + ", hora_de_alta="
+				+ hora_de_alta + ", hora_streaming=" + hora_streaming
+				+ ", categorias=" + categorias + "]";
 	}
+
+	
 	
 		
 }

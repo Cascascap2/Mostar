@@ -1,5 +1,6 @@
 package controladores;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -48,13 +49,6 @@ public class test {
 		//coc.altaComentario("Pepe", "Hola, soy un comentario", "ContenidoTest");
 		//coc.altaComentario("Pepe", "Hola, soy un tremendo comentario", "Lolaso22");
 		//coc.altaComentario("Pepe", "Hola, soy un alto comentario", "ContenidoTest");
-		List<Comentarios> coms = coc.getAllComentariosByContName("ContenidoTest");
-		Iterator it2 = coms.iterator();
-		Comentarios com = new Comentarios();
-		while(it2.hasNext()){
-			com = (Comentarios) it2.next();
-			System.out.println(com.getId());
-		}
 		
 		
 		/*
@@ -71,6 +65,21 @@ public class test {
 		
 		//uc.borrarUsuario("testing");		
 		//cc.borrarContenido("ContenidoTest");
+		Contenido con = cc.getContenido("ContenidoTest");
+		Contenido con2 = cc.getContenido("StreamTest");
+		
+		int hour 	= 06;
+		int minutes = 49;
+		int seconds = 00;
+		
+		Calendar triggerTime = Calendar.getInstance();
+		triggerTime.set(Calendar.HOUR, hour);
+		triggerTime.set(Calendar.MINUTE, minutes);
+		triggerTime.set(Calendar.SECOND, seconds);		
+		
+		cc.programar_stream(con2, triggerTime.getTime());
+		System.out.println(con2.toString());
+		
 		System.out.println("Test end");
 	}
 
