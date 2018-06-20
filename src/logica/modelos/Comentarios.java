@@ -17,8 +17,9 @@ public class Comentarios {
 	@Column(name="spoiler")
 	private int Spoiler;
 	@Column(name="contenido_name")
-	private String Contenido_name;
+	private String contenido_name;
 	
+
 	public int getId() {
 		return id;
 	}
@@ -51,18 +52,19 @@ public class Comentarios {
 		Spoiler = spoiler;
 	}
 
-	public String getContenidoId() {
-		return Contenido_name;
+	@Column(name="contenido_name")
+	public String getContenido_name() {
+		return contenido_name;
 	}
 
-	public void setContenidoId(String contenidoId) {
-		Contenido_name = contenidoId;
+	public void setContenido_name(String contenido_name) {
+		this.contenido_name = contenido_name;
 	}
 
 	@Override
 	public String toString() {
 		return "Comentarios [id=" + id + ", User_nick=" + User_nick + ", Message=" + Message + ", Spoiler=" + Spoiler
-				+ ", ContenidoId=" + Contenido_name + "]";
+				+ ", ContenidoId=" + contenido_name + "]";
 	}
 	
 	public Comentarios(){
@@ -73,7 +75,7 @@ public class Comentarios {
 		this.User_nick = user_nick;
 		this.Message = msg;
 		this.Spoiler = 0;
-		this.Contenido_name = Contenido_name;		
+		this.contenido_name = Contenido_name;		
 	}
 	
 	
