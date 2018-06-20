@@ -23,6 +23,10 @@ public class Manejador {
 		return instance;
 	}
 	
+	public List<Categorias> getCategorias(){
+		return this.categorias;
+	}
+	
 	public CategoriaControlador getCategoriaControlador(){
 		return new CategoriaControlador();
 	}

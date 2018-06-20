@@ -3,14 +3,12 @@ package beans;
 import java.util.Date;
 import java.util.Set;
 
-import javax.annotation.PostConstruct;
-
-import org.primefaces.push.annotation.Singleton;
-
 import controladores.Manejador;
 import controladores.UsuarioControlador;
 import logica.modelos.Contenido;
 import logica.modelos.Usuario;
+
+import org.primefaces.push.annotation.Singleton;
 
 @Singleton
 public class userController {
@@ -30,6 +28,7 @@ public class userController {
 	private int PermissionId;
 	
 	private boolean Logged;
+	
 	private String massages;
 	
 	public String getNickname() {
@@ -101,7 +100,6 @@ public class userController {
 	}
 	
 	public String login(){
-		java.lang.System.out.println("loging...");
 		Usuario NewUser = new Usuario();
 		Manejador man = Manejador.getInstance(); 
 		UsuarioControlador controllerUser = man.getUsuarioControlador();
@@ -111,8 +109,6 @@ public class userController {
 				if(NewUser.getPassword().equals(password)) {
 					this.setMassages("Usuario Logueado Correctamente...");
 					this.Logged = true;
-					java.lang.System.out.println("logged in");
-					java.lang.System.out.println(this.toString());
 					return "home";
 				}else {
 					this.setMassages("Contraseña incorrecta ...");
@@ -132,6 +128,20 @@ public class userController {
 		}
 	}
 	
+	public String cerrarSession(){
+		java.lang.System.out.println("logged out");
+		
+		this.nickname = null;
+		this.mail = null;
+		this.password = null;
+		this.favorites = null;
+		this.wallet = null;
+		this.DateExpiration = null;
+		this.PermissionId = 0;
+		this.Logged = false;
+		this.massages = "Usuario deslogueado correctamente";		
+		return "home";
+	}
 	
 	
 }
