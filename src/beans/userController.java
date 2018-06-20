@@ -24,7 +24,7 @@ public class userController {
 	
 	private int PermissionId;
 	
-	private boolean Logged;
+	private boolean Logged= true;
 	private String massages;
 	
 	public String getNickname() {
@@ -109,6 +109,9 @@ public class userController {
 			this.Logged = false;
 			return "login";	
 		}
+	}
+	public String cerrarsession() {
+		return "login.xhtml";
 	}
 	
 	

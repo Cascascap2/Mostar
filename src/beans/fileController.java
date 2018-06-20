@@ -3,6 +3,7 @@ package beans;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.nio.file.Files;
 
 import javax.faces.application.FacesMessage;
@@ -11,7 +12,11 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
 
 @MultipartConfig(location = "/Mostar/videos")
-public class fileController {
+public class fileController implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Part file;
 	private String filename;
 	private String Description;
@@ -54,18 +59,24 @@ public class fileController {
 	public void save() {
 		FacesContext context = FacesContext.getCurrentInstance();
 	    try (InputStream input = file.getInputStream()) {
-	    	File nuevo = new File("Mostar/videos", filename);
+	    	File nuevo = new File("C:/Users/lucas/Videos", filename+".mp4");
 	    	System.out.println("creo el archivo");
 	        Files.copy(input, nuevo.toPath());
 	        System.out.println("copio el archivo");
 	        this.message ="Archivo cargado correctamente!!";
-	        context.addMessage(null, new FacesMessage("Successful",  "Mostar dice: " + this.message) );
+	        context.addMessage(null, new FacesMessage("Successful", "Exito!") );
+	        context.addMessage(null, new FacesMessage("Info",this.message) );
+	        this.cargaFinalizada();
 	    }
 	    catch (IOException e) {
-	    	this.message = e.getLocalizedMessage();
-	    	context.addMessage(null, new FacesMessage("Warning",  "Mostar dice: " + this.message) );
-	    	
+	    	this.message = "Error al cargar el archivo...";
+	    	context.addMessage(null, new FacesMessage("Warning",  "Mostar dice: " + "Error...") );
+	    	context.addMessage(null, new FacesMessage("Info", this.message));
 	    }
+	}
+	
+	public String cargaFinalizada() {
+		return "admContent";
 	}
 	
 }
