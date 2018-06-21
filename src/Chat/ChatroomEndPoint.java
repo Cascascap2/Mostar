@@ -13,6 +13,8 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import beans.userController;
+
 @ApplicationScoped
 @ServerEndpoint("/chatroomEndPoint")
 public class ChatroomEndPoint{
@@ -22,12 +24,11 @@ public class ChatroomEndPoint{
 	@OnOpen
 	public void handleOpen(Session userSession) {
 		chatroomUsers.add(userSession);
-		String username = (String) userSession.getUserProperties().get("username");
+		/*String username = (String) userSession.getUserProperties().get("username");
 		if(username == null) {
-			userSession.getUserProperties().put("username", "anon"+userID);
+			userSession.getUserProperties().put("username", "pepe" + userID);
 			userID++;
-			//userSession.getBasicRemote().sendText(buildJsonData("System", ));
-		}
+		}*/
 	}
 	
 	@OnClose
@@ -38,15 +39,21 @@ public class ChatroomEndPoint{
 	@OnMessage
 	public void handleMessage(String message, Session userSession) {
 		String username = (String) userSession.getUserProperties().get("username");
-		Iterator<Session> iterator = chatroomUsers.iterator();
-		while(iterator.hasNext()) {
-			try {
-				iterator.next().getBasicRemote().sendText(username + ": "+ message);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		if(username == null) {
+			userSession.getUserProperties().put("username", message);
 		}
+		else {
+			Iterator<Session> iterator = chatroomUsers.iterator();
+			while(iterator.hasNext()) {
+				try {
+					iterator.next().getBasicRemote().sendText(username + ": "+ message);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}			
+		}
+
 	}
 	
 
