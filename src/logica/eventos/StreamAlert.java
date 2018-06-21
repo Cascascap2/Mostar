@@ -12,7 +12,6 @@ public class StreamAlert implements Job{
 
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
 		System.out.println("Pew pew");
-		System.out.println("Me disparo: " + new Date());
-	
+		System.out.println("Me disparo: " + new Date());	
 	}
 }

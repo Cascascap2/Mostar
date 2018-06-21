@@ -109,6 +109,9 @@ public class userController {
 				if(NewUser.getPassword().equals(password)) {
 					this.setMassages("Usuario Logueado Correctamente...");					
 					this.PermissionId = NewUser.getPermissionId();
+					this.nickname = NewUser.getNickname();
+					this.wallet = NewUser.getWallet();
+					this.favorites = NewUser.getFavorites();
 					this.Logged = true;
 					java.lang.System.out.println(this.toString());	
 					return "home";

@@ -9,7 +9,7 @@ import controladores.Manejador;
 import controladores.UsuarioControlador;
 import logica.modelos.Usuario;
 
-public class registerController implements Serializable{
+public class registerController{
 	private String nickname;
 
 	private String mail;
