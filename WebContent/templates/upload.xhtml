@@ -19,28 +19,28 @@
 			</ui:insert>
 		</div>
 		
-		<h:form id="logueo" enctype="multipart/form-data">
+		<h:form id="uploadContent" enctype="multipart/form-data">
 			<b:container fluid="true">
+			<b:row>
+				<b:column medium-screen="6">
+			      <b:messages />
+			    </b:column>
+			</b:row>
 			  <b:row>
 			    <b:column medium-screen="2">
 			      <h:outputText value="Nombre del Contenido:"/>
 			    </b:column>
 			    <b:column medium-screen="4">
-			      <b:inputText placeholder="Correo Electronico" value="#{fileController.filename}" />
+			      <b:inputText placeholder="Nombre del Contenido" value="#{fileController.filename}" required="true"/>
 			    </b:column>
-			    <b:column medium-screen="6">
-			      <b:messages/>
-			    </b:column>
+			    
 			  </b:row>
 			  <b:row>
 			    <b:column medium-screen="2">
 			      <h:outputText value="Descripcion del Contenido:"/>
 			    </b:column>
 			    <b:column medium-screen="4">
-			      <b:inputText placeholder="Correo Electronico" value="#{fileController.description}" />
-			    </b:column>
-			    <b:column medium-screen="6">
-			      <b:messages/>
+			      <b:inputText placeholder="Descripcion del contenido" value="#{fileController.description}" />
 			    </b:column>
 			  </b:row>
 			  <b:row>
@@ -50,20 +50,19 @@
 			    <b:column medium-screen="4">
 			      <h:inputFile value="#{fileController.file}"></h:inputFile>
 			    </b:column>
-			    <b:column medium-screen="6">
-			      <b:messages />
-			    </b:column>
+			    
 			  </b:row>
+			  <br></br>
 			  <b:row>
 			    <b:column medium-screen="2">
 			    </b:column>
 			    <b:column medium-screen="4">
 			    <b:column>
-			      <h:commandButton value="Subir Archivo..." look="success" style="width:100%" action="#{fileController.save}" update="Growl"/>
+			      <b:commandButton value="Subir Archivo..." look="success" style="width:100%" action="#{fileController.save}" update="Growl"/>
 			    </b:column>
 			    </b:column>
 			  </b:row>
-			  <p:growl id="Growl" placementFrom="top" show-detail="true"
+			  <b:growl id="Growl" placementFrom="top" show-detail="true"
 		         global-only="false"
 		         show-summary="true" allow-dismiss="true"
 		         animation-enter="animated bounceInDown"

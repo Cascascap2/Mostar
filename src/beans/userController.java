@@ -116,7 +116,7 @@ public class userController {
 					java.lang.System.out.println(this.toString());	
 					return "home";
 				}else {
-					this.setMassages("Contraseña incorrecta ...");
+					this.setMassages("Contraseï¿½a incorrecta ...");
 					this.Logged = false;
 					return "login";	
 				}
@@ -131,6 +131,9 @@ public class userController {
 			this.Logged = false;
 			return "login";	
 		}
+	}
+	public String cerrarsession() {
+		return "login.xhtml";
 	}
 	
 	public String cerrarSession(){
