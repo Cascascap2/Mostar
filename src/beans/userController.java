@@ -131,9 +131,9 @@ public class userController {
 			return "login";	
 		}
 	}
-	public String cerrarsession() {
+	/*public String cerrarsession() {
 		return "login.xhtml";
-	}
+	}*/
 	
 	public String cerrarSession(){
 		java.lang.System.out.println("logged out");		
