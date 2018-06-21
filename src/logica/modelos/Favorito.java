@@ -1,65 +1,45 @@
 package logica.modelos;
 
-
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
-
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
 
+import database.FavoritesKey;
 
-@Embeddable
 @Entity
+@IdClass(FavoritesKey.class)
+@Table(name="favoritos")
 public class Favorito {
-	@Id
-	int id;
-	int contenido_id;
-	int usuario_id;
-	
 
-	public Favorito(){
+	@Id
+	private String usuario_nick;
+	@Id
+	private String contenido_name;
+	
+	public Favorito() {
 		
 	}
 	
-	
-
-	public int getId() {
-		return id;
+	public Favorito(String user_id, String contenido_id) {
+		this.usuario_nick = user_id;
+		this.contenido_name = contenido_id;
 	}
 
-
-
-	public void setId(int id) {
-		this.id = id;
+	public String getUsuario_nick() {
+		return usuario_nick;
 	}
 
-
-
-	public int getContenido_id() {
-		return contenido_id;
+	public void setUsuario_nick(String usuario_nick) {
+		this.usuario_nick = usuario_nick;
 	}
 
-
-
-	public void setContenido_id(int contenido_id) {
-		this.contenido_id = contenido_id;
+	public String getContenido_name() {
+		return contenido_name;
 	}
 
-
-
-	public int getUsuario_id() {
-		return usuario_id;
-	}
-
-
-
-	public void setUsuario_id(int usuario_id) {
-		this.usuario_id = usuario_id;
-	}
-
-
-
-	Favorito(int contenido){
-		this.contenido_id = contenido;
+	public void setContenido_name(String contenido_name) {
+		this.contenido_name = contenido_name;
 	}
 	
 }

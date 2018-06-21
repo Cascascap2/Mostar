@@ -28,23 +28,16 @@ public class UsuarioControlador {
 		UsuarioDAO udao = new UsuarioDAO();
 		Usuario tempUser = udao.getUsuario(nickname);
 		udao.borrarUsuario(tempUser);				
-		System.out.println("Borrado usuario con nickname: " + nickname + " Y id: " + tempUser.getId());
 	}
 	
 	//listar
 
-	public Set<Contenido> getFavorites(int id){
+	public Set<Contenido> getFavorites(String nickname){
 		UsuarioDAO udao = new UsuarioDAO();
-		Set<Contenido> favs = udao.getFavorites(id);
+		Set<Contenido> favs = udao.getFavorites(nickname);
 		return favs;
 	}
 	
-	public Usuario getUsuarioPorId(int id) {
-		UsuarioDAO udao = new UsuarioDAO();
-		Usuario user = udao.getUsuarioPorId(id);
-		return user;
-	}
-
 	public Usuario getUsuario(String nickname) {
 		UsuarioDAO udao = new UsuarioDAO();
 		Usuario user = udao.getUsuario(nickname);
@@ -55,5 +48,10 @@ public class UsuarioControlador {
 		UsuarioDAO udao = new UsuarioDAO();
 		Usuario user = udao.getUsuarioPorMail(mail);
 		return user;
+	}
+	
+	public void agregarFavorito(Usuario user, Contenido con){
+		UsuarioDAO udao = new UsuarioDAO();
+		udao.agregarFavorito(user, con);
 	}
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:form prependId="false">
+	  <b:container id="treeContent">
+	    <b:row>
+	      <b:column>
+	        <b:tree render-root="false" value="#{test.root}"
+	                node-selection-listener="#{test}" showCheckbox="true"
+	                enableLinks="true" showBorder="false" />
+	      </b:column>
+	    </b:row>
+	    <b:row>
+	      <b:well id="messages">
+	        Last server-side events:
+	                    <ul>
+	                              <ui:repeat var="message" value="[Node unchecked: 'Node2', Node unchecked: 'Parent3', Node checked: 'Parent3', Node checked: 'Node2', Node selected: 'Node2', Node unselected: 'Node1', Node selected: 'Node1', Node unselected: 'Node2', Node selected: 'Node2', Node unselected: 'Parent3', Node selected: 'Parent3']">
+	                                  <li></li>
+	                              </ui:repeat>
+	                        </ul>
+	                  </b:well>
+	    </b:row>
+	  </b:container>
+	</h:form>
+
+</html>

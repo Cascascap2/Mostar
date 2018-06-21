@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+			<title>Mostar</title>
+		    <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script> 
+	</h:head>
+	<h:body>
+		<div id="Header">
+			<ui:insert name="header">
+				<ui:include  src="Generales/header.xhtml"></ui:include>
+			</ui:insert>
+		</div>
+		
+		<h:form id="logueo">
+			<b:container fluid="true">
+			  <b:row>
+			    <b:column medium-screen="2">
+			      <h:outputText value="Nombre de Usuario:" type="text"/>
+			    </b:column>
+			    <b:column medium-screen="4">
+			      <b:inputText placeholder="Nombre de Usuario" value="#{registerController.nickname}" ajax="true" autocomplete="false" update="@(.message)" onkeyup="ayax:registerController.validateNick()">
+
+			      </b:inputText>
+			    </b:column>
+			    <b:column medium-screen="6">
+			      <b:messages StyleClass="message" id="messagesNick"
+		            globalOnly="true"
+		            severity="error,fatal"/>
+			    </b:column>
+			  </b:row>
+			  <b:row>
+			    <b:column medium-screen="2">
+			      <h:outputText value="Correo Electronico:"/>
+			    </b:column>
+			    <b:column medium-screen="4">
+			      <b:inputText placeholder="Correo Electronico" type="email" value="#{registerController.mail}" />
+			    </b:column>
+			    <b:column medium-screen="6">
+			      <b:messages id="messagesMail"
+		            globalOnly="true"
+		            severity="error,fatal"/>
+			    </b:column>
+			  </b:row>
+			  <b:row>
+			    <b:column medium-screen="2">
+			      <h:outputText value="Contraseña:" />
+			    </b:column>
+			    <b:column medium-screen="4">
+			      <b:inputSecret placeholder="Contraseña" value="#{registerController.password}">
+			      <f:facet name="prepend">
+			        <b:iconAwesome name="key" />
+			      </f:facet>
+			      </b:inputSecret>
+			    </b:column>
+			    <b:column medium-screen="6">
+			      <b:messages id="messagesPass"
+		            globalOnly="true"
+		            severity="error,fatal"/>
+			    </b:column>
+			  </b:row>
+			  <b:row>
+			    <b:column medium-screen="2">
+			      <h:outputText value="Repetir Contraseña:" />
+			    </b:column>
+			    <b:column medium-screen="4">
+			      <b:inputSecret placeholder="Repetir Contraseña" value="#{registerController.repeatPassword}" />
+			    </b:column>
+			    <b:column medium-screen="6">
+			      <b:messages id="messagesRePass"
+		            globalOnly="true"
+		            severity="error,fatal"/>
+			    </b:column>
+			  </b:row>
+			  <b:row>
+			    <b:column medium-screen="2">
+			      <h:outputText value="Usuarios de empresa" />
+			    </b:column>
+			    	<b:switch value="#" offColor="success" offText="SI" onColor="warning" onText="NO"/>
+			  </b:row>
+			  <b:row>
+			    <b:column medium-screen="2">
+			      <h:outputText value="Nombre de Empresa:" />
+			    </b:column>
+			    <b:column medium-screen="4">
+			      <b:inputSecret placeholder="Nombre de Empresa" />
+			    </b:column>
+			    <b:column medium-screen="6">
+			    </b:column>
+			  </b:row>
+			  <b:row>
+			    <b:column medium-screen="2">
+			    </b:column>
+			    <b:column medium-screen="4">
+			    <b:column>
+			      <b:commandButton value="Registrarme" look="primary" style="width:100%" action="#{registerController.registerUser}"/>
+			    </b:column>
+			    </b:column>
+			  </b:row>
+			</b:container>
+		</h:form>
+		
+		
+
+		<div id="footer">
+		    <ui:insert name="footer">
+		        <ui:include src="Generales/footer.xhtml"/>
+		    </ui:insert>
+		</div>
+
+	
+	</h:body>
+</html>
