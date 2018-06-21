@@ -113,10 +113,9 @@ public class userController {
 					this.wallet = NewUser.getWallet();
 					this.favorites = NewUser.getFavorites();
 					this.Logged = true;
-					java.lang.System.out.println(this.toString());	
 					return "home";
 				}else {
-					this.setMassages("Contrase�a incorrecta ...");
+					this.setMassages("Contrase�ｿｽa incorrecta ...");
 					this.Logged = false;
 					return "login";	
 				}
