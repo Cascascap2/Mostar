@@ -25,6 +25,16 @@
 		<managed-bean-class>beans.fileController</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>videoController</managed-bean-name>
+		<managed-bean-class>beans.videoController</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>homeController</managed-bean-name>
+		<managed-bean-class>beans.homeController</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
 	<navigation-rule>
 		<display-name>templates/home.xhtml</display-name>
 		<from-view-id>/templates/home.xhtml</from-view-id>

@@ -1,5 +1,6 @@
 package daos;
 
+import java.util.List;
 import java.util.Set;
 
 import database.ContenidoDB;
@@ -40,6 +41,13 @@ public class ContenidoDAO {
 	public void modificarContenido(Contenido con) {
 		ContenidoDB cdb = ContenidoDB.getInstance();
 		cdb.modificarContenido(con);
+	}
+
+
+	public List<Contenido> getAllContenido() {
+		ContenidoDB cdb = ContenidoDB.getInstance();
+		List<Contenido> ret= cdb.getAllContenido();
+		return ret;
 	}
 
 }

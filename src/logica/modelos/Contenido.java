@@ -29,11 +29,12 @@ public class Contenido {
 	private Date hora_de_alta;
 	private Date hora_streaming;
 	private Set<Categorias> categorias;
+	private String ruta_imagen;
 	
 	public Contenido(){		
 	}
 		
-	public Contenido(String name, String provider_name, String ruta, String descripcion, String tipo) {
+	public Contenido(String name, String provider_name, String ruta, String descripcion, String tipo, String ruta_imagen) {
 		this.name = name;
 		this.provider_name = provider_name;
 		this.ruta = ruta;
@@ -47,6 +48,7 @@ public class Contenido {
 		this.hora_de_alta = new Date();
 		this.hora_de_alta = cal.getTime();
 		this.hora_streaming = null;
+		this.ruta_imagen = ruta_imagen;
 	}
 
 
@@ -157,6 +159,14 @@ public class Contenido {
 		this.hora_streaming = hora_streaming;
 	}
 
+	public String getRuta_imagen() {
+		return ruta_imagen;
+	}
+
+	public void setRuta_imagen(String ruta_imagen) {
+		this.ruta_imagen = ruta_imagen;
+	}
+
 	@Override
 	public String toString() {
 		return "Contenido [name=" + name + ", provider_name=" + provider_name
@@ -165,10 +175,9 @@ public class Contenido {
 				+ ", visible_adm_sist=" + visible_adm_sist + ", descripcion="
 				+ descripcion + ", tipo=" + tipo + ", hora_de_alta="
 				+ hora_de_alta + ", hora_streaming=" + hora_streaming
-				+ ", categorias=" + categorias + "]";
+				+ ", categorias=" + categorias + ", ruta_imagen=" + ruta_imagen
+				+ "]";
 	}
 
-	
-	
 		
 }

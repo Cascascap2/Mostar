@@ -19,7 +19,7 @@ public class test {
 		UsuarioControlador uc = manejador.getUsuarioControlador();
 		ContenidoControlador cc = manejador.getContenidoControlador();
 		ComentarioControlador coc = manejador.getComentarioControlador();
-//		CategoriaControlador cac = manejador.getCategoriaControlador();		
+		CategoriaControlador cac = manejador.getCategoriaControlador();		
 //		
 //		List<Categorias> categorias = cac.getAllCategorias();
 //		Iterator it = categorias.iterator();
@@ -30,7 +30,7 @@ public class test {
 //			System.out.println(cat.getName());
 //		}
 		
-		/*
+		
 		List<Categorias> categorias = cac.getAllCategorias();
 		Iterator it = categorias.iterator();
 		Categorias cat = new Categorias();
@@ -39,10 +39,10 @@ public class test {
 			cat = (Categorias) it.next();
 			System.out.println(cat.getName());
 		}
-		*/
+		
 		
 		//uc.registrarUsuario("pepe", "testing2@mail.com", "testpass", 250.50, expdate, 1);		
-		//cc.altaContenido("ContenidoTest", "HBO", "WebContent/videos/Avangers Infinity War.mp4", "Beware spoilers", "Pelicula");
+		//cc.altaContenido("The walking dead", "FOX", "videos/twd.mp4", "Much ad", "Serie", "/images/dead.jpg");
 		//cc.altaContenido("StreamTest", "HBO", "", "A stream","Evento");
 		
 		//Usuario user = uc.getUsuario("testing");
@@ -65,6 +65,7 @@ public class test {
 		
 		//uc.borrarUsuario("testing");		
 		//cc.borrarContenido("ContenidoTest");
+		/*
 		Contenido con = cc.getContenido("ContenidoTest");
 		Contenido con2 = cc.getContenido("StreamTest");
 		
@@ -81,6 +82,7 @@ public class test {
 		System.out.println(con2.toString());
 		
 		System.out.println("Test end");
+		*/
 	}
 
 }

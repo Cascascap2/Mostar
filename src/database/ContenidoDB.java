@@ -1,11 +1,16 @@
 package database;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+
+
 
 
 import logica.modelos.Categorias;
 import logica.modelos.Contenido;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -85,6 +90,24 @@ public class ContenidoDB {
 		public Set<Categorias> getCategorias(String con_name){
 			Contenido con = this.getContenido(con_name);
 			return con.getCategorias();
+		}
+
+		public List<Contenido> getAllContenido() {
+			Session session = this.SessionFactory.getCurrentSession();
+			session.beginTransaction();
+			try{
+				@SuppressWarnings("deprecation")
+				Criteria criteria = session.createCriteria(Contenido.class);
+				@SuppressWarnings("unchecked")
+				List<Contenido> list = criteria.list();
+				//session.getTransaction().commit(); Si da problemas, sacar el comentario
+				session.close();
+				return list;
+			}catch(Exception e){
+				System.out.println(e.getMessage());
+				session.close();
+				return new ArrayList<Contenido>();
+			}	
 		}
 
 }

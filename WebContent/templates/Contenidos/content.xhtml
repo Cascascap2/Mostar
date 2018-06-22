@@ -4,9 +4,9 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
-	
 	   <div>
 			<b:container fluid="true" style="width:90%; margin:auto;">
 				<b:carousel id="tiovivo" style="width:90%;margin:auto; " interval="1500">
@@ -47,14 +47,26 @@
 					</b:carousel>
 			</b:container>
 	    </div>
-	
+	    
+    
+		<b:dataTable value="#{homeController.peliculas}" var="contenido">
+					<b:dataTableColumn>
+					 <b:container>
+	                	<b:image class="contentImage" name="test" value="#{contenido.ruta_imagen}"  tooltip="#{contenido.name}" tooltipPosition="auto" />
+	                    <h2>#{contenido.name}</h2>
+	                    <p>#{contenido.descripcion}</p>
+	                    <p><b:button look="success" outcome="" value="View details »"/></p>
+	                  </b:container>
+	                </b:dataTableColumn>
+	    </b:dataTable>
+	    
 		<!-- PANELES DE CONTENIDOS CLASIFICADOS --> 
 		
 		<b:panel title="Recomendados para ti" look="success">
 		  <b:container>
 	            <b:row>
 	                <b:column col-md="4" class="containerInfo">
-	                	<b:image class="contentImage" name="test" value="/images/portadaharry.jpg"  tooltip="Harry Potter" tooltipPosition="auto"/>
+	                	<b:image class="contentImage" name="test" value="/images/portadaharry.jpg"  tooltip="Harry Potter" tooltipPosition="auto" />
 	                    <h2>Titulo</h2>
 	                    <p>Descripcion esta es la descroipjsl ksdmjnnsdnjk de la peli esta demas  </p>
 	                    <p><b:button look="success" outcome="" value="View details »"/></p>
@@ -66,7 +78,7 @@
 	                    <p><b:button look="success" outcome="" value="View details »"/></p>
 	                </b:column>
 	                <b:column col-md="4" class="containerInfo">
-	                	<b:image class="contentImage" name="test" value="/images/infinity.jpg"  tooltip="Infinity War" tooltipPosition="auto"/>
+	                	<b:image class="contentImage" name="ruta_imagen" value="/images/infinity.jpg"  tooltip="Infinity War" tooltipPosition="auto"/>
 	                    <h2>Titulo</h2>
 	                    <p>Descripcion esta es la descroipjslk sdmjnnsdnjk de la peli esta demas  </p>
 	                    <p><b:button look="success" outcome="" value="View details »"/></p>
@@ -86,9 +98,15 @@
 	            </b:row>
 	        </b:container>
 		</b:panel>
+		
 		<b:panel title="Contenido destacado" look="warning">
 		  
 		</b:panel>
+		
+		<b:panel title="Estrenos" look="success">
+		  
+		</b:panel>
+		
 
 </html>
 

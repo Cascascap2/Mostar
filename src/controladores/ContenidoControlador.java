@@ -1,6 +1,7 @@
 package controladores;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import org.quartz.JobBuilder;
@@ -18,9 +19,9 @@ import daos.ContenidoDAO;
 
 public class ContenidoControlador {
 
-	public void altaContenido(String name, String empresa_name, String ruta, String descripcion, String tipo){
+	public void altaContenido(String name, String empresa_name, String ruta, String descripcion, String tipo, String ruta_imagen){
 		ContenidoDAO cdao = new ContenidoDAO();
-		Contenido contenido = new Contenido(name, empresa_name, ruta, descripcion, tipo);
+		Contenido contenido = new Contenido(name, empresa_name, ruta, descripcion, tipo, ruta_imagen);
 		cdao.altaContenido(contenido);
 	}
 	
@@ -42,8 +43,14 @@ public class ContenidoControlador {
 
 	public Contenido getContenido(String name) {
 		ContenidoDAO cdao = new ContenidoDAO();
-		Contenido user = cdao.getContenido(name);
-		return user;
+		Contenido content = cdao.getContenido(name);
+		return content;
+	}
+	
+	public List<Contenido> getAllContenido(){
+		ContenidoDAO cdao = new ContenidoDAO();
+		List<Contenido> ret = cdao.getAllContenido();
+		return ret;
 	}
 	
 	public void modificarContenido(Contenido con){

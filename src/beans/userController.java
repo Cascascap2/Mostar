@@ -115,7 +115,7 @@ public class userController {
 					this.Logged = true;
 					return "home";
 				}else {
-					this.setMassages("Contrase�ｿｽa incorrecta ...");
+					this.setMassages("Contraseña incorrecta ...");
 					this.Logged = false;
 					return "login";	
 				}
@@ -130,9 +130,6 @@ public class userController {
 			this.Logged = false;
 			return "login";	
 		}
-	}
-	public String cerrarsession() {
-		return "login.xhtml";
 	}
 	
 	public String cerrarSession(){
