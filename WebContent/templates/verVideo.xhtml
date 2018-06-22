@@ -52,6 +52,24 @@
 			</div>
 		</b:row>
 	</b:container>
+	
+	<h:form>
+		<b:dataTable value="#{videoController.comentarios}" var="comentario">
+					<b:dataTableColumn>
+					 <b:container>
+	                    <h2>#{comentario.user_nick}</h2>
+	                    <p>#{comentario.message}</p>
+	                  </b:container>
+	                </b:dataTableColumn>
+	    </b:dataTable>
+	</h:form>
+		
+	<b:container>
+		<b:inputText placeholder="Escriba un comentario"></b:inputText>
+		<b:button value="Enviar"></b:button>
+	</b:container>
+	
+	
 
 		<div id="footer">
 		    <ui:insert name="footer">

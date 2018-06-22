@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import controladores.ComentarioControlador;
 import controladores.ContenidoControlador;
 import controladores.Manejador;
 import logica.modelos.Contenido;
@@ -63,7 +64,6 @@ public class homeController {
 	}
 
 
-
 	@PostConstruct
 	public void init(){
 		Manejador man = Manejador.getInstance();
@@ -79,4 +79,5 @@ public class homeController {
 		}
 		java.lang.System.out.println(this.contenidos.size());
 	}
+	
 }

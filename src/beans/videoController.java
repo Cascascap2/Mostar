@@ -3,12 +3,17 @@ package beans;
 import java.util.List;
 
 
+
+
+
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ViewScoped;
 
 import logica.modelos.Comentarios;
+import logica.modelos.Contenido;
 import controladores.ComentarioControlador;
+import controladores.ContenidoControlador;
 import controladores.Manejador;
 
 public class videoController {
@@ -67,6 +72,22 @@ public class videoController {
 		this.descripcion = descripcion;
 	}
 	
+	public String getRuta_imagen() {
+		return ruta_imagen;
+	}
+
+	public void setRuta_imagen(String ruta_imagen) {
+		this.ruta_imagen = ruta_imagen;
+	}
+
+	public List<Comentarios> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(List<Comentarios> comentarios) {
+		this.comentarios = comentarios;
+	}
+
 	@Override
 	public String toString() {
 		return "videoController [contenido_name=" + contenido_name
@@ -78,6 +99,19 @@ public class videoController {
 	
 	public String verPelicula(){
 		System.out.println(this.ruta_imagen);
+		return "verVideo";
+	}
+	
+	public String testVer(String contenido_name){
+		Manejador man = Manejador.getInstance();
+		ContenidoControlador cc = man.getContenidoControlador();
+		Contenido con = cc.getContenido(contenido_name);
+		ComentarioControlador coc = man.getComentarioControlador();
+		this.comentarios = coc.getAllComentariosByContName(contenido_name);
+		java.lang.System.out.println("Comentarios: " + this.comentarios.size());
+		this.contenido_name = contenido_name;
+		this.ruta = con.getRuta();
+		
 		return "verVideo";
 	}
 	
