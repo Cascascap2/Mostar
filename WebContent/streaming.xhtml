@@ -6,7 +6,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:s="http://jboss.com/products/seam/taglib">
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <head>
 <script src="js/flowplayer-3.2.13.min.js"></script>
@@ -14,7 +15,13 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 </head>
 
+
 <h:body>
+	<div id="Header">
+		<ui:insert name="header">
+			<ui:include src="templates/Generales/header.xhtml"></ui:include>
+		</ui:insert>
+	</div>
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8">
@@ -24,10 +31,15 @@
 			</div>
 			<div class="col-lg-4">
 				<textarea rows="25" cols="50" id="messages" readonly="readonly"></textarea>
-				<br /> <p:inputText id="input" type="text" value="#{userController.mail}"/>
+				<br />
+				<p:inputText id="input" type="text"
+					value="#{userController.nickname}" />
 				<button
 					onclick="sendMessage(document.getElementById('input').value)">Enviar
-					mensaje</button>
+					mensaje</button><br /><br /><br />
+
+
+
 			</div>
 		</div>
 	</div>
@@ -117,6 +129,12 @@
 			document.getElementById('messages').value = messages;
 		}
 	</script>
+
+	<div id="footer">
+		<ui:insert name="footer">
+			<ui:include src="templates/Generales/footer.xhtml" />
+		</ui:insert>
+	</div>
 </h:body>
 
 
