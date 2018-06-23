@@ -23,7 +23,6 @@ public class homeController {
 	}
 
 
-
 	public void setTest(String test) {
 		this.test = test;
 	}

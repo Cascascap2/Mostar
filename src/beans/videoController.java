@@ -2,10 +2,6 @@ package beans;
 
 import java.util.List;
 
-
-
-
-
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ViewScoped;
@@ -26,14 +22,7 @@ public class videoController {
 	private String descripcion;
 	private String ruta_imagen;
 	private List<Comentarios> comentarios;
-	
-	@PostConstruct
-	public void init(){
-		Manejador man = Manejador.getInstance();
-		ComentarioControlador cc = man.getComentarioControlador();
-		this.comentarios = cc.getAllComentariosByContName(this.contenido_name);
-		//java.lang.System.out.println("Comments: " + this.comentarios.size());
-	}
+
 	
 	public String getContenido_name() {
 		return contenido_name;
@@ -87,6 +76,7 @@ public class videoController {
 	public void setComentarios(List<Comentarios> comentarios) {
 		this.comentarios = comentarios;
 	}
+	
 
 	@Override
 	public String toString() {
@@ -113,6 +103,15 @@ public class videoController {
 		this.ruta = con.getRuta();
 		
 		return "verVideo";
+	}
+	
+	@PostConstruct
+	public void init(){
+		java.lang.System.out.println("name: " + this.contenido_name);
+		Manejador man = Manejador.getInstance();
+		ComentarioControlador cc = man.getComentarioControlador();
+		this.comentarios = cc.getAllComentariosByContName(this.contenido_name);
+		java.lang.System.out.println("Comments: " + this.comentarios.size());
 	}
 	
 }
