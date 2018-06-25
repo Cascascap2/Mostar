@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+			<title>Mostar</title>
+		    <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script> 
+	</h:head>
+	<h:body>
+		<div id="Header">
+			<ui:insert name="header">
+				<ui:include  src="Generales/header.xhtml"></ui:include>
+			</ui:insert>
+		</div>
+		
+		<h:form id="publicarStreaming" >
+			<b:container fluid="true">
+			<b:row>
+				<b:column medium-screen="6">
+			      <b:messages />
+			    </b:column>
+			</b:row>
+			  <b:row>
+			    <b:column medium-screen="2">
+			      <h:outputText value="Nombre de la Transmicion:"/>
+			    </b:column>
+			    <b:column medium-screen="4">
+			      <b:inputText placeholder="Nombre de la Transmicion" value="" required="true"/>
+			    </b:column>
+			    
+			  </b:row>
+			  <b:row>
+			    <b:column medium-screen="2">
+			      <h:outputText value="Direccion del servidor de streaming"/>
+			    </b:column>
+			    <b:column medium-screen="4">
+			      <b:inputText placeholder="Ruta del servidor de streaming" value="" />
+			    </b:column>
+			  </b:row>
+			  </b:row>
+			  <b:row>
+			    <b:column medium-screen="2">
+			      <h:outputText value="Precio de la Suscripcion:"/>
+			    </b:column>
+			    <b:column medium-screen="4">
+			      <b:inputNumber id="Precio" value="">  
+                </b:inputNumber>
+			    </b:column> 
+			  </b:row>
+			  <b:row>
+			    <b:column medium-screen="2">
+			      <h:outputText value="Fecha y hora de la Transmicion" />
+			    </b:column>
+			    <b:column medium-screen="4">
+			      <b:dateTimePicker value=""  mode="inline" label="Disabled inline DateTimePicker:" />
+			    </b:column>
+			    
+			  </b:row>
+			  <br></br>
+			  <b:row>
+			    <b:column medium-screen="2">
+			    </b:column>
+			    <b:column medium-screen="4">
+			    <b:column>
+			      <b:commandButton value="Publicar Streaming" look="success" style="width:100%" action="#" update="Growl"/>
+			    </b:column>
+			    </b:column>
+			  </b:row>
+			  <b:growl id="Growl" placementFrom="top" show-detail="true"
+		         global-only="false"
+		         show-summary="true" allow-dismiss="true"
+		         animation-enter="animated bounceInDown"
+		         animation-exit="animated flipOutX"
+		         escape="true" />
+			</b:container>
+		</h:form>
+		
+		
+
+		<div id="footer">
+		    <ui:insert name="footer">
+		        <ui:include src="Generales/footer.xhtml"/>
+		    </ui:insert>
+		</div>
+
+	
+	</h:body>
+</html>
