@@ -6,15 +6,16 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.util.Date;
 
+import javax.annotation.PostConstruct;
+import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
 
 import controladores.Manejador;
-import logica.eventos.StreamAlert;
 
 public class StreamingController {
-	
+	private String nick;
 	private String name;
 	private String ruta_trans;
 	private Float precio;
@@ -31,6 +32,12 @@ public class StreamingController {
 	
 	
 	
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
 	public String getMessage() {
 		return message;
 	}
@@ -105,6 +112,18 @@ public class StreamingController {
 		 this.message = "Evento registrado con exito ...";
 		 context.addMessage(null, new FacesMessage("Successful",  "Mostar dice: " + "La transaccion a sido realizada con exito...") );
 		 context.addMessage(null, new FacesMessage("Info", this.message));
+	 }
+	 
+	 @PostConstruct
+	 void init() {
+		 FacesContext context = FacesContext.getCurrentInstance();
+		 Application application = context.getApplication();
+		 userController uc = application.evaluateExpressionGet(context, "#{userController}", userController.class);
+		 this.nick = uc.getNickname();
+		 Manejador man = Manejador.getInstance();
+		 this.empresa_name = man.getUsuarioControlador().getUsuario(nick).getNickname();
+//			---------------------Agregar campo nombre empresa a usuarios administradores de contenido----------------------------------------
+		 
 	 }
 	
 }
