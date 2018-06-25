@@ -120,6 +120,8 @@ public class videoController {
 		ComentarioControlador coc = man.getComentarioControlador();
 		this.comentarios = coc.getAllComentariosByContName(contenido_name);
 		this.ruta = con.getRuta();	
+		cc.aumentar_view(con);
+		this.vistas = con.getVistas();
 	}
 	
 	public String verPelicula(){

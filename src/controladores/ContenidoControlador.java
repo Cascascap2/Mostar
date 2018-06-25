@@ -24,16 +24,12 @@ public class ContenidoControlador {
 		Contenido contenido = new Contenido(name, empresa_name, ruta, descripcion, tipo, ruta_imagen);
 		cdao.altaContenido(contenido);
 	}
-	
-	//modificiar
 
 	public void borrarContenido(String name) {
 		ContenidoDAO cdao = new ContenidoDAO();
 		Contenido tempUser = cdao.getContenido(name);
 		cdao.borrarContenido(tempUser);				
 	}
-
-	//listar
 
 	public Set<Categorias> getCategorias(String name){
 		ContenidoDAO cdao = new ContenidoDAO();
@@ -80,6 +76,11 @@ public class ContenidoControlador {
 		}
 		else
 			System.out.println("El contenido no es un stream y no es programable.");
+	}
+	
+	public void aumentar_view(Contenido con){
+		con.setVistas(con.getVistas()+1);
+		this.modificarContenido(con);
 	}
 
 }
