@@ -16,9 +16,9 @@ public class test {
 		System.out.println("testing...");
 		
 		Manejador manejador = Manejador.getInstance();
-		UsuarioControlador uc = manejador.getUsuarioControlador();
-		ContenidoControlador cc = manejador.getContenidoControlador();
-		ComentarioControlador coc = manejador.getComentarioControlador();
+//		UsuarioControlador uc = manejador.getUsuarioControlador();
+//		ContenidoControlador cc = manejador.getContenidoControlador();
+//		ComentarioControlador coc = manejador.getComentarioControlador();
 		CategoriaControlador cac = manejador.getCategoriaControlador();		
 //		
 //		List<Categorias> categorias = cac.getAllCategorias();

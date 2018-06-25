@@ -35,6 +35,21 @@
 		<managed-bean-class>beans.homeController</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>admController</managed-bean-name>
+		<managed-bean-class>beans.admController</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>contentController</managed-bean-name>
+		<managed-bean-class>beans.contentController</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>streamingController</managed-bean-name>
+		<managed-bean-class>beans.StreamingController</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
 	<navigation-rule>
 		<display-name>templates/home.xhtml</display-name>
 		<from-view-id>/templates/home.xhtml</from-view-id>

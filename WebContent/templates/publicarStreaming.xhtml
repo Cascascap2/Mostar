@@ -19,7 +19,7 @@
 			</ui:insert>
 		</div>
 		
-		<h:form id="uploadContent" enctype="multipart/form-data">
+		<h:form id="publicarStreaming" enctype="multipart/form-data">
 			<b:container fluid="true">
 			<b:row>
 				<b:column medium-screen="6">
@@ -28,24 +28,43 @@
 			</b:row>
 			  <b:row>
 			    <b:column medium-screen="2">
-			      <h:outputText value="Nombre del Contenido:"/>
+			      <h:outputText value="Nombre de la Transmicion:"/>
 			    </b:column>
 			    <b:column medium-screen="4">
-			      <b:inputText placeholder="Nombre del Contenido" value="#{fileController.filename}" required="true"/>
+			      <b:inputText placeholder="Nombre de la Transmicion" value="#{streamingController.name}" required="true"/>
 			    </b:column>
 			    
 			  </b:row>
 			  <b:row>
 			    <b:column medium-screen="2">
-			      <h:outputText value="Descripcion del Contenido:"/>
+			      <h:outputText value="Descripcion:"/>
 			    </b:column>
 			    <b:column medium-screen="4">
-			      <b:inputText placeholder="Descripcion del contenido" value="#{fileController.description}" />
+			      <b:inputText placeholder="Descripcion" value="#{streamingController.descripcion}" required="true"/>
 			    </b:column>
+			    
 			  </b:row>
 			  <b:row>
 			    <b:column medium-screen="2">
-			      <h:outputText value="Cargar Contenido" />
+			      <h:outputText value="Direccion del servidor de streaming"/>
+			    </b:column>
+			    <b:column medium-screen="4">
+			      <b:inputText placeholder="Ruta del servidor de streaming" value="#{streamingController.ruta_trans}"/>
+			    </b:column>
+			  </b:row>
+			  
+			  <b:row>
+			    <b:column medium-screen="2">
+			      <h:outputText value="Precio de la Suscripcion:"/>
+			    </b:column>
+			    <b:column medium-screen="4">
+			      <p:inputNumber id="Precio" value="#{streamingController.precio}" style="width:100%" required = "true"/>  
+			    </b:column> 
+			  </b:row>
+			  <br></br>
+			  <b:row>
+			    <b:column medium-screen="2">
+			      <h:outputText value="Cargar Portada" />
 			    </b:column>
 			    <b:column medium-screen="4">
 			      <h:inputFile value="#{fileController.file}"></h:inputFile>
@@ -55,10 +74,20 @@
 			  <br></br>
 			  <b:row>
 			    <b:column medium-screen="2">
+			      <h:outputText value="Fecha y hora de la Transmicion" />
+			    </b:column>
+			    <b:column medium-screen="4">
+			      <b:dateTimePicker value="#{streamingController.fec_trans}"  mode="inline" label="Disabled inline DateTimePicker:" />
+			    </b:column>
+			    
+			  </b:row>
+			  
+			  <b:row>
+			    <b:column medium-screen="2">
 			    </b:column>
 			    <b:column medium-screen="4">
 			    <b:column>
-			      <b:commandButton value="Subir Archivo..." look="success" style="width:100%" action="#{fileController.saveVideo}" update="Growl"/>
+			      <b:commandButton value="Publicar Streaming" look="success" style="width:100%" action="#{streamingController.addStreaming}" update="Growl"/>
 			    </b:column>
 			    </b:column>
 			  </b:row>
