@@ -16,6 +16,7 @@ import org.primefaces.push.annotation.Singleton;
 @Singleton
 public class userController {
 	public static final String AUTH_KEY = "app.user.name";
+	public static final String PERMISSION_KEY = "app.user.permission";
 
 	private String nickname;
 
@@ -133,6 +134,7 @@ public class userController {
 					this.favorites = NewUser.getFavorites();
 					this.Logged = true;
 					FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(AUTH_KEY, nickname);
+					FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(PERMISSION_KEY, (Integer)PermissionId);
 					return "home";
 				}else {
 					this.setMassages("Contraseña incorrecta ...");
@@ -164,6 +166,7 @@ public class userController {
 		this.Logged = false;
 		this.massages = "Usuario deslogueado correctamente";
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove(AUTH_KEY);
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove(PERMISSION_KEY);
 		return "home";
 	}
 
