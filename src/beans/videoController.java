@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
+import javax.faces.application.Application;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -28,6 +30,9 @@ public class videoController {
 	private String descripcion;
 	private String ruta_imagen;
 	private List<Comentarios> comentarios;
+	private String comentario_msg;
+	@ManagedProperty(value="#{userController}")
+    private userController session;
 
 	
 	public String getContenido_name() {
@@ -82,25 +87,38 @@ public class videoController {
 	public void setComentarios(List<Comentarios> comentarios) {
 		this.comentarios = comentarios;
 	}
-	
 
+	public String getComentario_msg() {
+		return comentario_msg;
+	}
+	public void setComentario_msg(String comentario_msg) {
+		this.comentario_msg = comentario_msg;
+	}
+		
+	public userController getSession() {
+		return session;
+	}
+	public void setSession(userController session) {
+		this.session = session;
+	}
 	@Override
 	public String toString() {
 		return "videoController [contenido_name=" + contenido_name
 				+ ", provider_name=" + provider_name + ", ruta=" + ruta
 				+ ", vistas=" + vistas + ", calificacion=" + calificacion
-				+ ", descripcion=" + descripcion + "]";
+				+ ", descripcion=" + descripcion + ", ruta_imagen="
+				+ ruta_imagen + ", comentarios=" + comentarios
+				+ ", comentario_msg=" + comentario_msg + "]";
 	}
 	
 	public void getPeliculaElejida(ActionEvent event){
 		this.contenido_name = (String) event.getComponent().getAttributes().get("pelicula_elejida");
-		java.lang.System.out.println("Sacando el string: " + this.contenido_name);
+		//java.lang.System.out.println("Sacando el string: " + this.contenido_name);
 		Manejador man = Manejador.getInstance();
 		ContenidoControlador cc = man.getContenidoControlador();
 		Contenido con = cc.getContenido(contenido_name);
 		ComentarioControlador coc = man.getComentarioControlador();
 		this.comentarios = coc.getAllComentariosByContName(contenido_name);
-		java.lang.System.out.println("Comentarios: " + this.comentarios.size());
 		this.ruta = con.getRuta();	
 	}
 	
@@ -108,5 +126,19 @@ public class videoController {
 		return "verVideo";
 	}
 	
+	public void crearComentario(){
+		Manejador man = Manejador.getInstance();
+		ComentarioControlador coc = man.getComentarioControlador();
+		String user_nick = this.session.getNickname();
+		coc.altaComentario(user_nick, this.comentario_msg, this.contenido_name);
+	}
+	
+	@PostConstruct
+	public void init(){
+		 FacesContext context = FacesContext.getCurrentInstance();
+	     Application application = context.getApplication();
+	     userController uc = application.evaluateExpressionGet(context, "#{userController}", userController.class);
+	     this.session = uc;
+	}
 	
 }

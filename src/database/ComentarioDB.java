@@ -31,14 +31,9 @@ public class ComentarioDB{
 	public void altaComentario(Comentarios com) {
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
-		try{			
 			session.save(com);
 			session.getTransaction().commit();
 			session.close();
-		}catch(Exception e){
-			System.out.println(e.getMessage());
-			session.close();
-		}
 	}
 	
 	public Comentarios getComentario(int id){

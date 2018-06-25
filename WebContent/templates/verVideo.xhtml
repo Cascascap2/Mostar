@@ -34,6 +34,7 @@
 				<h1>#{videoController.contenido_name}</h1>
 				<p:media value="#{videoController.ruta}"  width="1200" height="800" player="quicktime">
 				</p:media>
+				<p>Vistas: #{videoController.vistas}</p>
 			</center>
 		</div>
 		
@@ -47,12 +48,17 @@
 	                </b:dataTableColumn>
 	    </b:dataTable>		
 		
+		<h:form>		
 		<b:container>
-			<b:inputText placeholder="Escriba un comentario"></b:inputText>
-			<b:button value="Enviar"></b:button>
+			<b:inputText placeholder="Escriba un comentario" id="msg" name="msg" value = "#{videoController.comentario_msg}"></b:inputText>
+			<b:commandButton value="Enviar" action="#{videoController.crearComentario}">
+			</b:commandButton>
 		</b:container>
+		
 		<br></br><br></br><br></br>	
-	
+		<h2><h:outputText id = "outputMessage" />AAAAAAABC</h2>
+		</h:form>
+		
 		<div id="footer">
 		    <ui:insert name="footer">
 		        <ui:include src="Generales/footer.xhtml"/>

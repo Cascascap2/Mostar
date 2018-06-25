@@ -18,8 +18,6 @@
 			  <button type="submit" class="btn btn-success">Buscar</button>
 		  </h:form>
 		 <b:navbarLinks pull="right" styleClass="hidden-xs" name="clientheader" rendered="#{userController.permissionId == 1}">
-		 <b:navLink value="Ver Pelicula Test" id="verPelicula" outcome="verVideo"></b:navLink>
-		 <b:navLink value="Comentario test" id="comment" outcome="comentario"></b:navLink>
 		</b:navbarLinks>
 	 	<b:navbarLinks pull="right" styleClass="hidden-xs" name="loginOff" rendered="#{not userController.logged}">
 		    <b:navLink value="Iniciar Sesion" id="login" outcome="login"></b:navLink>

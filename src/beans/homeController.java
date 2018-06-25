@@ -83,16 +83,9 @@ public class homeController {
 					ultimas.add(con);
 				}
 			}
-		}
-		java.lang.System.out.println(this.contenidos.size());
-		java.lang.System.out.println("Ultimos contenidos:");
+		}	
 		this.ultimas_peliculas = ultimas;
-		Iterator it3 = this.ultimas_peliculas.iterator();
-		while(it3.hasNext()){
-			Contenido con3 = (Contenido) it3.next();
-			java.lang.System.out.println(con3.getName());
-		}
-		
+		Iterator it3 = this.ultimas_peliculas.iterator();		
 	}
 	
 }
