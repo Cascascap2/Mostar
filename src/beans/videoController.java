@@ -1,10 +1,13 @@
 package beans;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import logica.modelos.Comentarios;
 import logica.modelos.Contenido;
@@ -86,32 +89,21 @@ public class videoController {
 				+ ", descripcion=" + descripcion + "]";
 	}
 	
-	
-	public String verPelicula(){
-		System.out.println(this.ruta_imagen);
-		return "verVideo";
-	}
-	
-	public String testVer(String contenido_name){
+	public void getPeliculaElejida(ActionEvent event){
+		this.contenido_name = (String)event.getComponent().getAttributes().get("pelicula_elejida");
 		Manejador man = Manejador.getInstance();
 		ContenidoControlador cc = man.getContenidoControlador();
 		Contenido con = cc.getContenido(contenido_name);
 		ComentarioControlador coc = man.getComentarioControlador();
 		this.comentarios = coc.getAllComentariosByContName(contenido_name);
 		java.lang.System.out.println("Comentarios: " + this.comentarios.size());
-		this.contenido_name = contenido_name;
-		this.ruta = con.getRuta();
-		
+		this.ruta = con.getRuta();	
+	}
+	
+	public String verPelicula(){
 		return "verVideo";
 	}
 	
-	@PostConstruct
-	public void init(){
-		java.lang.System.out.println("name: " + this.contenido_name);
-		Manejador man = Manejador.getInstance();
-		ComentarioControlador cc = man.getComentarioControlador();
-		this.comentarios = cc.getAllComentariosByContName(this.contenido_name);
-		java.lang.System.out.println("Comments: " + this.comentarios.size());
-	}
+	
 	
 }

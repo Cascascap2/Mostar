@@ -55,9 +55,7 @@ public class homeController {
 	public List<Contenido> getPeliculas() {
 		return peliculas;
 	}
-
-
-
+	
 	public void setPeliculas(List<Contenido> peliculas) {
 		this.peliculas = peliculas;
 	}

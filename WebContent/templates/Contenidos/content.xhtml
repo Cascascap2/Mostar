@@ -48,18 +48,21 @@
 			</b:container>
 	    </div>
 	    
-    	<h:form>
-		<b:dataTable value="#{homeController.peliculas}" var="contenido">
-					<b:dataTableColumn>
-					 <b:container>
-	                	<b:image class="contentImage" name="test" value="#{contenido.ruta_imagen}"  tooltip="#{contenido.name}" tooltipPosition="auto" />
-	                    <h2>#{contenido.name}</h2>
-	                    <p>#{contenido.descripcion}</p>
-	                    <p><b:commandButton value="Ver esta pelicula »" look="success" action="#{videoController.testVer(contenido.name)}"/></p>
-	                  </b:container>
-	                </b:dataTableColumn>
-	    </b:dataTable>
-	    </h:form>
+	   <h:form>
+	    <p:dataList value="#{homeController.peliculas}" var="pelicula" type="definition">
+	    	<b:container>
+	    	 <p:panel header="#{pelicula.name}" style="margin-bottom:20px">
+	        	<b:image class="contentImage" style="width:50%" name="{pelicula.name}.imagen" value="#{pelicula.ruta_imagen}"  tooltip="#{contenido.name}" tooltipPosition="auto" />
+	    		<h:outputText value="   #{pelicula.descripcion}"/>
+	    		<br></br><br></br>
+	    		<h:commandButton value="Ver esta pelicula »" look="success" action="#{videoController.verPelicula}" actionListener="#{videoController.getPeliculaElejida}">
+	    		<f:attribute name="pelicula_elejida" value="#{pelicula.name}" />
+	    		</h:commandButton>
+	    	 </p:panel>
+	    	</b:container>
+   		</p:dataList>
+   		</h:form>
+	    
 	    
 		<!-- PANELES DE CONTENIDOS CLASIFICADOS --> 
 		
