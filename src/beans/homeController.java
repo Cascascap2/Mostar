@@ -12,7 +12,7 @@ import logica.modelos.Contenido;
 
 public class homeController {
 
-	private static final int ESTRENOS = 3;
+	private static final int ESTRENOS = 4;
 	
 	private String test;
 	private List<Contenido> contenidos;

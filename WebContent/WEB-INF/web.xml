@@ -32,6 +32,7 @@
 		<param-name>com.sun.faces.enableRestoreView11Compatibility</param-name>
 		<param-value>true</param-value>
 	</context-param>
+	<!--
 	<filter>
 		<filter-name>AuthenticationFilter</filter-name>
 		<filter-class>Filters.AuthenticationFilter</filter-class>
@@ -44,7 +45,7 @@
 		<filter-name>EmpFilter</filter-name>
 		<filter-class>Filters.EmpFilter</filter-class>
 	</filter>
-	 <!--<filter-mapping>
+	<filter-mapping>
 		<filter-name>AuthenticationFilter</filter-name>
 		<url-pattern>/faces/streaming.xhtml</url-pattern>
 	</filter-mapping>
