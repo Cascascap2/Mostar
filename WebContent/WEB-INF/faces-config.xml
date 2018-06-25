@@ -28,7 +28,7 @@
 	<managed-bean>
 		<managed-bean-name>videoController</managed-bean-name>
 		<managed-bean-class>beans.videoController</managed-bean-class>
-		<managed-bean-scope>view</managed-bean-scope>
+		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>homeController</managed-bean-name>

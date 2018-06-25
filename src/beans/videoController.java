@@ -9,12 +9,15 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import org.primefaces.push.annotation.Singleton;
+
 import logica.modelos.Comentarios;
 import logica.modelos.Contenido;
 import controladores.ComentarioControlador;
 import controladores.ContenidoControlador;
 import controladores.Manejador;
 
+@Singleton
 public class videoController {
 	
 	private String contenido_name;
@@ -90,7 +93,8 @@ public class videoController {
 	}
 	
 	public void getPeliculaElejida(ActionEvent event){
-		this.contenido_name = (String)event.getComponent().getAttributes().get("pelicula_elejida");
+		this.contenido_name = (String) event.getComponent().getAttributes().get("pelicula_elejida");
+		java.lang.System.out.println("Sacando el string: " + this.contenido_name);
 		Manejador man = Manejador.getInstance();
 		ContenidoControlador cc = man.getContenidoControlador();
 		Contenido con = cc.getContenido(contenido_name);
@@ -103,7 +107,6 @@ public class videoController {
 	public String verPelicula(){
 		return "verVideo";
 	}
-	
 	
 	
 }
