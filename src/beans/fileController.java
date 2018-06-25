@@ -56,10 +56,28 @@ public class fileController implements Serializable{
 		this.filename = filename;
 	}
 
-	public void save() {
+	public void saveVideo() {
 		FacesContext context = FacesContext.getCurrentInstance();
 	    try (InputStream input = file.getInputStream()) {
-	    	File nuevo = new File("C:/Users/lucas/Videos", filename+".mp4");
+	    	File nuevo = new File("C:/Users/lucas/Videos/Videos", filename+".mp4");
+	    	System.out.println("creo el archivo");
+	        Files.copy(input, nuevo.toPath());
+	        System.out.println("copio el archivo");
+	        this.message ="Archivo cargado correctamente!!";
+	        context.addMessage(null, new FacesMessage("Successful", "Exito!") );
+	        context.addMessage(null, new FacesMessage("Info",this.message) );
+	        this.cargaFinalizada();
+	    }
+	    catch (IOException e) {
+	    	this.message = "Error al cargar el archivo...";
+	    	context.addMessage(null, new FacesMessage("Warning",  "Mostar dice: " + "Error...") );
+	    	context.addMessage(null, new FacesMessage("Info", this.message));
+	    }
+	}
+	public void saveImagen() {
+		FacesContext context = FacesContext.getCurrentInstance();
+	    try (InputStream input = file.getInputStream()) {
+	    	File nuevo = new File("C:/Users/lucas/Videos/Imagenes", filename+".jpg");
 	    	System.out.println("creo el archivo");
 	        Files.copy(input, nuevo.toPath());
 	        System.out.println("copio el archivo");
