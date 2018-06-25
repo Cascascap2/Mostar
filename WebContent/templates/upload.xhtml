@@ -35,6 +35,7 @@
 			    </b:column>
 			    
 			  </b:row>
+			  
 			  <b:row>
 			    <b:column medium-screen="2">
 			      <h:outputText value="Descripcion del Contenido:"/>
@@ -43,14 +44,22 @@
 			      <b:inputText placeholder="Descripcion del contenido" value="#{fileController.description}" />
 			    </b:column>
 			  </b:row>
+			   <b:row>
+			    <b:column medium-screen="2">
+			      <h:outputText value="Cargar Caratula" />
+			    </b:column>
+			    <b:column medium-screen="4">
+			      <h:inputFile value="#{fileController.file1}"></h:inputFile>
+			    </b:column>
+			  </b:row>
+			  <br></br>
 			  <b:row>
 			    <b:column medium-screen="2">
 			      <h:outputText value="Cargar Contenido" />
 			    </b:column>
 			    <b:column medium-screen="4">
-			      <h:inputFile value="#{fileController.file}"></h:inputFile>
+			      <h:inputFile value="#{fileController.file2}"></h:inputFile>
 			    </b:column>
-			    
 			  </b:row>
 			  <br></br>
 			  <b:row>
@@ -58,7 +67,7 @@
 			    </b:column>
 			    <b:column medium-screen="4">
 			    <b:column>
-			      <b:commandButton value="Subir Archivo..." look="success" style="width:100%" action="#{fileController.saveVideo}" update="Growl"/>
+			      <b:commandButton value="Subir Archivo..." look="success" style="width:100%" action="#{fileController.saveContenido}" update="Growl"/>
 			    </b:column>
 			    </b:column>
 			  </b:row>
