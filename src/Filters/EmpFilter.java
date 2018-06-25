@@ -1,3 +1,4 @@
+package Filters;
 import java.io.IOException;
 
 import javax.servlet.Filter;
@@ -11,16 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.userController;
 
-public class AuthenticationFilter implements Filter {
+public class EmpFilter implements Filter {
   private FilterConfig config;
 
   public void doFilter(ServletRequest req, ServletResponse resp,
       FilterChain chain) throws IOException, ServletException {
-    if (((HttpServletRequest) req).getSession().getAttribute(
-        userController.AUTH_KEY) == null) {
-      ((HttpServletResponse) resp).sendRedirect("templates/home.xhtml");
+    if (((HttpServletRequest) req).getSession().getAttribute(userController.PERMISSION_KEY) == null) {
+      ((HttpServletResponse) resp).sendRedirect("home.xhtml");
     } else {
-      chain.doFilter(req, resp);
+    	if((Integer)((HttpServletRequest) req).getSession().getAttribute(userController.PERMISSION_KEY) != 2) {
+    		((HttpServletResponse) resp).sendRedirect("home.xhtml");
+    	}
+    	else {
+    		chain.doFilter(req, resp);
+    	}
     }
   }
 
@@ -29,6 +34,6 @@ public class AuthenticationFilter implements Filter {
   }
 
   public void destroy() {
-    config = null;
+	config = null;
   }
 }
