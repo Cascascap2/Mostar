@@ -77,4 +77,19 @@ public class CategoriaDB {
 			return new ArrayList<Categorias>();
 		}		
 	}
+
+	public Categorias getCategoria(String cat_name) {
+		Session session = this.SessionFactory.getCurrentSession();
+		session.beginTransaction();
+		
+		try{
+			Categorias cat = session.get(Categorias.class, cat_name);
+			session.close();
+			return cat;
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			session.close();
+			return null;
+		}
+	}
 }

@@ -1,7 +1,10 @@
 package logica.modelos;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -12,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "contenidos")
@@ -69,6 +73,18 @@ public class Contenido {
             inverseJoinColumns = @JoinColumn(name = "fk_categoria"))
 	public Set<Categorias> getCategorias() {
 		return categorias;
+	}
+	
+	@Transient
+	public List<Categorias> getCategoriasAsList(){
+		List<Categorias> ret = new ArrayList<Categorias>();
+		Iterator it = this.getCategorias().iterator();
+		Categorias cat = new Categorias();
+		while(it.hasNext()){
+			cat = (Categorias) it.next();
+			ret.add(cat);
+		}
+		return ret;
 	}
 
 	public void setCategorias(Set<Categorias> categorias) {
@@ -165,6 +181,10 @@ public class Contenido {
 
 	public void setRuta_imagen(String ruta_imagen) {
 		this.ruta_imagen = ruta_imagen;
+	}
+	
+	public void add_categoria(Categorias cat){
+		this.categorias.add(cat);
 	}
 
 	@Override

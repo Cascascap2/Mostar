@@ -23,4 +23,10 @@ public class CategoriaControlador {
 		CategoriaDAO cdao = new CategoriaDAO();
 		return cdao.getAllCategorias();
 	}
+	
+	public Categorias getCategoria(String cat_name){
+		CategoriaDAO cdao = new CategoriaDAO();
+		return cdao.getCategoria(cat_name);
+	}
+
 }

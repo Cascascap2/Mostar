@@ -23,5 +23,10 @@ public class CategoriaDAO {
 		return cdb.getAllCategorias();
 	}
 
+	public Categorias getCategoria(String cat_name) {
+		CategoriaDB cdb = CategoriaDB.getInstance();
+		return cdb.getCategoria(cat_name);
+	}
+
 	
 }

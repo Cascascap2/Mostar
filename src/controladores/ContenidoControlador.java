@@ -1,6 +1,8 @@
 package controladores;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -81,6 +83,32 @@ public class ContenidoControlador {
 	public void aumentar_view(Contenido con){
 		con.setVistas(con.getVistas()+1);
 		this.modificarContenido(con);
+	}
+	
+	public boolean tiene_categoria(Contenido con, String cat_check){
+		List<Categorias> cats = new ArrayList<Categorias>();
+		cats = con.getCategoriasAsList();
+		Iterator<Categorias> it = cats.iterator();
+		Categorias cat = new Categorias();
+		while(it.hasNext()){
+			cat = (Categorias) it.next();
+			if(cat.getName().equals(cat_check))
+				return true;
+		}
+		return false;
+	}
+	
+	public List<Contenido> buscar_por_categoria(String cat_name){
+		List<Contenido> allContent = this.getAllContenido();
+		Iterator it = allContent.iterator();
+		List<Contenido> ret = new ArrayList();
+		Contenido con = new Contenido();
+		while(it.hasNext()){
+			con = (Contenido) it.next();
+			if(this.tiene_categoria(con, cat_name))
+				ret.add(con);
+		}
+		return ret;
 	}
 
 }
