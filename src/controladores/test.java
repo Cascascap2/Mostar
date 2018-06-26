@@ -54,8 +54,19 @@ public class test {
 			con = (Contenido) it.next();
 			System.out.println(con.getName());
 		}
-		
 		*/
+		
+				//BUSQUEDA POR CARACTERES
+		
+		List<Contenido> con_por_caracter = cc.buscar_por_chars_al_comienzo("Toc");
+		Iterator it = con_por_caracter.iterator();
+		Contenido con = new Contenido();
+		while(it.hasNext()){
+			con = (Contenido) it.next();
+			System.out.println(con.getName());
+		}
+		
+		
 		/*
 		Contenido con = cc.getContenido("StreamTest");
 		con.setTipo("Evento");

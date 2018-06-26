@@ -110,5 +110,20 @@ public class ContenidoControlador {
 		}
 		return ret;
 	}
+	
+	public List<Contenido> buscar_por_chars_al_comienzo(String con_chars){
+		List<Contenido> allContent = this.getAllContenido();
+		Iterator it = allContent.iterator();
+		List<Contenido> ret = new ArrayList();
+		Contenido con = new Contenido();
+		while(it.hasNext()){
+			con = (Contenido) it.next();
+			if(con.getName().startsWith(con_chars))
+				ret.add(con);
+		}
+		return ret;
+	}
+	
+	//TODO get 5 from buscar_por_chars si es necesario
 
 }
