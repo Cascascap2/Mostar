@@ -76,15 +76,9 @@ public class ContenidoDB {
 		public Contenido getContenido(String con_name) {
 			Session session = this.SessionFactory.getCurrentSession();
 			session.beginTransaction();
-			try{
-				Contenido cont = session.get(Contenido.class, con_name);
-				session.close(); 
-				return cont;
-			}catch(Exception e){
-				System.out.println(e.getMessage());
-				session.close();
-				return null;
-			}
+			Contenido cont = session.get(Contenido.class, con_name);
+			session.close(); 
+			return cont;
 		}
 		
 		public Set<Categorias> getCategorias(String con_name){

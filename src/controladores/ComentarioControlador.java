@@ -5,6 +5,7 @@ import java.util.List;
 
 import daos.ComentarioDAO;
 import logica.modelos.Comentarios;
+import logica.modelos.Usuario;
 
 public class ComentarioControlador {
 	
@@ -36,6 +37,12 @@ public class ComentarioControlador {
 		List<Comentarios> retlist = new ArrayList<Comentarios>();
 		retlist = cdao.getAllComentariosByContName(contenido_name);
 		return retlist;
+	}
+	
+	public void mark_spoiler(Comentarios com, Usuario user){
+		com.setSpoiler(com.getSpoiler() + 1);
+		com.add_spoilerer(user);
+		this.modificarComentario(com);
 	}
 
 

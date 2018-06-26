@@ -17,6 +17,7 @@ import org.quartz.impl.StdSchedulerFactory;
 import logica.eventos.StreamAlert;
 import logica.modelos.Categorias;
 import logica.modelos.Contenido;
+import logica.modelos.Usuario;
 import daos.ContenidoDAO;
 
 public class ContenidoControlador {
@@ -125,5 +126,27 @@ public class ContenidoControlador {
 	}
 	
 	//TODO get 5 from buscar_por_chars si es necesario
+	
+	public boolean user_gave_like(){
+		
+		return false;
+	}
+	
+	public boolean user_gave_dislike(){
+		
+		return false;
+	}
+	
+	public void like(Contenido con, Usuario user){
+		con.setLikes(con.getLikes() + 1);
+		con.add_liker(user);
+		this.modificarContenido(con);
+	}
+	
+	public void dislike(Contenido con, Usuario user){
+		con.setDislikes(con.getDislikes() + 1);
+		con.add_disiker(user);
+		this.modificarContenido(con);
+	}
 
 }

@@ -21,7 +21,7 @@ public class test {
 		ComentarioControlador coc = manejador.getComentarioControlador();
 		CategoriaControlador cac = manejador.getCategoriaControlador();		
 
-		
+				//GET CATEGORIAS
 		/*
 		List<Categorias> categorias = cac.getAllCategorias();
 		Iterator it = categorias.iterator();
@@ -33,9 +33,9 @@ public class test {
 		}
 		*/
 		
+				//COMENTARIOS
 		//uc.registrarUsuario("pepe", "testing2@mail.com", "testpass", 250.50, expdate, 1);		
-		//cc.altaContenido("The walking dead", "FOX", "videos/twd.mp4", "Much ad", "Serie", "/images/dead.jpg");
-		//cc.altaContenido("StreamTest", "HBO", "", "A stream","Evento");
+		//cc.altaContenido("The walking dead2", "FOX", "videos/twd.mp4", "Much ad", "Serie", "/images/dead.jpg");
 		
 		//Usuario user = uc.getUsuario("testing");
 		//coc.altaComentario("Pepe", "Hola, soy un comentario", "ContenidoTest");
@@ -57,7 +57,7 @@ public class test {
 		*/
 		
 				//BUSQUEDA POR CARACTERES
-		
+		/*
 		List<Contenido> con_por_caracter = cc.buscar_por_chars_al_comienzo("Toc");
 		Iterator it = con_por_caracter.iterator();
 		Contenido con = new Contenido();
@@ -65,7 +65,33 @@ public class test {
 			con = (Contenido) it.next();
 			System.out.println(con.getName());
 		}
+		*/
 		
+		/*
+				//LIKES
+		Usuario user = uc.getUsuario("pepe");
+		Contenido con = cc.getContenido("Deadpool 2");
+		cc.like(con, user);
+		*/
+		
+		/*
+				//DISLIKES
+		Usuario user = uc.getUsuario("pepe");
+		Contenido con = cc.getContenido("Deadpool 2");
+		cc.dislike(con, user);
+		*/
+		
+		/*
+				//FAVORITOS
+		Usuario user = uc.getUsuario("pepe");
+		Contenido con = cc.getContenido("Deadpool 2");
+		uc.agregarFavorito(user, con);
+		*/
+		
+				//SPOILERS
+		Usuario user = uc.getUsuario("pepe");
+		Comentarios com = coc.getComentario(7);
+		coc.mark_spoiler(com, user);
 		
 		/*
 		Contenido con = cc.getContenido("StreamTest");

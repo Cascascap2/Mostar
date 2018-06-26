@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
-import database.FavoritesKey;
+import database.Keys.FavoritesKey;
 
 @Entity
 @IdClass(FavoritesKey.class)

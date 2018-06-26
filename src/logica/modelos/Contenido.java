@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,6 +18,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @Table(name = "contenidos")
 public class Contenido {
@@ -25,7 +31,6 @@ public class Contenido {
 	private String provider_name;
 	private String ruta;
 	private int vistas;
-	private double calificacion;
 	private boolean visible_adm_cont;
 	private boolean visible_adm_sist;
 	private String descripcion;
@@ -34,6 +39,10 @@ public class Contenido {
 	private Date hora_streaming;
 	private Set<Categorias> categorias;
 	private String ruta_imagen;
+	private int likes;
+	private int dislikes;
+	private List<Usuario> likers;
+	private List<Usuario> dislikers;
 	
 	public Contenido(){		
 	}
@@ -43,7 +52,8 @@ public class Contenido {
 		this.provider_name = provider_name;
 		this.ruta = ruta;
 		this.vistas = 0;
-		this.calificacion = 0;
+		this.likes = 0;
+		this.dislikes = 0;
 		this.visible_adm_cont = false;
 		this.visible_adm_sist = false;
 		this.descripcion = descripcion;
@@ -74,7 +84,35 @@ public class Contenido {
 	public Set<Categorias> getCategorias() {
 		return categorias;
 	}
-	
+		
+	@OneToMany(fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+    @JoinTable(
+            name = "likes_contenido",
+            joinColumns = @JoinColumn(name = "fk_user_name"),
+            inverseJoinColumns = @JoinColumn(name = "fk_contenido_name"))
+	public List<Usuario> getLikers() {
+		return likers;
+	}
+
+	public void setLikers(List<Usuario> likers) {
+		this.likers = likers;
+	}
+
+	@OneToMany(fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+    @JoinTable(
+            name = "dislikes_contenido",
+            joinColumns = @JoinColumn(name = "fk_user_name"),
+            inverseJoinColumns = @JoinColumn(name = "fk_contenido_name"))
+	public List<Usuario> getDislikers() {
+		return dislikers;
+	}
+
+	public void setDislikers(List<Usuario> dislikers) {
+		this.dislikers = dislikers;
+	}
+
 	@Transient
 	public List<Categorias> getCategoriasAsList(){
 		List<Categorias> ret = new ArrayList<Categorias>();
@@ -115,13 +153,21 @@ public class Contenido {
 	public void setVistas(int vistas) {
 		this.vistas = vistas;
 	}
-
-	public double getCalificacion() {
-		return calificacion;
+	
+	public int getLikes() {
+		return likes;
 	}
 
-	public void setCalificacion(double calificacion) {
-		this.calificacion = calificacion;
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
+	public int getDislikes() {
+		return dislikes;
+	}
+
+	public void setDislikes(int dislikes) {
+		this.dislikes = dislikes;
 	}
 
 	public boolean isVisible_adm_cont() {
@@ -186,18 +232,28 @@ public class Contenido {
 	public void add_categoria(Categorias cat){
 		this.categorias.add(cat);
 	}
+	
+	public void add_liker(Usuario user){
+		this.likers.add(user);
+	}
+	
+	public void add_disiker(Usuario user) {
+		this.dislikers.add(user);
+	}
 
 	@Override
 	public String toString() {
 		return "Contenido [name=" + name + ", provider_name=" + provider_name
-				+ ", ruta=" + ruta + ", vistas=" + vistas + ", calificacion="
-				+ calificacion + ", visible_adm_cont=" + visible_adm_cont
+				+ ", ruta=" + ruta + ", vistas=" + vistas
+				+ ", visible_adm_cont=" + visible_adm_cont
 				+ ", visible_adm_sist=" + visible_adm_sist + ", descripcion="
 				+ descripcion + ", tipo=" + tipo + ", hora_de_alta="
 				+ hora_de_alta + ", hora_streaming=" + hora_streaming
 				+ ", categorias=" + categorias + ", ruta_imagen=" + ruta_imagen
-				+ "]";
+				+ ", likes=" + likes + ", dislikes=" + dislikes + "]";
 	}
+
+	
 
 		
 }

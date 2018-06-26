@@ -1,9 +1,18 @@
 package logica.modelos;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "comentarios")
@@ -18,6 +27,7 @@ public class Comentarios {
 	private int Spoiler;
 	@Column(name="contenido_name")
 	private String contenido_name;
+	private List<Usuario> spoiler_givers;
 	
 
 	public int getId() {
@@ -60,15 +70,35 @@ public class Comentarios {
 	public void setContenido_name(String contenido_name) {
 		this.contenido_name = contenido_name;
 	}
+	
+	@OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "comentario_usuario_spoilers",
+            joinColumns = @JoinColumn(name = "fk_id_comentario"),
+            inverseJoinColumns = @JoinColumn(name = "fk_user_name"))
+	public List<Usuario> getSpoiler_givers() {
+		return spoiler_givers;
+	}
 
+	public void setSpoiler_givers(List<Usuario> spoiler_givers) {
+		this.spoiler_givers = spoiler_givers;
+	}
+
+	
 	@Override
 	public String toString() {
-		return "Comentarios [id=" + id + ", User_nick=" + User_nick + ", Message=" + Message + ", Spoiler=" + Spoiler
-				+ ", ContenidoId=" + contenido_name + "]";
+		return "Comentarios [id=" + id + ", User_nick=" + User_nick
+				+ ", Message=" + Message + ", Spoiler=" + Spoiler
+				+ ", contenido_name=" + contenido_name + ", spoiler_givers="
+				+ spoiler_givers + "]";
 	}
-	
+
 	public Comentarios(){
 		
+	}
+	
+	public void add_spoilerer(Usuario user){
+		this.spoiler_givers.add(user);
 	}
 	
 	public Comentarios(String user_nick, String msg, String Contenido_name) {

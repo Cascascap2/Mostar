@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
-import database.CategoriasKey;
+import database.Keys.CategoriasKey;
 
 @Entity
 @IdClass(CategoriasKey.class)
