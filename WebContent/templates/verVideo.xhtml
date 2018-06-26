@@ -2,69 +2,78 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-	  xmlns:ui="http://java.sun.com/jsf/facelets"
-	  xmlns:s="http://jboss.com/products/seam/taglib">
-	  
-	
-	<h:head>
-			<title>Mostar</title>
-			<script src="js/flowplayer-3.2.13.min.js"></script>
-		    <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script> 
-		    <style>
-		        .video {
-		            margin: 0 auto;
-		        }
-		    </style>
-	</h:head>
-	
-	<h:body>
-	
-		<div id="Header">
-			<ui:insert name="header">
-				<ui:include  src="Generales/header.xhtml"></ui:include>
-			</ui:insert>
-		</div>
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:s="http://jboss.com/products/seam/taglib">
+
+
+<h:head>
+	<title>Mostar</title>
+	<script src="js/flowplayer-3.2.13.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js">
 		
-		<div id="video"> 
-			<center>
-				<h1>#{videoController.contenido_name}</h1>
-				<p:media value="#{videoController.ruta}"  width="1200" height="800" player="quicktime">
-				</p:media>
-				<p>Vistas: #{videoController.vistas}</p>
-			</center>
-		</div>
-		
-		<b:dataTable value="#{videoController.comentarios}" var="comentario" 
-		info="false" searching="false">
-					<b:dataTableColumn name="Comentarios" label="Comentarios">
-					 <b:container>
-	                    <h2>#{comentario.user_nick}</h2>
-	                    <p>#{comentario.message}</p>
-	                  </b:container>
-	                </b:dataTableColumn>
-	    </b:dataTable>		
-		
-		<h:form>		
-		<b:container>
-			<b:inputText placeholder="Escriba un comentario" id="msg" name="msg" value = "#{videoController.comentario_msg}"></b:inputText>
-			<b:commandButton value="Enviar" action="#{videoController.crearComentario}">
-			</b:commandButton>
-		</b:container>
-		
-		<br></br><br></br><br></br>	
-		<h2><h:outputText id = "outputMessage" />AAAAAAABC</h2>
+	</script>
+	<style>
+.video {
+	margin: 0 auto;
+}
+</style>
+</h:head>
+
+<h:body>
+
+	<div id="Header">
+		<ui:insert name="header">
+			<ui:include src="Generales/header.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+
+	<div id="video">
+		<center>
+			<h1>#{videoController.contenido_name}</h1>
+			<p:media value="#{videoController.ruta}" width="1200" height="800"
+				player="quicktime">
+			</p:media>
+			<p>Vistas: #{videoController.vistas}</p>
+		</center>
+	</div>
+	<div >
+		<b:dataTable value="#{videoController.comentarios}" var="comentario"
+			info="false" searching="false" id="display">
+			<b:dataTableColumn name="Comentarios" label="Comentarios">
+				<b:container>
+					<h2>#{comentario.user_nick}</h2>
+					<p>#{comentario.message}</p>
+				</b:container>
+			</b:dataTableColumn>
+		</b:dataTable>
+
+		<h:form>
+			<b:container>
+				<b:inputText placeholder="Escriba un comentario" id="msg" name="msg"
+					value="#{videoController.comentario_msg}"></b:inputText>
+				<b:commandButton value="Enviar" update="display"
+					action="#{videoController.crearComentario}">
+				</b:commandButton>
+			</b:container>
 		</h:form>
-		
-		<div id="footer">
-		    <ui:insert name="footer">
-		        <ui:include src="Generales/footer.xhtml"/>
-		    </ui:insert>
-		</div>
-		<br></br><br></br>
+	</div>
+
+	<br></br>
+	<br></br>
+	<br></br>
+
+	<div id="footer">
+		<ui:insert name="footer">
+			<ui:include src="Generales/footer.xhtml" />
+		</ui:insert>
+	</div>
+	<br></br>
+	<br></br>
 	
-	</h:body>
+
+</h:body>
 </html>

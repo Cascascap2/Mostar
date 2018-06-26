@@ -27,7 +27,7 @@ public class Comentarios {
 	private int Spoiler;
 	@Column(name="contenido_name")
 	private String contenido_name;
-	private List<Usuario> spoiler_givers;
+	//private List<Usuario> spoiler_givers;
 	
 
 	public int getId() {
@@ -76,13 +76,13 @@ public class Comentarios {
             name = "comentario_usuario_spoilers",
             joinColumns = @JoinColumn(name = "fk_id_comentario"),
             inverseJoinColumns = @JoinColumn(name = "fk_user_name"))
-	public List<Usuario> getSpoiler_givers() {
+	/*public List<Usuario> getSpoiler_givers() {
 		return spoiler_givers;
 	}
 
 	public void setSpoiler_givers(List<Usuario> spoiler_givers) {
 		this.spoiler_givers = spoiler_givers;
-	}
+	}*/
 
 	
 	@Override
@@ -90,16 +90,16 @@ public class Comentarios {
 		return "Comentarios [id=" + id + ", User_nick=" + User_nick
 				+ ", Message=" + Message + ", Spoiler=" + Spoiler
 				+ ", contenido_name=" + contenido_name + ", spoiler_givers="
-				+ spoiler_givers + "]";
+				+ /*spoiler_givers + */"]";
 	}
 
 	public Comentarios(){
 		
 	}
 	
-	public void add_spoilerer(Usuario user){
+	/*public void add_spoilerer(Usuario user){
 		this.spoiler_givers.add(user);
-	}
+	}*/
 	
 	public Comentarios(String user_nick, String msg, String Contenido_name) {
 		this.User_nick = user_nick;

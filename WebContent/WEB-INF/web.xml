@@ -50,7 +50,7 @@
 		<url-pattern>/faces/streaming.xhtml</url-pattern>
 	</filter-mapping>
 
-	<filter-mapping>
+	<!--<filter-mapping>
 		<filter-name>AdminFilter</filter-name>
 		<url-pattern>/faces/streaming.xhtml</url-pattern>
 	</filter-mapping>
@@ -58,6 +58,6 @@
 	<filter-mapping>
 		<filter-name>EmpFilter</filter-name>
 		<url-pattern>/faces/streaming.xhtml</url-pattern>
-	</filter-mapping>
+	</filter-mapping>-->
 
 </web-app>

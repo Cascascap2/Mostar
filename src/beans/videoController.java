@@ -133,6 +133,8 @@ public class videoController {
 		ComentarioControlador coc = man.getComentarioControlador();
 		String user_nick = this.session.getNickname();
 		coc.altaComentario(user_nick, this.comentario_msg, this.contenido_name);
+		this.comentarios = coc.getAllComentariosByContName(contenido_name);
+		this.comentario_msg = "";
 	}
 	
 	@PostConstruct
