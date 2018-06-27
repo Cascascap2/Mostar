@@ -34,6 +34,8 @@ public class Usuario {
 	
 	private int PermissionId;
 	
+	private boolean activo;
+	
 	
 	public Usuario() {
 		this.favorites = new HashSet<Contenido>();
@@ -48,6 +50,7 @@ public class Usuario {
 		this.DateExpiration = expiration;
 		this.PermissionId = permission;
 		this.favorites = new HashSet<Contenido>();
+		this.activo = true;
 	}
 	
 	@Column(name= "permission_id")
@@ -119,6 +122,15 @@ public class Usuario {
 	
 	public void addFavorito(Contenido con) {
 		this.favorites.add(con);
+	}
+	
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	@Override

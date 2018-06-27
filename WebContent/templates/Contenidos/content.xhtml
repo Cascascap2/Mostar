@@ -6,7 +6,19 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-
+      
+<div>     
+<h:form>
+    <p:growl id="msgs" showDetail="true" />
+    <p:panel header="Buscar por categoria">
+            <p:selectOneMenu id="country" value="asd">
+                <f:selectItem itemLabel="Elejir categoria" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="ads" />
+            </p:selectOneMenu>
+        <p:commandButton value="Buscar" update="msgs" actionListener="kek" icon="ui-icon-check" />
+    </p:panel>
+</h:form>
+  
 	   <div>
 			<b:container fluid="true" style="width:90%; margin:auto;">
 				<b:carousel id="tiovivo" style="width:90%;margin:auto; " interval="1500">
@@ -33,7 +45,7 @@
 				</b:carousel>
 			</b:container>
 	    </div>
-	    
+</div>	    
 	   
 	    <b:panel title="Estrenos" look="success">
 		  

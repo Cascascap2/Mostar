@@ -3,6 +3,7 @@ package logica.modelos;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -26,9 +27,7 @@ public class Comentarios {
 	@Column(name="spoiler")
 	private int Spoiler;
 	@Column(name="contenido_name")
-	private String contenido_name;
-	private List<Usuario> spoiler_givers;
-	
+	private String contenido_name;	
 
 	public int getId() {
 		return id;
@@ -71,6 +70,7 @@ public class Comentarios {
 		this.contenido_name = contenido_name;
 	}
 	
+	/*
 	@OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "comentario_usuario_spoilers",
@@ -83,23 +83,24 @@ public class Comentarios {
 	public void setSpoiler_givers(List<Usuario> spoiler_givers) {
 		this.spoiler_givers = spoiler_givers;
 	}
-
+*/
 	
 	@Override
 	public String toString() {
 		return "Comentarios [id=" + id + ", User_nick=" + User_nick
 				+ ", Message=" + Message + ", Spoiler=" + Spoiler
-				+ ", contenido_name=" + contenido_name + ", spoiler_givers="
-				+ spoiler_givers + "]";
+				+ ", contenido_name=" + contenido_name + "]";
 	}
 
 	public Comentarios(){
 		
 	}
 	
+	/*
 	public void add_spoilerer(Usuario user){
 		this.spoiler_givers.add(user);
 	}
+	*/
 	
 	public Comentarios(String user_nick, String msg, String Contenido_name) {
 		this.User_nick = user_nick;
@@ -107,6 +108,5 @@ public class Comentarios {
 		this.Spoiler = 0;
 		this.contenido_name = Contenido_name;		
 	}
-	
 	
 }

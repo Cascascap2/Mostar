@@ -16,12 +16,11 @@ public class UsuarioControlador {
 										expdate, permissions);
 		udao.registrarUsuario(tempUser);
 	}
-	//modificiar
 	
 	public void modificarUsuario(String nickname) {
-		//UsuarioDAO udao = new UsuarioDAO();
-		//Usuario tempUser = new Usuario();
-		
+		UsuarioDAO udao = new UsuarioDAO();
+		Usuario tempUser = new Usuario();
+		udao.modificarUsuario(tempUser);
 	}
 	
 	public void borrarUsuario(String nickname) {
@@ -53,6 +52,7 @@ public class UsuarioControlador {
 	public void agregarFavorito(Usuario user, Contenido con){
 		UsuarioDAO udao = new UsuarioDAO();
 		udao.agregarFavorito(user, con);
+		this.modificarUsuario(user);
 	}
 
 	public void modificarUsuario(Usuario user) {

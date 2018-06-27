@@ -34,7 +34,18 @@
 				<h1>#{videoController.contenido_name}</h1>
 				<p:media value="#{videoController.ruta}"  width="1200" height="800" player="quicktime">
 				</p:media>
-				<p>Vistas: #{videoController.vistas}</p>
+				<p:panel>
+					<p>
+					<h:form>
+					<p:growl id="msgs" showDetail="true" />
+					Vistas: #{videoController.vistas}
+					<b:commandButton value="Favorito" action="#{videoController.favorito}"></b:commandButton>
+					<b:commandButton value="Like" action="#{videoController.likeVideo}"> </b:commandButton>
+					<b:commandButton value="Dislike" action="#{videoController.dislikeVideo}"></b:commandButton>					
+					Rating: #{videoController.rating}%
+					</h:form>
+					</p>
+				</p:panel>
 			</center>
 		</div>
 		

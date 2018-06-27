@@ -90,8 +90,8 @@ public class test {
 		
 				//SPOILERS
 		Usuario user = uc.getUsuario("pepe");
-		Comentarios com = coc.getComentario(7);
-		coc.mark_spoiler(com, user);
+		//Comentarios com = coc.getComentario(7);
+		//coc.mark_spoiler(com, user);
 		
 		/*
 		Contenido con = cc.getContenido("StreamTest");

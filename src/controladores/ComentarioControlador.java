@@ -39,13 +39,11 @@ public class ComentarioControlador {
 		return retlist;
 	}
 	
+	/*
 	public void mark_spoiler(Comentarios com, Usuario user){
 		com.setSpoiler(com.getSpoiler() + 1);
 		com.add_spoilerer(user);
 		this.modificarComentario(com);
 	}
-
-
-
-
+	*/
 }
