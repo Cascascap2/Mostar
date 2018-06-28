@@ -18,6 +18,7 @@ public class homeController {
 	private List<Contenido> contenidos;
 	private List<Contenido> peliculas;
 	private List<Contenido> ultimas_peliculas;
+	private List<Contenido> eventos;
 	
 	public String getTest() {
 		return test;
@@ -59,6 +60,30 @@ public class homeController {
 		this.peliculas = peliculas;
 	}
 
+	public List<Contenido> getUltimas_peliculas() {
+		return ultimas_peliculas;
+	}
+
+
+	public void setUltimas_peliculas(List<Contenido> ultimas_peliculas) {
+		this.ultimas_peliculas = ultimas_peliculas;
+	}
+
+
+	public List<Contenido> getEventos() {
+		return eventos;
+	}
+
+
+	public void setEventos(List<Contenido> eventos) {
+		this.eventos = eventos;
+	}
+
+
+	public static int getEstrenos() {
+		return ESTRENOS;
+	}
+
 
 	@PostConstruct
 	public void init(){
@@ -67,6 +92,7 @@ public class homeController {
 		this.contenidos = cc.getAllContenido();
 		this.peliculas = new ArrayList();
 		this.ultimas_peliculas = new ArrayList();
+		this.eventos = new ArrayList();
 		List<Contenido> ultimas = new ArrayList();
 		Iterator it = this.contenidos.iterator();
 		Contenido con;
@@ -83,9 +109,10 @@ public class homeController {
 					ultimas.add(con);
 				}
 			}
+			else if(con.getTipo().equals("Evento"))
+				this.eventos.add(con);
 		}	
-		this.ultimas_peliculas = ultimas;
-		Iterator it3 = this.ultimas_peliculas.iterator();		
+		this.ultimas_peliculas = ultimas;	
 	}
 	
 }

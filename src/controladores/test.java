@@ -1,6 +1,7 @@
 package controladores;
 
 import java.util.Calendar;
+
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -21,10 +22,12 @@ public class test {
 		ComentarioControlador coc = manejador.getComentarioControlador();
 		CategoriaControlador cac = manejador.getCategoriaControlador();		
 		
+		/*
 				//SPOILER
 		Usuario user = uc.getUsuario("pepe");
 		Comentarios com = coc.getComentario(7);
 		uc.mark_spoiler(com, user);
+		*/
 		
 		/*
 				//USUARIOS PERMITIDOS A EVENTOS
