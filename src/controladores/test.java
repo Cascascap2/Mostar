@@ -20,7 +20,19 @@ public class test {
 		ContenidoControlador cc = manejador.getContenidoControlador();
 		ComentarioControlador coc = manejador.getComentarioControlador();
 		CategoriaControlador cac = manejador.getCategoriaControlador();		
-
+		
+				//SPOILER
+		Usuario user = uc.getUsuario("pepe");
+		Comentarios com = coc.getComentario(7);
+		uc.mark_spoiler(com, user);
+		
+		/*
+				//USUARIOS PERMITIDOS A EVENTOS
+		Usuario user = uc.getUsuario("pepe");
+		Contenido con = cc.getContenido("Toc toc");
+		cc.addUsuarioPermitido(con, user);
+		*/
+		
 				//GET CATEGORIAS
 		/*
 		List<Categorias> categorias = cac.getAllCategorias();
@@ -71,7 +83,13 @@ public class test {
 				//LIKES
 		Usuario user = uc.getUsuario("pepe");
 		Contenido con = cc.getContenido("Deadpool 2");
-		cc.like(con, user);
+		//cc.like(con, user);
+		List<Usuario> users = con.getLikers();
+		Iterator it = users.iterator();
+		while(it.hasNext()){
+			Usuario user2 = (Usuario) it.next();
+			System.out.println(user2.getNickname());
+		}
 		*/
 		
 		/*
@@ -89,7 +107,7 @@ public class test {
 		*/
 		
 				//SPOILERS
-		Usuario user = uc.getUsuario("pepe");
+		//Usuario user = uc.getUsuario("pepe");
 		//Comentarios com = coc.getComentario(7);
 		//coc.mark_spoiler(com, user);
 		

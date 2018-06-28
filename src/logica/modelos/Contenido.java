@@ -46,6 +46,7 @@ public class Contenido {
 	private int dislikes;
 	private List<Usuario> likers;
 	private List<Usuario> dislikers;
+	private List<Usuario> permitidos;
 	
 	public Contenido(){		
 	}
@@ -242,6 +243,24 @@ public class Contenido {
 	
 	public void add_disiker(Usuario user) {
 		this.dislikers.add(user);
+	}
+
+	@OneToMany(fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+    @JoinTable(
+            name = "usuario_perm_contenido",
+            joinColumns = @JoinColumn(name = "fk_user_name"),
+            inverseJoinColumns = @JoinColumn(name = "fk_contenido_name"))
+	public List<Usuario> getPermitidos() {
+		return permitidos;
+	}
+
+	public void setPermitidos(List<Usuario> permitidos) {
+		this.permitidos = permitidos;
+	}
+	
+	public void add_usuario_permitido(Usuario user){
+		this.permitidos.add(user);
 	}
 
 	@Override
