@@ -28,10 +28,6 @@ public class StreamingController {
 	private String message;
 	
 	
-	
-	
-	
-	
 	public String getNick() {
 		return nick;
 	}

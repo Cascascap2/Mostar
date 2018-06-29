@@ -6,8 +6,10 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import controladores.CategoriaControlador;
 import controladores.ContenidoControlador;
 import controladores.Manejador;
+import logica.modelos.Categorias;
 import logica.modelos.Contenido;
 
 public class homeController {
@@ -19,6 +21,7 @@ public class homeController {
 	private List<Contenido> peliculas;
 	private List<Contenido> ultimas_peliculas;
 	private List<Contenido> eventos;
+	private List<String> categorias;
 	
 	public String getTest() {
 		return test;
@@ -40,17 +43,6 @@ public class homeController {
 	public void setContenidos(List<Contenido> contenidos) {
 		this.contenidos = contenidos;
 	}
-
-
-	public List<Contenido> getUltimas_pelicula() {
-		return ultimas_peliculas;
-	}
-
-
-	public void setUltimas_pelicula(List<Contenido> ultimas_pelicula) {
-		this.ultimas_peliculas = ultimas_pelicula;
-	}
-
 
 	public List<Contenido> getPeliculas() {
 		return peliculas;
@@ -84,19 +76,32 @@ public class homeController {
 		return ESTRENOS;
 	}
 
+	public List<String> getCategorias() {
+		return categorias;
+	}
+
+
+	public void setCategorias(List<String> categorias) {
+		this.categorias = categorias;
+	}
+
 
 	@PostConstruct
 	public void init(){
 		Manejador man = Manejador.getInstance();
 		ContenidoControlador cc = man.getContenidoControlador();
+		CategoriaControlador cac = man.getCategoriaControlador();
 		this.contenidos = cc.getAllContenido();
-		this.peliculas = new ArrayList();
-		this.ultimas_peliculas = new ArrayList();
-		this.eventos = new ArrayList();
-		List<Contenido> ultimas = new ArrayList();
-		Iterator it = this.contenidos.iterator();
+		this.peliculas = new ArrayList<Contenido>();
+		this.ultimas_peliculas = new ArrayList<Contenido>();
+		this.eventos = new ArrayList<Contenido>();
+		this.categorias = new ArrayList<String>();
+		List<Categorias> cats = cac.getAllCategorias();
+		List<Contenido> ultimas = new ArrayList<Contenido>();
+		Iterator<Contenido> it = this.contenidos.iterator();
+		Iterator<Categorias> it2 = cats.iterator();
 		Contenido con;
-		Iterator it2 = ultimas.iterator();
+		Categorias cat;
 		while(it.hasNext()){
 			con = (Contenido) it.next();
 			if(con.getTipo().equals("Pelicula")){
@@ -111,7 +116,11 @@ public class homeController {
 			}
 			else if(con.getTipo().equals("Evento"))
 				this.eventos.add(con);
-		}	
+		}
+		while(it2.hasNext()){
+			cat = (Categorias) it2.next();
+			this.categorias.add(cat.getName());
+		}
 		this.ultimas_peliculas = ultimas;	
 	}
 	

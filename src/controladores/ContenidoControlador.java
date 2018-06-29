@@ -106,20 +106,22 @@ public class ContenidoControlador {
 		Contenido con = new Contenido();
 		while(it.hasNext()){
 			con = (Contenido) it.next();
-			if(this.tiene_categoria(con, cat_name))
+			if(this.tiene_categoria(con, cat_name)){
 				ret.add(con);
+			}
 		}
 		return ret;
 	}
 	
 	public List<Contenido> buscar_por_chars_al_comienzo(String con_chars){
+		String lowercase_chars = con_chars.toLowerCase();
 		List<Contenido> allContent = this.getAllContenido();
-		Iterator it = allContent.iterator();
-		List<Contenido> ret = new ArrayList();
+		Iterator<Contenido> it = allContent.iterator();
+		List<Contenido> ret = new ArrayList<Contenido>();
 		Contenido con = new Contenido();
 		while(it.hasNext()){
 			con = (Contenido) it.next();
-			if(con.getName().startsWith(con_chars))
+			if(con.getName().toLowerCase().contains(lowercase_chars))
 				ret.add(con);
 		}
 		return ret;

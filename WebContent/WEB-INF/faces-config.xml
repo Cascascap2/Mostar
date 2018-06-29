@@ -28,7 +28,7 @@
 	<managed-bean>
 		<managed-bean-name>videoController</managed-bean-name>
 		<managed-bean-class>beans.videoController</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
+		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>homeController</managed-bean-name>
@@ -49,6 +49,11 @@
 		<managed-bean-name>streamingController</managed-bean-name>
 		<managed-bean-class>beans.StreamingController</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>searchController</managed-bean-name>
+		<managed-bean-class>beans.searchController</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
 	<navigation-rule>
 		<display-name>templates/home.xhtml</display-name>
@@ -94,6 +99,26 @@
 	  <navigation-case>
 	    <from-outcome>verVideo</from-outcome>
 	    <to-view-id>/templates/verVideo.xhtml</to-view-id>
+	    <redirect />
+	  </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	  <display-name>templates/home.xhtml</display-name>
+	  <from-view-id> /templates/home.xhtml</from-view-id>
+	  <navigation-case>
+	    <from-outcome>searchResult</from-outcome>
+	    <to-view-id>/templates/searchResult.xhtml</to-view-id>
+	    <redirect />
+	  </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	  <display-name>templates/searchResult.xhtml</display-name>
+	  <from-view-id> /templates/searchResult.xhtml</from-view-id>
+	  <navigation-case>
+	    <from-outcome>searchResult</from-outcome>
+	    <to-view-id>/templates/searchResult.xhtml</to-view-id>
 	    <redirect />
 	  </navigation-case>
 	</navigation-rule>

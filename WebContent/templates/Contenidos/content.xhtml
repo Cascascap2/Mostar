@@ -11,11 +11,11 @@
 <h:form>
     <p:growl id="msgs" showDetail="true" />
     <p:panel header="Buscar por categoria">
-            <p:selectOneMenu id="country" value="asd">
+            <p:selectOneMenu id="categoria" value="#{searchController.categoria}">
                 <f:selectItem itemLabel="Elejir categoria" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="ads" />
+                <f:selectItems value="#{homeController.categorias}" />
             </p:selectOneMenu>
-        <p:commandButton value="Buscar" update="msgs" actionListener="kek" icon="ui-icon-check" />
+        <p:commandButton value="Buscar" update="msgs" action="#{searchController.buscarCategoria}" icon="ui-icon-check" />
     </p:panel>
 </h:form>
   
@@ -50,7 +50,7 @@
 	    <b:panel title="Estrenos" look="success">
 		  
 		  <h:form>
-		    <p:dataList value="#{homeController.ultimas_pelicula}" var="pelicula" type="definition">
+		    <p:dataList value="#{homeController.ultimas_peliculas}" var="pelicula" type="definition">
 		    	<b:container>
 		    	 <p:panel header="#{pelicula.name}" style="margin-bottom:20px">
 		        	<b:image class="contentImage" style="width:50%" name="{pelicula.name}.imagen" value="#{pelicula.ruta_imagen}"  tooltip="#{pelicula.name}" tooltipPosition="auto" />

@@ -12,14 +12,15 @@
 		    <b:navLink value="Transmisiones en vivo" id="live"  rendered="#{userController.logged}"></b:navLink>
 		    <b:navLink value="Pagar Suscripcion" id="payment" rendered="#{userController.logged}"></b:navLink>
 		  </b:navbarLinks>
+		  
 		  <h:form class="navbar-form navbar-left hidden-md hidden-sm hidden-xs" role="search" id="search">
 			  <div class="form-group" style="margin: auto;" >
-			    <input type="text" class="form-control" placeholder="Buscar..."/>
+			    <p:inputText id="txt1" value="#{searchController.busqueda}" required="true" label="Buscada: "></p:inputText>
+			    <br></br>
 			  </div>
-			  <button type="submit" class="btn btn-success" action="">Buscar</button>
-			
-            
+			  <p:commandButton type="submit" class="btn btn-success" value="Buscar" action="#{searchController.busquedaGeneral}"></p:commandButton>
 		  </h:form>
+		  
 		 <b:navbarLinks pull="right" styleClass="hidden-xs" name="clientheader" rendered="#{userController.permissionId == 1}">
 		</b:navbarLinks>
 	 	<b:navbarLinks pull="right" styleClass="hidden-xs" name="loginOff" rendered="#{not userController.logged}">
