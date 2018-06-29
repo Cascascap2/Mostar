@@ -138,15 +138,52 @@ public class ContenidoControlador {
 	}
 	
 	public void like(Contenido con, Usuario user){
-		con.setLikes(con.getLikes() + 1);
-		con.add_liker(user);
-		this.modificarContenido(con);
+		List<Usuario> likers = con.getLikers();
+		if(userInList(likers, user.getNickname())){
+			System.out.println("Ya dio like");
+		}
+		else{
+			con.setLikes(con.getLikes() + 1);
+			con.add_liker(user);
+			this.modificarContenido(con);
+		}
+		
 	}
 	
 	public void dislike(Contenido con, Usuario user){
-		con.setDislikes(con.getDislikes() + 1);
-		con.add_disiker(user);
-		this.modificarContenido(con);
+		List<Usuario> dislikers = con.getDislikers();
+		if(userInList(dislikers, user.getNickname())){
+			System.out.println("Ya dio dislike");
+		}
+		else{
+			con.setDislikes(con.getDislikes() + 1);
+			con.add_disiker(user);
+			this.modificarContenido(con);
+		}
+		
+	}
+	
+	public boolean userInList(List<Usuario> list, String user_nick){
+		Iterator<Usuario> it = list.iterator();
+		Usuario usr = new Usuario();
+		while(it.hasNext()){
+			usr = (Usuario) it.next();
+			if(usr.getNickname().equals(user_nick))
+				return true;
+		}
+		return false;
+	}
+	
+	public void addUsuarioPermitido(Contenido con, Usuario user){
+		List<Usuario> permitidos = con.getPermitidos();
+		if(userInList(permitidos, user.getNickname())){
+			System.out.println("Ya tiene permisos");
+		}
+		else{
+			con.add_usuario_permitido(user);
+			this.modificarContenido(con);
+		}
+		
 	}
 
 }

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
 
 	<b:navBar brand="Mostar" fluid="true" inverse="true" outcome="home" >
@@ -15,7 +16,9 @@
 			  <div class="form-group" style="margin: auto;" >
 			    <input type="text" class="form-control" placeholder="Buscar..."/>
 			  </div>
-			  <button type="submit" class="btn btn-success">Buscar</button>
+			  <button type="submit" class="btn btn-success" action="">Buscar</button>
+			
+            
 		  </h:form>
 		 <b:navbarLinks pull="right" styleClass="hidden-xs" name="clientheader" rendered="#{userController.permissionId == 1}">
 		</b:navbarLinks>

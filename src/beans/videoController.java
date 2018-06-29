@@ -15,9 +15,11 @@ import org.primefaces.push.annotation.Singleton;
 
 import logica.modelos.Comentarios;
 import logica.modelos.Contenido;
+import logica.modelos.Usuario;
 import controladores.ComentarioControlador;
 import controladores.ContenidoControlador;
 import controladores.Manejador;
+import controladores.UsuarioControlador;
 
 @Singleton
 public class videoController {
@@ -33,6 +35,8 @@ public class videoController {
 	private String comentario_msg;
 	@ManagedProperty(value="#{userController}")
     private userController session;
+	private String msg;
+	private int rating;
 
 	
 	public String getContenido_name() {
@@ -101,6 +105,21 @@ public class videoController {
 	public void setSession(userController session) {
 		this.session = session;
 	}
+	
+	
+	
+	public String getMsg() {
+		return msg;
+	}
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+	public int getRating() {
+		return rating;
+	}
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
 	@Override
 	public String toString() {
 		return "videoController [contenido_name=" + contenido_name
@@ -122,6 +141,7 @@ public class videoController {
 		this.ruta = con.getRuta();	
 		cc.aumentar_view(con);
 		this.vistas = con.getVistas();
+		updateRating();
 	}
 	
 	public String verPelicula(){
@@ -141,6 +161,57 @@ public class videoController {
 	     Application application = context.getApplication();
 	     userController uc = application.evaluateExpressionGet(context, "#{userController}", userController.class);
 	     this.session = uc;
+	     this.msg = "";
 	}
+	
+	
+	//TODO controlar que solo se pueda hacer una vez
+	public void likeVideo(){
+		Manejador man = Manejador.getInstance();
+		ContenidoControlador cc = man.getContenidoControlador();
+		UsuarioControlador uc = man.getUsuarioControlador();
+		String user_nick = this.session.getNickname();
+		Usuario user = uc.getUsuario(user_nick);
+		Contenido con = cc.getContenido(this.contenido_name);
+		cc.like(con, user);
+		updateRating();
+		//TODO change button color
+	}
+	
+	public void dislikeVideo(){
+		Manejador man = Manejador.getInstance();
+		ContenidoControlador cc = man.getContenidoControlador();
+		UsuarioControlador uc = man.getUsuarioControlador();
+		String user_nick = this.session.getNickname();
+		Usuario user = uc.getUsuario(user_nick);
+		Contenido con = cc.getContenido(this.contenido_name);
+		cc.dislike(con, user);
+		updateRating();
+		//TODO change button color
+	}
+	
+	public void updateRating(){
+		Manejador man = Manejador.getInstance();
+		ContenidoControlador cc = man.getContenidoControlador();
+		Contenido con = cc.getContenido(this.contenido_name);
+		int likes = con.getLikes();
+		int dislikes = con.getDislikes();
+		if((likes + dislikes)==0)
+			this.rating = 0;
+		else
+			this.rating = (likes * 100) / (likes + dislikes);
+	}
+	
+	public void favorito(){
+		Manejador man = Manejador.getInstance();
+		UsuarioControlador uc = man.getUsuarioControlador();
+		ContenidoControlador cc = man.getContenidoControlador();
+		Contenido con = cc.getContenido(this.contenido_name);
+		String user_nick = this.session.getNickname();
+		Usuario user = uc.getUsuario(user_nick);
+		uc.agregarFavorito(user, con);
+	}
+	
+	
 	
 }
