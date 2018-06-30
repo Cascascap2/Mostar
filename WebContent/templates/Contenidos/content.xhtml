@@ -12,7 +12,6 @@
     <p:growl id="msgs" showDetail="true" />
     <p:panel header="Buscar por categoria">
             <p:selectOneMenu id="categoria" value="#{searchController.categoria}">
-                <f:selectItem itemLabel="Elejir categoria" itemValue="" noSelectionOption="true" />
                 <f:selectItems value="#{homeController.categorias}" />
             </p:selectOneMenu>
         <p:commandButton value="Buscar" update="msgs" action="#{searchController.buscarCategoria}" icon="ui-icon-check" />
