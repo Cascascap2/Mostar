@@ -1,7 +1,6 @@
 package daos;
 
 import java.util.List;
-import java.util.Set;
 
 import database.CategoriaDB;
 import logica.modelos.Categorias;

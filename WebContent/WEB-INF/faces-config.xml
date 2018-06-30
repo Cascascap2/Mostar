@@ -87,6 +87,7 @@
 			<to-view-id>/templates/home.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
+		
 	</navigation-rule>
 	<navigation-rule>
 		<display-name>templates/register.xhtml</display-name>
@@ -97,6 +98,26 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>templates/verVideo.xhtml</display-name>
+		<from-view-id>/templates/verVideo.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/templates/home.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>templates/searchResult.xhtml</display-name>
+		<from-view-id>/templates/searchResult.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/templates/home.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>	
 	
 	<navigation-rule>
 	  <display-name>templates/home.xhtml</display-name>
@@ -127,6 +148,8 @@
 	    <redirect />
 	  </navigation-case>
 	</navigation-rule>
+	
+	
 	
 
 </faces-config>

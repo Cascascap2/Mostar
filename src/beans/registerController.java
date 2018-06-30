@@ -1,6 +1,5 @@
 package beans;
 
-import java.io.Serializable;
 import java.util.Date;
 
 
@@ -16,10 +15,7 @@ public class registerController{
 
 	private String password;
 	private String repeatPassword;
-	private String Messages;
-	
-	
-	
+	private String Messages;	
 	
 	public String getMessages() {
 		return Messages;

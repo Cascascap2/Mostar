@@ -5,7 +5,6 @@ import java.util.List;
 
 import daos.ComentarioDAO;
 import logica.modelos.Comentarios;
-import logica.modelos.Usuario;
 
 public class ComentarioControlador {
 	

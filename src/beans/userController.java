@@ -3,7 +3,6 @@ package beans;
 import java.util.Date;
 import java.util.Set;
 
-import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 
 import controladores.Manejador;

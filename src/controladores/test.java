@@ -127,9 +127,9 @@ public class test {
 		
 		//uc.borrarUsuario("testing");		
 		//cc.borrarContenido("ContenidoTest");
-		/*
-		 
-		Contenido con = cc.getContenido("ContenidoTest");
+		
+				//Programar Stream
+		
 		Contenido con2 = cc.getContenido("StreamTest");
 		
 		int hour 	= 06;
@@ -143,9 +143,10 @@ public class test {
 		
 		cc.programar_stream(con2, triggerTime.getTime());
 		System.out.println(con2.toString());
-		
+		System.out.println(con2.getHora_streaming().toString());
+		System.out.println(con2.getHora_streaming().toString());
 		System.out.println("Test end");
-		*/
+		
 	}
 
 }
