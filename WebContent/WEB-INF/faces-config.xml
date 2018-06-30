@@ -55,6 +55,11 @@
 		<managed-bean-class>beans.searchController</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>favoritosController</managed-bean-name>
+		<managed-bean-class>favoritosController</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
 	<navigation-rule>
 		<display-name>templates/home.xhtml</display-name>
 		<from-view-id>/templates/home.xhtml</from-view-id>

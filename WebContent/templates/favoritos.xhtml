@@ -1,10 +1,47 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+      
+	<h:head>
+			<title>Mostar</title>
+		    <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script> 
+			<link rel="stylesheet" type="text/css" href="/Mostar/css/home.css"></link>
+	</h:head>
+	<h:body>
+		<div id="Header">
+			<ui:insert name="header">
+				<ui:include  src="Generales/header.xhtml"></ui:include>
+			</ui:insert>
+		</div>
+		
+		<h1>#{favoritosController.msg} #{userController.nickname}</h1>		
+		 <h:form>
+		    <p:dataList value="#{userController.favorites}" var="pelicula" type="definition">
+		    	<b:container>
+		    	 <p:panel header="#{pelicula.name}" style="margin-bottom:20px">
+		        	<b:image class="contentImage" style="width:50%" name="{pelicula.name}.imagen" value="#{pelicula.ruta_imagen}"  tooltip="#{pelicula.name}" tooltipPosition="auto" />
+		    		<h:outputText value="   #{pelicula.descripcion}"/>
+		    		<br></br><br></br>
+		    		<h:commandButton value="Ver esta pelicula »" look="success" action="#{videoController.verPelicula}" actionListener="#{videoController.getPeliculaElejida}">
+		    		<f:attribute name="pelicula_elejida" value="#{pelicula.name}" />
+		    		</h:commandButton>
+		    	 </p:panel>
+		    	</b:container>
+	   		</p:dataList>
+   		</h:form>
+
+		<div id="footer">
+		    <ui:insert name="footer">
+		        <ui:include src="Generales/footer.xhtml"/>
+		    </ui:insert>
+		</div>
+
+	
+	</h:body>
 </html>

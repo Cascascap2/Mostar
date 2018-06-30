@@ -101,8 +101,8 @@ public class ContenidoControlador {
 	
 	public List<Contenido> buscar_por_categoria(String cat_name){
 		List<Contenido> allContent = this.getAllContenido();
-		Iterator it = allContent.iterator();
-		List<Contenido> ret = new ArrayList();
+		Iterator<Contenido> it = allContent.iterator();
+		List<Contenido> ret = new ArrayList<Contenido>();
 		Contenido con = new Contenido();
 		while(it.hasNext()){
 			con = (Contenido) it.next();
@@ -187,5 +187,6 @@ public class ContenidoControlador {
 		}
 		
 	}
+	
 
 }

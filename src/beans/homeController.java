@@ -1,5 +1,6 @@
 package beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +13,9 @@ import controladores.Manejador;
 import logica.modelos.Categorias;
 import logica.modelos.Contenido;
 
-public class homeController {
+public class homeController implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	private static final int ESTRENOS = 4;
 	
@@ -32,13 +35,9 @@ public class homeController {
 		this.test = test;
 	}
 
-
-
 	public List<Contenido> getContenidos() {
 		return contenidos;
 	}
-
-
 
 	public void setContenidos(List<Contenido> contenidos) {
 		this.contenidos = contenidos;
@@ -122,6 +121,14 @@ public class homeController {
 			this.categorias.add(cat.getName());
 		}
 		this.ultimas_peliculas = ultimas;	
+	}
+	
+	public String goHome(){
+		return "home";
+	}
+	
+	public String contentDateToString(Contenido con){
+		return con.getHora_streaming().toString();
 	}
 	
 }

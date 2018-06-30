@@ -1,12 +1,8 @@
 package beans;
 
-import java.io.Serializable;
-import java.util.Iterator;
 import java.util.List;
 
-import javax.faces.event.ActionEvent;
 
-import controladores.ComentarioControlador;
 import controladores.ContenidoControlador;
 import controladores.Manejador;
 import logica.modelos.Contenido;

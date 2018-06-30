@@ -173,5 +173,12 @@ public class userController {
 	public boolean isLoggedIn() {
 		return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(AUTH_KEY) != null;
 	}
+	
+	public void updateFavoritos(){
+		Manejador man = Manejador.getInstance();
+		UsuarioControlador controllerUser = man.getUsuarioControlador();
+		Usuario NewUser = controllerUser.getUsuarioPorMail(this.mail);
+		this.favorites = NewUser.getFavorites();
+	}
 
 }

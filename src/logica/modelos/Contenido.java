@@ -1,5 +1,6 @@
 package logica.modelos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -7,12 +8,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
@@ -21,15 +20,13 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
-import database.Keys.FavoritesKey;
 
 @Entity
 @Table(name = "contenidos")
-public class Contenido {
+public class Contenido implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String provider_name;
 	private String ruta;
@@ -120,7 +117,7 @@ public class Contenido {
 	@Transient
 	public List<Categorias> getCategoriasAsList(){
 		List<Categorias> ret = new ArrayList<Categorias>();
-		Iterator it = this.getCategorias().iterator();
+		Iterator<Categorias> it = this.getCategorias().iterator();
 		Categorias cat = new Categorias();
 		while(it.hasNext()){
 			cat = (Categorias) it.next();
@@ -245,6 +242,7 @@ public class Contenido {
 		this.dislikers.add(user);
 	}
 
+
 	@OneToMany(fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
     @JoinTable(
@@ -276,6 +274,4 @@ public class Contenido {
 	}
 
 	
-
-		
 }
