@@ -29,7 +29,7 @@
 		<b:navbarLinks pull="right" styleClass="hidden-xs" name="loginOn" >
 		    <b:navLink value="Notificaciones" id="notification" rendered="#{userController.logged}"></b:navLink>
 		     <b:dropMenu value="Cuenta" id="cuenta" rendered="#{userController.logged}" >
-			      <b:navLink value="Billetera" href="#"></b:navLink>
+			      <b:navLink value="Billetera" outcome="billetera"></b:navLink>
 			      <b:navLink value="Perfil" href="#"></b:navLink>
 			      <h:form>
 			      	<h:commandLink value="Cerrar Sesion" action="#{userController.cerrarSession}"></h:commandLink>

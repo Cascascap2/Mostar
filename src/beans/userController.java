@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import controladores.Manejador;
@@ -27,7 +28,9 @@ public class userController {
 	private Set<Contenido> favorites;
 
 	private Double wallet;
-
+	
+	private Double saldoRecarga = 0.0;
+	
 	private Date DateExpiration;
 
 	private int PermissionId;
@@ -35,6 +38,67 @@ public class userController {
 	private boolean Logged;
 
 	private String massages;
+	
+	private int numeroTarj=0;
+	
+	private Date fechTarjExp;
+	
+	private int numeroVer;
+	
+	
+
+
+	public int getNumeroTarj() {
+		return numeroTarj;
+	}
+
+
+
+	public void setNumeroTarj(int numeroTarj) {
+		this.numeroTarj = numeroTarj;
+	}
+
+
+
+	public Date getFechTarjExp() {
+		return fechTarjExp;
+	}
+
+
+
+	public void setFechTarjExp(Date fechTarjExp) {
+		this.fechTarjExp = fechTarjExp;
+	}
+
+
+
+	public int getNumeroVer() {
+		return numeroVer;
+	}
+
+
+
+	public void setNumeroVer(int numeroVer) {
+		this.numeroVer = numeroVer;
+	}
+
+
+
+	
+
+
+
+	public Double getSaldoRecarga() {
+		return saldoRecarga;
+	}
+
+
+
+	public void setSaldoRecarga(Double saldoRecarga) {
+		this.saldoRecarga = saldoRecarga;
+	}
+
+
 
 	public String getNickname() {
 		return nickname;
@@ -118,6 +182,26 @@ public class userController {
 	public void debug() {
 		java.lang.System.out.println(this.toString());
 	}
+	public String rechargeWallet(){
+		Manejador man = Manejador.getInstance();
+		System.out.println("manejador");
+		Usuario user = man.getUsuarioControlador().getUsuario(nickname);
+		System.out.println("Saldo rec:"+this.saldoRecarga.toString());
+		System.out.println("Saldo:"+this.wallet.toString());
+		user.setWallet(this.saldoRecarga + this.wallet);
+		System.out.println("suma saldo");
+		man.getUsuarioControlador().modificarUsuario(user);
+		this.wallet = user.getWallet();
+		System.out.println("Usuario modificado corredctamente");
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.addMessage(null, new FacesMessage("Info","Recarga realizada con exito!") );
+		return "billetera";
+		
+	}
+	
+	public String recargar() {
+		return "recarga";
+	} 
 
 	public String login() {
 		Usuario NewUser = new Usuario();
@@ -143,12 +227,14 @@ public class userController {
 				}
 			} else {
 				this.setMassages("Mail invalido ...");
+				System.out.println("No encuentro usuario por mail");
 				this.Logged = false;
 				return "login";
 			}
 
 		} else {
 			this.setMassages("El mail no debe ser vacio...");
+			System.out.println("no encuentro usuario por mail");
 			this.Logged = false;
 			return "login";
 		}
@@ -173,5 +259,6 @@ public class userController {
 	public boolean isLoggedIn() {
 		return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(AUTH_KEY) != null;
 	}
-
+	
+	
 }

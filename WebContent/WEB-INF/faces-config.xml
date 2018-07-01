@@ -97,6 +97,34 @@
 	    <redirect />
 	  </navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>templates/home.xhtml</display-name>
+		<from-view-id>/templates/home.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>billetera</from-outcome>
+			<to-view-id>/templates/billetera.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>templates/billetera.xhtml</display-name>
+		<from-view-id>/templates/billetera.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>recarga</from-outcome>
+			<to-view-id>/templates/recagaWallet.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>templates/recagaWallet.xhtml</display-name>
+		<from-view-id>/templates/recagaWallet.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>billetera</from-action>
+			<from-outcome>billetera</from-outcome>
+			<to-view-id>/templates/billetera.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 	
 
 </faces-config>
