@@ -1,6 +1,7 @@
 package logica.modelos;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -26,7 +27,10 @@ import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+public class Usuario implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
 	private String nickname;
 
 	private String mail;

@@ -3,8 +3,6 @@ package beans;
 import java.util.Date;
 import java.util.Set;
 
-import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import controladores.Manejador;
@@ -260,5 +258,11 @@ public class userController {
 		return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(AUTH_KEY) != null;
 	}
 	
-	
+	public void updateFavoritos(){
+		Manejador man = Manejador.getInstance();
+		UsuarioControlador controllerUser = man.getUsuarioControlador();
+		Usuario NewUser = controllerUser.getUsuarioPorMail(this.mail);
+		this.favorites = NewUser.getFavorites();
+	}
+
 }

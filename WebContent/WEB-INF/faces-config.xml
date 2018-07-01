@@ -28,7 +28,7 @@
 	<managed-bean>
 		<managed-bean-name>videoController</managed-bean-name>
 		<managed-bean-class>beans.videoController</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
+		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>homeController</managed-bean-name>
@@ -48,6 +48,16 @@
 	<managed-bean>
 		<managed-bean-name>streamingController</managed-bean-name>
 		<managed-bean-class>beans.StreamingController</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>searchController</managed-bean-name>
+		<managed-bean-class>beans.searchController</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>favoritosController</managed-bean-name>
+		<managed-bean-class>favoritosController</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>
 	</managed-bean>
 	<navigation-rule>
@@ -77,6 +87,7 @@
 			<to-view-id>/templates/home.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
+		
 	</navigation-rule>
 	<navigation-rule>
 		<display-name>templates/register.xhtml</display-name>
@@ -87,6 +98,26 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>templates/verVideo.xhtml</display-name>
+		<from-view-id>/templates/verVideo.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/templates/home.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>templates/searchResult.xhtml</display-name>
+		<from-view-id>/templates/searchResult.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/templates/home.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>	
 	
 	<navigation-rule>
 	  <display-name>templates/home.xhtml</display-name>
@@ -124,6 +155,46 @@
 			<to-view-id>/templates/billetera.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	  <display-name>templates/home.xhtml</display-name>
+	  <from-view-id> /templates/home.xhtml</from-view-id>
+	  <navigation-case>
+	    <from-outcome>searchResult</from-outcome>
+	    <to-view-id>/templates/searchResult.xhtml</to-view-id>
+	    <redirect />
+	  </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	  <display-name>templates/searchResult.xhtml</display-name>
+	  <from-view-id> /templates/searchResult.xhtml</from-view-id>
+	  <navigation-case>
+	    <from-outcome>searchResult</from-outcome>
+	    <to-view-id>/templates/searchResult.xhtml</to-view-id>
+	    <redirect />
+	  </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	  <display-name>templates/home.xhtml</display-name>
+	  <from-view-id> /templates/home.xhtml</from-view-id>
+	  <navigation-case>
+	    <from-outcome>streaming</from-outcome>
+	    <to-view-id>/templates/streaming.xhtml</to-view-id>
+	    <redirect />
+	  </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	  <display-name>templates/searchResult.xhtml</display-name>
+	  <from-view-id> /templates/searchResult.xhtml</from-view-id>
+	  <navigation-case>
+	    <from-outcome>streaming</from-outcome>
+	    <to-view-id>/templates/streaming.xhtml</to-view-id>
+	    <redirect />
+	  </navigation-case>
 	</navigation-rule>
 	
 

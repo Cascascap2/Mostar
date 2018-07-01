@@ -28,10 +28,6 @@ public class StreamingController {
 	private String message;
 	
 	
-	
-	
-	
-	
 	public String getNick() {
 		return nick;
 	}
@@ -125,5 +121,6 @@ public class StreamingController {
 //			---------------------Agregar campo nombre empresa a usuarios administradores de contenido----------------------------------------
 		 
 	 }
+	
 	
 }

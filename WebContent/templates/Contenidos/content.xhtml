@@ -11,11 +11,10 @@
 <h:form>
     <p:growl id="msgs" showDetail="true" />
     <p:panel header="Buscar por categoria">
-            <p:selectOneMenu id="country" value="asd">
-                <f:selectItem itemLabel="Elejir categoria" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="ads" />
+            <p:selectOneMenu id="categoria" value="#{searchController.categoria}">
+                <f:selectItems value="#{homeController.categorias}" />
             </p:selectOneMenu>
-        <p:commandButton value="Buscar" update="msgs" actionListener="kek" icon="ui-icon-check" />
+        <p:commandButton value="Buscar" update="msgs" action="#{searchController.buscarCategoria}" icon="ui-icon-check" />
     </p:panel>
 </h:form>
   
@@ -45,15 +44,15 @@
 				</b:carousel>
 			</b:container>
 	    </div>
-</div>	    
+	</div>	    
 	   
 	    <b:panel title="Estrenos" look="success">
 		  
 		  <h:form>
-		    <p:dataList value="#{homeController.ultimas_pelicula}" var="pelicula" type="definition">
+		    <p:dataList value="#{homeController.ultimas_peliculas}" var="pelicula" type="definition">
 		    	<b:container>
 		    	 <p:panel header="#{pelicula.name}" style="margin-bottom:20px">
-		        	<b:image class="contentImage" style="width:50%" name="{pelicula.name}.imagen" value="#{pelicula.ruta_imagen}"  tooltip="#{contenido.name}" tooltipPosition="auto" />
+		        	<b:image class="contentImage" style="width:50%" name="{pelicula.name}.imagen" value="#{pelicula.ruta_imagen}"  tooltip="#{pelicula.name}" tooltipPosition="auto" />
 		    		<h:outputText value="   #{pelicula.descripcion}"/>
 		    		<br></br><br></br>
 		    		<h:commandButton value="Ver esta pelicula »" look="success" action="#{videoController.verPelicula}" actionListener="#{videoController.getPeliculaElejida}">
@@ -66,12 +65,25 @@
    		
 		</b:panel>
 		
-		<b:panel title="Contenido destacado" look="warning">
+		<b:panel title="Proximos eventos" look="warning">
+		
+		<h:form>
+		    <p:dataList value="#{homeController.eventos}" var="evento" type="definition">
+		    	<b:container>
+		    	 <p:panel header="#{evento.name}" style="margin-bottom:20px">
+		        	<b:image class="contentImage" style="width:50%" name="{evento.name}.imagen" value="#{evento.ruta_imagen}"  tooltip="#{evento.name}" tooltipPosition="auto" />
+		    		<h:outputText value="#{pelicula.descripcion}"/>
+		    		<h:outputText value="Programado a emitir en: #{homeController.contentDateToString(evento)}"/>
+		    		<br></br><br></br>
+		    		<h:commandButton value="Ver este evento »" look="success" action="#{homeController.verStream}" actionListener="#{videoController.getPeliculaElejida}">
+		    		<f:attribute name="pelicula_elejida" value="#{evento.name}" />
+		    		</h:commandButton>
+		    	 </p:panel>
+		    	</b:container>
+	   		</p:dataList>
+   		</h:form>
 		  
-		</b:panel>
-		
-		
-		
+		</b:panel>	
 
 </html>
 

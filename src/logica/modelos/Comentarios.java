@@ -1,23 +1,18 @@
 package logica.modelos;
 
-import java.util.List;
+import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "comentarios")
-public class Comentarios {
+public class Comentarios implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	@Id
 	private int id;
 	@Column(name="user_nick")

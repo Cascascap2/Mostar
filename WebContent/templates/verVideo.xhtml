@@ -35,39 +35,37 @@
 				<p:media value="#{videoController.ruta}"  width="1200" height="800" player="quicktime">
 				</p:media>
 				<p:panel>
-					<p>
+					<p id="rating">
 					<h:form>
 					<p:growl id="msgs" showDetail="true" />
 					Vistas: #{videoController.vistas}
-					<b:commandButton value="Favorito" action="#{videoController.favorito}"></b:commandButton>
-					<b:commandButton value="Like" action="#{videoController.likeVideo}"> </b:commandButton>
-					<b:commandButton value="Dislike" action="#{videoController.dislikeVideo}"></b:commandButton>					
-					Rating: #{videoController.rating}%
+					<b:commandButton value="Favorito" action="#{videoController.favorito}" update="rating"></b:commandButton>
+					<b:commandButton value="Like" action="#{videoController.likeVideo}" update="rating"> </b:commandButton>
+					<b:commandButton value="Dislike" action="#{videoController.dislikeVideo}" update="rating"></b:commandButton>
+					<b:label id="rating" value="Rating: #{videoController.rating}%"></b:label>
 					</h:form>
 					</p>
 				</p:panel>
 			</center>
 		</div>
 		
-		<b:dataTable value="#{videoController.comentarios}" var="comentario" 
-		info="false" searching="false">
-					<b:dataTableColumn name="Comentarios" label="Comentarios">
-					 <b:container>
-	                    <h2>#{comentario.user_nick}</h2>
-	                    <p>#{comentario.message}</p>
-	                  </b:container>
-	                </b:dataTableColumn>
+		<b:dataTable value="#{videoController.comentarios}" var="comentario"  id="display" info="false" searching="false">
+			<b:dataTableColumn name="Comentarios" label="Comentarios">
+			 	<b:container>
+                   <h2>#{comentario.user_nick}</h2>
+                   <p>#{comentario.message}</p>
+                 </b:container>
+               </b:dataTableColumn>
 	    </b:dataTable>		
 		
 		<h:form>		
 		<b:container>
 			<b:inputText placeholder="Escriba un comentario" id="msg" name="msg" value = "#{videoController.comentario_msg}"></b:inputText>
-			<b:commandButton value="Enviar" action="#{videoController.crearComentario}">
+			<b:commandButton value="Enviar" update="display msg" action="#{videoController.crearComentario}">
 			</b:commandButton>
 		</b:container>
 		
 		<br></br><br></br><br></br>	
-		<h2><h:outputText id = "outputMessage" />AAAAAAABC</h2>
 		</h:form>
 		
 		<div id="footer">

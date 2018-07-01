@@ -1,6 +1,7 @@
 package controladores;
 
 import java.util.Calendar;
+
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -21,10 +22,12 @@ public class test {
 		ComentarioControlador coc = manejador.getComentarioControlador();
 		CategoriaControlador cac = manejador.getCategoriaControlador();		
 		
+		/*
 				//SPOILER
 		Usuario user = uc.getUsuario("pepe");
 		Comentarios com = coc.getComentario(7);
 		uc.mark_spoiler(com, user);
+		*/
 		
 		/*
 				//USUARIOS PERMITIDOS A EVENTOS
@@ -124,13 +127,14 @@ public class test {
 		
 		//uc.borrarUsuario("testing");		
 		//cc.borrarContenido("ContenidoTest");
-		/*
-		 
-		Contenido con = cc.getContenido("ContenidoTest");
-		Contenido con2 = cc.getContenido("StreamTest");
 		
-		int hour 	= 06;
-		int minutes = 49;
+				//Programar Stream
+		
+		Contenido con2 = cc.getContenido("StreamTest");
+		System.out.println("Test get");
+		
+		int hour 	= 22;
+		int minutes = 15;
 		int seconds = 00;
 		
 		Calendar triggerTime = Calendar.getInstance();
@@ -139,10 +143,10 @@ public class test {
 		triggerTime.set(Calendar.SECOND, seconds);		
 		
 		cc.programar_stream(con2, triggerTime.getTime());
-		System.out.println(con2.toString());
-		
+		System.out.println(triggerTime.getTime().toString());
 		System.out.println("Test end");
-		*/
+		
+		
 	}
 
 }

@@ -1,13 +1,10 @@
 package beans;
 
 import java.util.List;
-import java.util.Map;
 
-import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.faces.application.Application;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
@@ -153,6 +150,8 @@ public class videoController {
 		ComentarioControlador coc = man.getComentarioControlador();
 		String user_nick = this.session.getNickname();
 		coc.altaComentario(user_nick, this.comentario_msg, this.contenido_name);
+		this.comentarios = coc.getAllComentariosByContName(contenido_name); 
+		this.comentario_msg = ""; 
 	}
 	
 	@PostConstruct
