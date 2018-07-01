@@ -49,14 +49,13 @@
 			</center>
 		</div>
 		
-		<b:dataTable value="#{videoController.comentarios}" var="comentario" 
-		info="false" searching="false">
-					<b:dataTableColumn name="Comentarios" label="Comentarios">
-					 <b:container>
-	                    <h2>#{comentario.user_nick}</h2>
-	                    <p>#{comentario.message}</p>
-	                  </b:container>
-	                </b:dataTableColumn>
+		<b:dataTable value="#{videoController.comentarios}" var="comentario" info="false" searching="false">
+			<b:dataTableColumn name="Comentarios" label="Comentarios">
+			 	<b:container>
+                   <h2>#{comentario.user_nick}</h2>
+                   <p>#{comentario.message}</p>
+                 </b:container>
+               </b:dataTableColumn>
 	    </b:dataTable>		
 		
 		<h:form>		

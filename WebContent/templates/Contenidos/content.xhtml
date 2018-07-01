@@ -75,7 +75,7 @@
 		    		<h:outputText value="#{pelicula.descripcion}"/>
 		    		<h:outputText value="Programado a emitir en: #{homeController.contentDateToString(evento)}"/>
 		    		<br></br><br></br>
-		    		<h:commandButton value="Ver este evento »" look="success" action="#{videoController.verPelicula}" actionListener="#{videoController.getPeliculaElejida}">
+		    		<h:commandButton value="Ver este evento »" look="success" action="#{homeController.verStream}" actionListener="#{videoController.getPeliculaElejida}">
 		    		<f:attribute name="pelicula_elejida" value="#{evento.name}" />
 		    		</h:commandButton>
 		    	 </p:panel>
@@ -83,10 +83,7 @@
 	   		</p:dataList>
    		</h:form>
 		  
-		</b:panel>
-		
-		
-		
+		</b:panel>	
 
 </html>
 

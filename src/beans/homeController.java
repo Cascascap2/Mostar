@@ -131,4 +131,7 @@ public class homeController implements Serializable{
 		return con.getHora_streaming().toString();
 	}
 	
+	public String verStream(){
+		return "streaming";
+	}
 }
