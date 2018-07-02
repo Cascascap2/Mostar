@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Mostar</title>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
+</h:head>
+<h:body>
+	<div id="Header">
+		<ui:insert name="header">
+			<ui:include src="Generales/header.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+
+	<h:form id="form">
+		<b:growl id="msgs" showDetail="true" />
+
+		<p:dataTable id="Content" var="content" value="#{sisAdminController.usu}"
+			editable="true" style="margin-bottom:20px">
+			<f:facet name="header">
+		           Edición de Usuarios
+		       </f:facet>
+
+			<p:ajax event="rowEdit" listener="#{sisAdminController.onRowEdit}"
+				update=":form:msgs" />
+			<p:ajax event="rowEditCancel" listener="#{sisAdminController.onRowCancel}"
+				update=":form:msgs" />
+			
+			<p:column headerText="Nombre">
+				<h:outputText value="#{content.nickname}" />
+			</p:column>
+
+			<p:column headerText="Correo">
+				<h:outputText value="#{content.mail}" />
+			</p:column>
+
+			<p:column headerText="Fecha de Expiracion">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{content.dateExpiration}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{content.dateExpiration}" style="width:100%"
+							label="Descripcion" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<!--<p:column headerText="Visitas">
+		           <h:outputText value="#{content.vistas}" />
+		       </p:column>
+		       
+		       <p:column headerText="Calificacion">
+		           <h:outputText value="#{content.calificacion}" />
+		       </p:column>-->
+			<!-- <p:column headerText="Tipo Usuario">
+		           <p:cellEditor>
+		               <f:facet name="output"><h:outputText value="#{content.permissionId}" /></f:facet>
+		               <f:facet name="input">
+		                   <h:selectOneMenu value="#{content.permissionId}" style="width:100%">
+		                       <f:selectItems value="#{sisAdminController.permisdionId}" var="color" itemLabel="#{permissionId}" itemValue="#{permissionId}" />
+		                   </h:selectOneMenu>
+		               </f:facet>
+		           </p:cellEditor>
+		       </p:column>  -->
+
+			<p:column headerText="Usuario Visible">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{content.activo}" />
+					</f:facet>
+					<f:facet name="input">
+						<h:selectOneMenu value="#{content.activo}"
+							style="width:100%; font-color:'black'">
+							<f:selectItems value="#{sisAdminController.visible}" var="color"
+								itemLabel="#{visible}" itemValue="#{visible}" />
+						</h:selectOneMenu>
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			
+			<!-- <p:column headerText="Eliminar">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{content.activo}" />
+					</f:facet>
+					<f:facet name="input">
+						<h:selectOneMenu value="#{content.activo}"
+							style="width:100%; font-color:'black'">
+							<f:selectItems value="#{sisAdminController.visible}" var="color"
+								itemLabel="#{visible}" itemValue="#{visible}" />
+						</h:selectOneMenu>
+					</f:facet>
+				</p:cellEditor>
+			</p:column> -->
+
+			<p:column style="width:32px">
+				<p:rowEditor />
+			</p:column>
+		</p:dataTable>
+
+	</h:form>
+
+
+
+
+	<div id="footer">
+		<ui:insert name="footer">
+			<ui:include src="Generales/footer.xhtml" />
+		</ui:insert>
+	</div>
+
+
+</h:body>
+</html>

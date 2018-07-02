@@ -47,7 +47,7 @@ public class Usuario implements Serializable{
 	
 	private boolean activo;
 	
-	private String empresa_nombre;
+	private String empresaNombre;
 	
 	private List<Comentarios> dados_spoiler;
 	
@@ -150,11 +150,11 @@ public class Usuario implements Serializable{
 	
 
 	public String getEmpresa_nombre() {
-		return empresa_nombre;
+		return empresaNombre;
 	}
 
-	public void setEmpresa_nombre(String empresa_nombre) {
-		this.empresa_nombre = empresa_nombre;
+	public void setEmpresa_nombre(String empresaNombre) {
+		this.empresaNombre = empresaNombre;
 	}
 	
 	@OneToMany(fetch = FetchType.EAGER)
@@ -181,7 +181,7 @@ public class Usuario implements Serializable{
 				+ ", password=" + password + ", favorites=" + favorites
 				+ ", wallet=" + wallet + ", DateExpiration=" + DateExpiration
 				+ ", PermissionId=" + PermissionId + ", activo=" + activo
-				+ ", empresa_nombre=" + empresa_nombre + "]";
+				+ ", empresaNombre=" + empresaNombre + "]";
 	}
 
 	@Transient

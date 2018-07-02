@@ -114,7 +114,7 @@ public class StreamingController {
 	 void init() {
 		 FacesContext context = FacesContext.getCurrentInstance();
 		 Application application = context.getApplication();
-		 userController uc = application.evaluateExpressionGet(context, "#{userController}", userController.class);
+		 userController uc = application.evaluateExpressionGet(context,"#{userController}",userController.class);
 		 this.nick = uc.getNickname();
 		 Manejador man = Manejador.getInstance();
 		 this.empresa_name = man.getUsuarioControlador().getUsuario(nick).getNickname();

@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import daos.ContenidoDAO;
 import daos.UsuarioDAO;
 import logica.modelos.Comentarios;
 import logica.modelos.Contenido;
@@ -50,6 +51,12 @@ public class UsuarioControlador {
 		UsuarioDAO udao = new UsuarioDAO();
 		Usuario user = udao.getUsuarioPorMail(mail);
 		return user;
+	}
+	
+	public List<Usuario> getAllUsuario(){
+		UsuarioDAO cdao = new UsuarioDAO();
+		List<Usuario> ret = cdao.getAllUsuario();
+		return ret;
 	}
 	
 	public void agregarFavorito(Usuario user, Contenido con){
