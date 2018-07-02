@@ -141,6 +141,35 @@ public class videoController {
 		updateRating();
 	}
 	
+	public void registrarseEnEvento(ActionEvent event){
+		this.contenido_name = (String) event.getComponent().getAttributes().get("evento_elejido");
+		Manejador man = Manejador.getInstance();		
+		FacesContext context = FacesContext.getCurrentInstance();
+	    Application application = context.getApplication();
+	    userController uc = application.evaluateExpressionGet(context, "#{userController}", userController.class);
+	    String user_nick = uc.getNickname();
+		UsuarioControlador usco = man.getUsuarioControlador();
+		Usuario user = usco.getUsuario(user_nick);
+		if(user!=null){
+			if(user.getWallet() >= 5){
+				user.setWallet(user.getWallet() - 5);
+				usco.modificarUsuario(user);
+				uc.setWallet(user.getWallet());
+				ContenidoControlador cc = man.getContenidoControlador();
+				Contenido con = cc.getContenido(this.contenido_name);
+			    cc.addUsuarioPermitido(con, user);
+				this.msg = "Se ah registrado al evento " + this.contenido_name;
+			}
+			else
+				this.msg = "No tiene saldo suficiente para registrarse a este evento";
+			
+		}
+		else
+			this.msg = "Debe estar logueado para registrarse a un evento";
+	    
+	    
+	}
+	
 	public String verPelicula(){
 		return "verVideo";
 	}

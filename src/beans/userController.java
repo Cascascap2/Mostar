@@ -3,6 +3,7 @@ package beans;
 import java.util.Date;
 import java.util.Set;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import controladores.Manejador;
@@ -79,10 +80,6 @@ public class userController {
 	public void setNumeroVer(int numeroVer) {
 		this.numeroVer = numeroVer;
 	}
-
-
-
-	
 
 
 

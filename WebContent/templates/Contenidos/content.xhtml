@@ -78,6 +78,9 @@
 		    		<h:commandButton value="Ver este evento »" look="success" action="#{homeController.verStream}" actionListener="#{videoController.getPeliculaElejida}">
 		    		<f:attribute name="pelicula_elejida" value="#{evento.name}" />
 		    		</h:commandButton>
+		    		<h:commandButton value="Registrarse »" look="success" actionListener="#{videoController.registrarseEnEvento}">
+		    		<f:attribute name="evento_elejido" value="#{evento.name}"/>
+		    		</h:commandButton>
 		    	 </p:panel>
 		    	</b:container>
 	   		</p:dataList>
