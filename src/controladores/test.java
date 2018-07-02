@@ -129,12 +129,12 @@ public class test {
 		//cc.borrarContenido("ContenidoTest");
 		
 				//Programar Stream
-		
+		/*
 		Contenido con2 = cc.getContenido("StreamTest");
 		System.out.println("Test get");
 		
-		int hour 	= 22;
-		int minutes = 15;
+		int hour 	= 01;
+		int minutes = 40;
 		int seconds = 00;
 		
 		Calendar triggerTime = Calendar.getInstance();
@@ -145,7 +145,7 @@ public class test {
 		cc.programar_stream(con2, triggerTime.getTime());
 		System.out.println(triggerTime.getTime().toString());
 		System.out.println("Test end");
-		
+		*/
 		
 	}
 

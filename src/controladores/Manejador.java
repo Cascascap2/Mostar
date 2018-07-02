@@ -2,6 +2,7 @@ package controladores;
 
 import java.util.List;
 
+import beans.userController;
 import logica.modelos.Categorias;
 
 public class Manejador {
@@ -9,6 +10,7 @@ public class Manejador {
 	private static Manejador instance = null;
 	
 	private List<Categorias> categorias;
+	private userController sessionBean;
 
 	
 	protected Manejador() {
@@ -42,4 +44,13 @@ public class Manejador {
 	public ComentarioControlador getComentarioControlador(){
 		return new ComentarioControlador();
 	}
+
+	public userController getSessionBean() {
+		return sessionBean;
+	}
+
+	public void setSessionBean(userController sessionBean) {
+		this.sessionBean = sessionBean;
+	}
+	
 }

@@ -63,7 +63,6 @@ public class ContenidoControlador {
 			con.setHora_streaming(hora_de_comienzo);
 			cdao.modificarContenido(con);
 			
-			
 			JobDetail evento = JobBuilder.newJob(StreamAlert.class).withIdentity(con.getName()).build();
 			
 			Trigger trigger = TriggerBuilder.newTrigger().withIdentity("CroneTrigger2")
@@ -73,6 +72,7 @@ public class ContenidoControlador {
 				Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 				scheduler.start();
 				scheduler.scheduleJob(evento, trigger);
+				System.out.println("Evento programado con exito");
 			} catch (SchedulerException e) {
 				e.printStackTrace();
 			}

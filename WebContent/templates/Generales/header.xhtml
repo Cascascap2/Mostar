@@ -6,6 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
+	<p:growl id="header_growl" showDetail="true"/>  
 
 	<b:navBar brand="Mostar" outcome="login" fluid="true" brandHref="home.xhtml" inverse="true" >
 		  <b:navbarLinks>
@@ -35,6 +36,7 @@
 			      <b:navLink value="Perfil" href="#"></b:navLink>
 			      <h:form>
 			      	<h:commandLink value="Cerrar Sesion" action="#{userController.cerrarSession}"></h:commandLink>
+			      	<p:commandButton value="Test evento" update="header_growl" action="#{userController.testAviso}"></p:commandButton>
 			      </h:form>
 			 </b:dropMenu>
 	  </b:navbarLinks>

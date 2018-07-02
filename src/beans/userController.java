@@ -1,11 +1,14 @@
 package beans;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
 
+import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
+import controladores.ContenidoControlador;
 import controladores.Manejador;
 import controladores.UsuarioControlador;
 import logica.modelos.Contenido;
@@ -44,6 +47,7 @@ public class userController {
 	
 	private int numeroVer;
 	
+	private String msg;
 	
 
 
@@ -167,6 +171,18 @@ public class userController {
 		this.massages = massages;
 	}
 
+	public String getMsg() {
+		return msg;
+	}
+
+
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "userController [nickname=" + nickname + ", mail=" + mail + ", password=" + password + ", favorites="
@@ -206,6 +222,10 @@ public class userController {
 			NewUser = controllerUser.getUsuarioPorMail(mail);
 			if (NewUser != null) {
 				if (NewUser.getPassword().equals(password)) {
+					FacesContext context = FacesContext.getCurrentInstance();
+					Application application = context.getApplication();
+					userController uc = application.evaluateExpressionGet(context, "#{userController}", userController.class);
+					man.setSessionBean(uc);
 					this.setMassages("Usuario Logueado Correctamente...");
 					this.PermissionId = NewUser.getPermissionId();
 					this.nickname = NewUser.getNickname();
@@ -237,6 +257,8 @@ public class userController {
 	
 	public String cerrarSession(){
 		java.lang.System.out.println("logged out");		
+		Manejador man = Manejador.getInstance();
+		man.setSessionBean(null);
 		this.nickname = null;
 		this.mail = null;
 		this.password = null;
@@ -260,6 +282,33 @@ public class userController {
 		UsuarioControlador controllerUser = man.getUsuarioControlador();
 		Usuario NewUser = controllerUser.getUsuarioPorMail(this.mail);
 		this.favorites = NewUser.getFavorites();
+	}
+	
+	public void testAviso(){
+		Manejador man = Manejador.getInstance();
+		ContenidoControlador cc = man.getContenidoControlador(); 
+		Contenido con2 = cc.getContenido("StreamTest");
+		System.out.println("Test get");
+		
+		int hour 	= 01;
+		int minutes = 40;
+		int seconds = 00;
+		
+		Calendar triggerTime = Calendar.getInstance();
+		triggerTime.set(Calendar.HOUR, hour);
+		triggerTime.set(Calendar.MINUTE, minutes);
+		triggerTime.set(Calendar.SECOND, seconds);		
+		
+		cc.programar_stream(con2, triggerTime.getTime());
+		System.out.println(triggerTime.getTime().toString());
+		System.out.println("Test end");
+	}
+	
+	public void testTrigger(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		System.out.println("test: " + this.msg);
+		context.addMessage(null, new FacesMessage("Evento", "testing the testing test for the tester"));
+		System.out.println("Why don't i execute?");
 	}
 
 }
