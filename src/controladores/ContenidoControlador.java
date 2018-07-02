@@ -176,14 +176,15 @@ public class ContenidoControlador {
 		return false;
 	}
 	
-	public void addUsuarioPermitido(Contenido con, Usuario user){
+	public String addUsuarioPermitido(Contenido con, Usuario user){
 		List<Usuario> permitidos = con.getPermitidos();
 		if(userInList(permitidos, user.getNickname())){
-			System.out.println("Ya tiene permisos");
+			return "Ya tiene permisos para este evento";
 		}
 		else{
 			con.add_usuario_permitido(user);
 			this.modificarContenido(con);
+			return "Se ah registrado correctamente a este evento";
 		}
 		
 	}

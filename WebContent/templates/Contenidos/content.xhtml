@@ -74,11 +74,13 @@
 		        	<b:image class="contentImage" style="width:50%" name="{evento.name}.imagen" value="#{evento.ruta_imagen}"  tooltip="#{evento.name}" tooltipPosition="auto" />
 		    		<h:outputText value="#{pelicula.descripcion}"/>
 		    		<h:outputText value="Programado a emitir en: #{homeController.contentDateToString(evento)}"/>
+		    		<br></br>
+		    		Precio del evento: $5
 		    		<br></br><br></br>
 		    		<h:commandButton value="Ver este evento »" look="success" action="#{homeController.verStream}" actionListener="#{videoController.getPeliculaElejida}">
 		    		<f:attribute name="pelicula_elejida" value="#{evento.name}" />
 		    		</h:commandButton>
-		    		<h:commandButton value="Registrarse »" look="success" actionListener="#{videoController.registrarseEnEvento}">
+		    		<h:commandButton value="Registrarse »" look="success" update="msgs" actionListener="#{videoController.registrarseEnEvento}">
 		    		<f:attribute name="evento_elejido" value="#{evento.name}"/>
 		    		</h:commandButton>
 		    	 </p:panel>

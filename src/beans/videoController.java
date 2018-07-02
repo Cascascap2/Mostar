@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.Application;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -157,17 +158,20 @@ public class videoController {
 				uc.setWallet(user.getWallet());
 				ContenidoControlador cc = man.getContenidoControlador();
 				Contenido con = cc.getContenido(this.contenido_name);
-			    cc.addUsuarioPermitido(con, user);
-				this.msg = "Se ah registrado al evento " + this.contenido_name;
+				this.msg = cc.addUsuarioPermitido(con, user);
+				context.addMessage(null, new FacesMessage(this.contenido_name,  this.msg) );
 			}
-			else
+			else{
 				this.msg = "No tiene saldo suficiente para registrarse a este evento";
+				context.addMessage(null, new FacesMessage("Error",  this.msg) );
+			}
+				
 			
 		}
-		else
+		else{
 			this.msg = "Debe estar logueado para registrarse a un evento";
-	    
-	    
+			context.addMessage(null, new FacesMessage("Error",  this.msg) );
+		}	    
 	}
 	
 	public String verPelicula(){
