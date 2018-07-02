@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+			<title>Mostar</title>
+		    <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script> 
+			<link rel="stylesheet" type="text/css" href="/Mostar/css/home.css"></link>
+	</h:head>
+	<h:body>
+		<div id="Header">
+			<ui:insert name="header">
+				<ui:include  src="Generales/header.xhtml"></ui:include>
+			</ui:insert>
+		</div>
+		Por tan solo $599 usted puede acceder a todas las peliculas durante un mes! 
+		Estado: <p:outputLabel value="Usuario suscrito" rendered="#{userController.suscrito}"></p:outputLabel>
+		<p:outputLabel value="Usuario no pago" rendered="#{not userController.suscrito}"></p:outputLabel>
+		<p:outputLabel value="#{userController.dateExpiration}" rendered="#{userController.suscrito}"></p:outputLabel>
+		<p:outputLabel value="#{userController.wallet}"></p:outputLabel>
+		<p:commandButton value="Suscribirse"></p:commandButton>
+
+		<div id="footer">
+		    <ui:insert name="footer">
+		        <ui:include src="Generales/footer.xhtml"/>
+		    </ui:insert>
+		</div>
+
+	
+	</h:body>
+</html>

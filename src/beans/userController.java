@@ -49,6 +49,8 @@ public class userController {
 	
 	private String msg;
 	
+	private boolean suscrito;
+	
 
 
 	public int getNumeroTarj() {
@@ -181,7 +183,13 @@ public class userController {
 		this.msg = msg;
 	}
 
+	public boolean isSuscrito() {
+		return suscrito;
+	}
 
+	public void setSuscrito(boolean suscrito) {
+		this.suscrito = suscrito;
+	}
 
 	@Override
 	public String toString() {
@@ -232,6 +240,7 @@ public class userController {
 					this.wallet = NewUser.getWallet();
 					this.favorites = NewUser.getFavorites();
 					this.Logged = true;
+					this.suscrito = checkSuscription(NewUser);
 					FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(AUTH_KEY, nickname);
 					FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(PERMISSION_KEY, (Integer)PermissionId);
 					return "home";
@@ -253,6 +262,16 @@ public class userController {
 			this.Logged = false;
 			return "login";
 		}
+	}
+	
+	public boolean checkSuscription(Usuario user) {
+		Date expDate = user.getDateExpiration();
+		Date currentDate = new Date();
+		if(currentDate.getYear() <= expDate.getYear())
+			if(currentDate.getMonth() <= expDate.getMonth())
+				if(currentDate.getDay() <= expDate.getDay())
+					return true;
+		return false;
 	}
 	
 	public String cerrarSession(){
@@ -318,7 +337,6 @@ public class userController {
 		user.setPassword(this.password);
 		uc.modificarUsuario(user);
 		FacesContext context = FacesContext.getCurrentInstance();
-	    Application application = context.getApplication();
 	    context.addMessage(null, new FacesMessage("Exito",  "La password fue cambiada") );
 	}
 

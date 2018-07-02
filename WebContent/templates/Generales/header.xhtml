@@ -10,17 +10,13 @@
 	<p:growl id="header_growl" showDetail="true"/>  
 
 	<b:navBar brand="Mostar" outcome="login" fluid="true" brandHref="home.xhtml" inverse="true" >
-		  <b:navbarLinks>
-		    <b:navLink value="Transmisiones en vivo" id="live"  rendered="#{userController.logged}"></b:navLink>
-		    <b:navLink value="Pagar Suscripcion" id="payment" rendered="#{userController.logged}"></b:navLink>
-		  </b:navbarLinks>
 		  
 		  <h:form class="navbar-form navbar-left hidden-md hidden-sm hidden-xs" role="search" id="search">
 			  <div class="form-group" style="margin: auto;" >
 			    <p:inputText id="txt1" value="#{searchController.busqueda}" required="true" label="Buscada: "></p:inputText>
 			    <br></br>
 			  </div>
-			  <p:commandButton type="submit" class="btn btn-success" value="Buscar" action="#{searchController.busquedaGeneral}"></p:commandButton>
+			  <p:commandButton type="submit" class="btn btn-success" update="txt1" value="Buscar" action="#{searchController.busquedaGeneral}"></p:commandButton>
 		  </h:form>
 		  
 		 <b:navbarLinks pull="right" styleClass="hidden-xs" name="clientheader" rendered="#{userController.permissionId == 1}">
@@ -32,6 +28,7 @@
 		</b:navbarLinks>
 		<b:navbarLinks pull="right" styleClass="hidden-xs" name="loginOn" >
 		    <b:navLink value="Notificaciones" id="notification" rendered="#{userController.logged}"></b:navLink>
+		    <b:navLink value="Pagar Suscripcion" id="payment" outcome="suscripcion" rendered="#{userController.logged}"></b:navLink>
 		     <b:dropMenu value="Cuenta" id="cuenta" rendered="#{userController.logged}" >
 			      <b:navLink value="Billetera" outcome="billetera"></b:navLink>
 			      <b:navLink value="Perfil"  outcome="profile"></b:navLink>

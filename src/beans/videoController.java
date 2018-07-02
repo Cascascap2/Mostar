@@ -152,8 +152,8 @@ public class videoController {
 		UsuarioControlador usco = man.getUsuarioControlador();
 		Usuario user = usco.getUsuario(user_nick);
 		if(user!=null){
-			if(user.getWallet() >= 5){
-				user.setWallet(user.getWallet() - 5);
+			if(user.getWallet() >= 200){
+				user.setWallet(user.getWallet() - 200);
 				usco.modificarUsuario(user);
 				uc.setWallet(user.getWallet());
 				ContenidoControlador cc = man.getContenidoControlador();

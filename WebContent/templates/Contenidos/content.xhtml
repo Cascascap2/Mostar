@@ -75,7 +75,7 @@
 		    		<h:outputText value="#{pelicula.descripcion}"/>
 		    		<h:outputText value="Programado a emitir en: #{homeController.contentDateToString(evento)}"/>
 		    		<br></br>
-		    		Precio del evento: $5
+		    		Precio del evento: $200
 		    		<br></br><br></br>
 		    		<h:commandButton value="Ver este evento »" look="success" action="#{homeController.verStream}" actionListener="#{videoController.getPeliculaElejida}">
 		    		<f:attribute name="pelicula_elejida" value="#{evento.name}" />
