@@ -34,6 +34,11 @@
 		    		<f:attribute name="pelicula_elejida" value="#{pelicula.name}" />
 		    		</h:commandButton>
 		    	 </p:panel>
+		    	 <p:panel>
+		    	 <p:dataList value="#{pelicula.categorias}" var="categoria" type="definition">
+		    		<p>#{categoria.name}</p>
+	   			</p:dataList>
+		    	 </p:panel>
 		    	</b:container>
 	   		</p:dataList>
    		</h:form>

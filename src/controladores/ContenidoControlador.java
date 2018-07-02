@@ -63,7 +63,6 @@ public class ContenidoControlador {
 			con.setHora_streaming(hora_de_comienzo);
 			cdao.modificarContenido(con);
 			
-			
 			JobDetail evento = JobBuilder.newJob(StreamAlert.class).withIdentity(con.getName()).build();
 			
 			Trigger trigger = TriggerBuilder.newTrigger().withIdentity("CroneTrigger2")
@@ -73,6 +72,7 @@ public class ContenidoControlador {
 				Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 				scheduler.start();
 				scheduler.scheduleJob(evento, trigger);
+				System.out.println("Evento programado con exito");
 			} catch (SchedulerException e) {
 				e.printStackTrace();
 			}
@@ -176,14 +176,15 @@ public class ContenidoControlador {
 		return false;
 	}
 	
-	public void addUsuarioPermitido(Contenido con, Usuario user){
+	public String addUsuarioPermitido(Contenido con, Usuario user){
 		List<Usuario> permitidos = con.getPermitidos();
 		if(userInList(permitidos, user.getNickname())){
-			System.out.println("Ya tiene permisos");
+			return "Ya tiene permisos para este evento";
 		}
 		else{
 			con.add_usuario_permitido(user);
 			this.modificarContenido(con);
+			return "Se ah registrado correctamente a este evento";
 		}
 		
 	}

@@ -153,6 +153,16 @@
 	</navigation-rule>
 	
 	<navigation-rule>
+		<display-name>templates/recagaWallet.xhtml</display-name>
+		<from-view-id>/templates/recagaWallet.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>billetera</from-outcome>
+			<to-view-id>/templates/billetera.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
 	  <display-name>templates/home.xhtml</display-name>
 	  <from-view-id> /templates/home.xhtml</from-view-id>
 	  <navigation-case>
@@ -192,5 +202,25 @@
 	  </navigation-case>
 	</navigation-rule>
 	
+	<navigation-rule>
+	  <display-name>templates/home.xhtml</display-name>
+	  <from-view-id> /templates/home.xhtml</from-view-id>
+	  <navigation-case>
+	    <from-outcome>profile</from-outcome>
+	    <to-view-id>/templates/profile.xhtml</to-view-id>
+	    <redirect />
+	  </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	  <display-name>templates/home.xhtml</display-name>
+	  <from-view-id> /templates/home.xhtml</from-view-id>
+	  <navigation-case>
+	    <from-outcome>suscripcion</from-outcome>
+	    <to-view-id>/templates/suscripcion.xhtml</to-view-id>
+	    <redirect />
+	  </navigation-case>
+	</navigation-rule>
+
 
 </faces-config>

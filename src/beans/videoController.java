@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.Application;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -139,6 +140,38 @@ public class videoController {
 		cc.aumentar_view(con);
 		this.vistas = con.getVistas();
 		updateRating();
+	}
+	
+	public void registrarseEnEvento(ActionEvent event){
+		this.contenido_name = (String) event.getComponent().getAttributes().get("evento_elejido");
+		Manejador man = Manejador.getInstance();		
+		FacesContext context = FacesContext.getCurrentInstance();
+	    Application application = context.getApplication();
+	    userController uc = application.evaluateExpressionGet(context, "#{userController}", userController.class);
+	    String user_nick = uc.getNickname();
+		UsuarioControlador usco = man.getUsuarioControlador();
+		Usuario user = usco.getUsuario(user_nick);
+		if(user!=null){
+			if(user.getWallet() >= 200){
+				user.setWallet(user.getWallet() - 200);
+				usco.modificarUsuario(user);
+				uc.setWallet(user.getWallet());
+				ContenidoControlador cc = man.getContenidoControlador();
+				Contenido con = cc.getContenido(this.contenido_name);
+				this.msg = cc.addUsuarioPermitido(con, user);
+				context.addMessage(null, new FacesMessage(this.contenido_name,  this.msg) );
+			}
+			else{
+				this.msg = "No tiene saldo suficiente para registrarse a este evento";
+				context.addMessage(null, new FacesMessage("Error",  this.msg) );
+			}
+				
+			
+		}
+		else{
+			this.msg = "Debe estar logueado para registrarse a un evento";
+			context.addMessage(null, new FacesMessage("Error",  this.msg) );
+		}	    
 	}
 	
 	public String verPelicula(){

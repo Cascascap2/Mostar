@@ -51,9 +51,9 @@ public class searchController{
 		Manejador man = Manejador.getInstance();
 		ContenidoControlador cc = man.getContenidoControlador();
 		this.search_result = cc.buscar_por_categoria(this.categoria);
+		this.busqueda = "";
 		return "searchResult";
 	}
-	
 	
 	public String busquedaGeneral(){
 		java.lang.System.out.println("Test: " + this.busqueda);
@@ -61,8 +61,8 @@ public class searchController{
 		Manejador man = Manejador.getInstance();
 		ContenidoControlador cc = man.getContenidoControlador();
 		this.search_result = cc.buscar_por_chars_al_comienzo(this.busqueda);
+		this.busqueda = "";
 		return "searchResult";
 	}
-	
 		
 }
