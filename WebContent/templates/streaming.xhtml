@@ -7,6 +7,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <head>
@@ -25,7 +26,9 @@
 		<div class="row">
 			<div class="col-lg-8">
 
-				<a id="rtmp" class="rtmp"></a>
+				<div id="rtmp" class="rtmp" style="height: 400px"></div>
+				<h:inputHidden id="rutaStr" value="rtmp://192.168.1.11/live"></h:inputHidden>
+				<h:inputHidden id="name"  value ="live" ></h:inputHidden>
 
 			</div>
 			<div class="col-lg-4">
@@ -33,9 +36,7 @@
 				<br />
 				<p:inputText id="input" type="text"
 					value="#{userController.nickname}" />
-				<button
-					onclick="sendMessage(document.getElementById('input').value)">Enviar
-					mensaje</button><br /><br /><br />
+				<button onclick="sendMessage(document.getElementById('input').value)">Enviar mensaje</button><br /><br /><br />
 
 
 
@@ -44,28 +45,28 @@
 	</div>
 
 	<script>
-		$f("rtmp", "flowplayer/flowplayer-3.2.18.swf", {
-
-			clip : {
-				url : 'live',
-				provider : 'rtmp',
-				live : true,
-				autoplay : true
-			},
-
-			plugins : {
-
-				controls : {
-					url : "flowplayer/flowplayer.controls-3.2.16.swf"
-				},
-
-				rtmp : {
-					url : "flowplayer/flowplayer.rtmp-3.2.13.swf",
-					netConnectionUrl : 'rtmp://192.168.1.5/live'
-				}
-			}
-
-		});
+		var clip = {};
+		clip.url = document.getElementById('name').value;
+		clip.provider='rtmp';
+		clip.live = true;
+		clip.autoplay = true;
+	
+	
+		var controls ={};
+		controls.url='flowplayer/flowplayer.controls-3.2.16.swf';
+		var rtmp ={};
+		rtmp.url = 'flowplayer/flowplayer.rtmp-3.2.13.swf';
+		rtmp.netConnectionUrl = document.getElementById('rutaStr').value;
+	
+		var plugins ={};
+		plugins.controls = controls;
+		plugins.rtmp = rtmp;
+	
+		var jsonCompleto ={};
+		jsonCompleto.clip = clip;
+		jsonCompleto.plugins = plugins;
+	
+		$f("rtmp", "flowplayer/flowplayer-3.2.18.swf", jsonCompleto);
 	</script>
 	<script type="text/javascript">
 		var ws = null;

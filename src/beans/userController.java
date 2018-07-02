@@ -3,6 +3,7 @@ package beans;
 import java.util.Date;
 import java.util.Set;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import controladores.Manejador;
@@ -197,6 +198,17 @@ public class userController {
 		
 	}
 	
+	public void validateNick(){
+		Manejador man = Manejador.getInstance();
+		Usuario user = man.getUsuarioControlador().getUsuario(this.nickname);
+		if(user == null){
+			this.massages ="Valido";
+		}else {
+			this.massages = "Invalido";
+		}
+		
+	}
+	
 	public String recargar() {
 		return "recarga";
 	} 
@@ -208,30 +220,35 @@ public class userController {
 		if (mail != null) {
 			NewUser = controllerUser.getUsuarioPorMail(mail);
 			if (NewUser != null) {
-				if (NewUser.getPassword().equals(password)) {
-					this.setMassages("Usuario Logueado Correctamente...");
-					this.PermissionId = NewUser.getPermissionId();
-					this.nickname = NewUser.getNickname();
-					this.wallet = NewUser.getWallet();
-					this.favorites = NewUser.getFavorites();
-					this.Logged = true;
-					FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(AUTH_KEY, nickname);
-					FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(PERMISSION_KEY, (Integer)PermissionId);
-					return "home";
+				if (NewUser.getPassword().equals(password)){
+					if(NewUser.isActivo()) {
+						this.setMassages("Usuario Logueado Correctamente...");
+						this.PermissionId = NewUser.getPermissionId();
+						this.nickname = NewUser.getNickname();
+						this.wallet = NewUser.getWallet();
+						this.favorites = NewUser.getFavorites();
+						this.Logged = true;
+						FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(AUTH_KEY, nickname);
+						FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(PERMISSION_KEY, (Integer)PermissionId);
+						return "home";
+					}else {
+						this.massages = "Usuario Inactivo";
+						return "login";
+					}
 				}else {
-					this.setMassages("Contraseña incorrecta ...");
+					this.massages="Contraseña incorrecta ...";
 					this.Logged = false;
 					return "login";
 				}
 			} else {
-				this.setMassages("Mail invalido ...");
+				this.massages ="Mail invalido ...";
 				System.out.println("No encuentro usuario por mail");
 				this.Logged = false;
 				return "login";
 			}
 
 		} else {
-			this.setMassages("El mail no debe ser vacio...");
+			this.massages="El mail no debe ser vacio...";
 			System.out.println("no encuentro usuario por mail");
 			this.Logged = false;
 			return "login";

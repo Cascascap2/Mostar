@@ -5,7 +5,8 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 	<h:head>
 			<title>Mostar</title>
 		    <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script> 
@@ -18,13 +19,15 @@
 		</div>
 		
 		<h:form id="logueo">
+
 			<b:container fluid="true">
+			<b:column>
 			  <b:row>
 			    <b:column medium-screen="2">
-			      <h:outputText value="Correo Electronico:"/>
+			      <h:outputText value="Nombre de la Nueva Categoria:"/>
 			    </b:column>
 			    <b:column medium-screen="4">
-			      <b:inputText placeholder="Correo Electronico" value="#{userController.mail}" />
+			      <b:inputText placeholder="Nombre Categoria:" value="#{categoriaController.nombre}" id="nombre" />
 			    </b:column>
 			    <b:column medium-screen="6">
 			      <b:messages/>
@@ -32,21 +35,11 @@
 			  </b:row>
 			  <b:row>
 			    <b:column medium-screen="2">
-			      <h:outputText value="Contraseña:" />
-			    </b:column>
-			    <b:column medium-screen="4">
-			      <b:inputSecret placeholder="Contraseña:" value="#{userController.password}" />
-			    </b:column>
-			    <b:column medium-screen="6">
-			      <b:messages />
-			    </b:column>
-			  </b:row>
-			  <b:row>
-			    <b:column medium-screen="2">
 			    </b:column>
 			    <b:column medium-screen="4">
 			    <b:column>
-			      <b:commandButton value="Login" look="success" style="width:100%" action="#{userController.login}" update="Growl"/>
+			      <b:commandButton value="Crear Categoria" look="success" style="width:50%" action="#{categoriaController.altaCategoria()}" update="Growl ListaCateg nombre"/>
+			      <b:commandButton value="Eliminar Categoria" look="danger" style="width:50%" action="#{categoriaController.bajaCategoria()}" update="ListaCateg Growl nombre"/>
 			    </b:column>
 			    </b:column>
 			  </b:row>
@@ -56,7 +49,18 @@
 		         animation-enter="animated bounceInDown"
 		         animation-exit="animated flipOutX"
 		         escape="true" />
-			</b:container>
+			</b:column>
+			<b:column>
+				  <b:dataTable id="ListaCateg"  value="#{categoriaController.listaCat}"
+				               var="cat">
+				    <b:dataTableColumn value="#{cat.name}" />
+				  </b:dataTable>
+			</b:column>
+			  
+			  </b:container>
+			  
+			
+			
 		</h:form>
 		
 		<div id="footer">
