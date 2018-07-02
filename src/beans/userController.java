@@ -310,5 +310,16 @@ public class userController {
 		context.addMessage(null, new FacesMessage("Evento", "testing the testing test for the tester"));
 		System.out.println("Why don't i execute?");
 	}
+	
+	public void cambiarPassword(){
+		Manejador man = Manejador.getInstance();
+		UsuarioControlador uc = man.getUsuarioControlador();
+		Usuario user = uc.getUsuario(this.nickname);
+		user.setPassword(this.password);
+		uc.modificarUsuario(user);
+		FacesContext context = FacesContext.getCurrentInstance();
+	    Application application = context.getApplication();
+	    context.addMessage(null, new FacesMessage("Exito",  "La password fue cambiada") );
+	}
 
 }

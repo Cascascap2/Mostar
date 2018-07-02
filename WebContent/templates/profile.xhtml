@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+      
+     <h:head>
+			<title>Mostar</title>
+		    <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script> 
+			<link rel="stylesheet" type="text/css" href="/Mostar/css/home.css"></link>
+	</h:head>
+      
+ 	<h:body>
+ 	
+	<div id="Header">
+		<ui:insert name="header">
+			<ui:include  src="Generales/header.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+		
+		
+	<h:form>
+    	<p:growl id="msgs" showDetail="true" />
+    	<p:password id="password" placeholder="New Password" value="#{userController.password}"></p:password>
+    	<p:commandButton type="submit" value="Cambiar password" update="msgs" actionListener="#{userController.cambiarPassword}"></p:commandButton>
+	</h:form>
+    
+    <div id="footer">
+	    <ui:insert name="footer">
+	        <ui:include src="Generales/footer.xhtml"/>
+	    </ui:insert>
+	</div>
+	<br></br><br></br>
+		
+	</h:body>
+</html>
