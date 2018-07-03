@@ -1,5 +1,7 @@
 package database;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 
@@ -96,6 +98,24 @@ public class UsuarioDB {
 			session.close();
 		}
 		
+	}
+	
+	public List<Usuario> getAllUsuario() {
+		Session session = this.SessionFactory.getCurrentSession();
+		session.beginTransaction();
+		try{
+			@SuppressWarnings("deprecation")
+			Criteria criteria = session.createCriteria(Usuario.class);
+			@SuppressWarnings("unchecked")
+			List<Usuario> list = criteria.list();
+			//session.getTransaction().commit(); Si da problemas, sacar el comentario
+			session.close();
+			return list;
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			session.close();
+			return new ArrayList<Usuario>();
+		}	
 	}
 	
 	public Usuario getUsuarioPorMail(String mail) {

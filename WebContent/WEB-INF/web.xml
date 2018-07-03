@@ -28,12 +28,12 @@
 		<param-value>cyborg</param-value>
 	</context-param>
 
-	<context-param>
+	 <context-param>
 		<param-name>com.sun.faces.enableRestoreView11Compatibility</param-name>
 		<param-value>true</param-value>
 	</context-param>
 	
-	<filter>
+	<!--<filter>
 		<filter-name>AuthenticationFilter</filter-name>
 		<filter-class>Filters.AuthenticationFilter</filter-class>
 	</filter>
@@ -58,6 +58,6 @@
 	<filter-mapping>
 		<filter-name>EmpFilter</filter-name>
 		<url-pattern>/faces/streaming.xhtml</url-pattern>
-	</filter-mapping>
+	</filter-mapping> -->
 
 </web-app>

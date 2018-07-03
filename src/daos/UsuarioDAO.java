@@ -1,7 +1,9 @@
 package daos;
 
+import java.util.List;
 import java.util.Set;
 
+import database.ContenidoDB;
 import database.UsuarioDB;
 import logica.modelos.Contenido;
 import logica.modelos.Usuario;
@@ -51,6 +53,12 @@ public class UsuarioDAO {
 	public void modificarUsuario(Usuario user) {
 		UsuarioDB udb = UsuarioDB.getInstance();
 		udb.modificarUsuario(user);		
+	}
+	
+	public List<Usuario> getAllUsuario() {
+		UsuarioDB cdb = UsuarioDB.getInstance();
+		List<Usuario> ret= cdb.getAllUsuario();
+		return ret;
 	}
 
 }

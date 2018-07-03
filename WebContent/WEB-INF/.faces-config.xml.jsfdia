@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#templates#home.xhtml"
+  PATH="/templates/home.xhtml" SHAPE="304,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#templates#home.xhtml:0" NAME="item"
+   PATH="/templates/home.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#templates#login.xhtml" NAME="output"
+    PATH="/templates/login.xhtml" TARGET="rules:#templates#login.xhtml"
+    TITLE="login" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="register::#templates#register.xhtml"
+    NAME="output1" PATH="/templates/register.xhtml"
+    TARGET="rules:#templates#register.xhtml" TITLE="register" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="home::#templates#home.xhtml" NAME="output2"
+    PATH="/templates/home.xhtml" TARGET="rules:#templates#home.xhtml"
+    TITLE="home" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#templates#home.xhtml:1" NAME="item1"
+   PATH="/templates/home.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="verVideo::#templates#verVideo.xhtml"
+    NAME="output" PATH="/templates/verVideo.xhtml"
+    TARGET="rules:#templates#verVideo.xhtml" TITLE="verVideo" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#templates#home.xhtml:2" NAME="item2"
+   PATH="/templates/home.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="searchResult::#templates#searchResult.xhtml"
+    NAME="output" PATH="/templates/searchResult.xhtml"
+    TARGET="rules:#templates#searchResult.xhtml" TITLE="searchResult" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#templates#login.xhtml"
+  PATH="/templates/login.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#templates#login.xhtml:0" NAME="item"
+   PATH="/templates/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="home::#templates#home.xhtml" NAME="output"
+    PATH="/templates/home.xhtml" TARGET="rules:#templates#home.xhtml"
+    TITLE="home" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#templates#register.xhtml"
+  PATH="/templates/register.xhtml" SHAPE="32,257,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#templates#register.xhtml:0" NAME="item"
+   PATH="/templates/register.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="home::#templates#home.xhtml" NAME="output"
+    PATH="/templates/home.xhtml" TARGET="rules:#templates#home.xhtml"
+    TITLE="home" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#templates#verVideo.xhtml"
+  PATH="/templates/verVideo.xhtml" SHAPE="32,369,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#templates#verVideo.xhtml:0" NAME="item"
+   PATH="/templates/verVideo.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="home::#templates#home.xhtml" NAME="output"
+    PATH="/templates/home.xhtml" TARGET="rules:#templates#home.xhtml"
+    TITLE="home" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#templates#searchResult.xhtml"
+  PATH="/templates/searchResult.xhtml" SHAPE="576,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#templates#searchResult.xhtml:0" NAME="item"
+   PATH="/templates/searchResult.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="home::#templates#home.xhtml" NAME="output"
+    PATH="/templates/home.xhtml" TARGET="rules:#templates#home.xhtml"
+    TITLE="home" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#templates#searchResult.xhtml:1" NAME="item1"
+   PATH="/templates/searchResult.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="searchResult::#templates#searchResult.xhtml"
+    NAME="output" PATH="/templates/searchResult.xhtml"
+    TARGET="rules:#templates#searchResult.xhtml" TITLE="searchResult" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>
