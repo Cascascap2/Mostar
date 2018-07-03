@@ -248,6 +248,7 @@ public class userController {
 						this.wallet = NewUser.getWallet();
 						this.favorites = NewUser.getFavorites();
 						this.Logged = true;
+						this.suscrito = checkSuscription(NewUser);
 						FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(AUTH_KEY, nickname);
 						FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(PERMISSION_KEY, (Integer)PermissionId);
 						return "home";
@@ -255,7 +256,6 @@ public class userController {
 						this.massages = "Usuario Inactivo";
 						return "login";
 					}
-					this.suscrito = checkSuscription(NewUser);
 				}else {
 					this.massages="Contraseña incorrecta ...";
 					this.Logged = false;
@@ -350,6 +350,25 @@ public class userController {
 		uc.modificarUsuario(user);
 		FacesContext context = FacesContext.getCurrentInstance();
 	    context.addMessage(null, new FacesMessage("Exito",  "La password fue cambiada") );
+	}
+	
+	public String pagarSuscripcion(){
+		if(this.wallet >= 599){
+			this.wallet-=599;
+			Manejador man = Manejador.getInstance();
+			UsuarioControlador uc = man.getUsuarioControlador();
+			Usuario user = uc.getUsuario(this.nickname);
+			user.setWallet(this.wallet);
+			Date date = new Date();
+			date.setMonth(date.getMonth()+1);
+			this.DateExpiration = date;
+			user.setDateExpiration(date);
+			uc.modificarUsuario(user);
+			return "suscripcion";
+		}
+		else{
+			return "recarga";
+		}
 	}
 
 }

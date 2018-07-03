@@ -18,12 +18,27 @@
 				<ui:include  src="Generales/header.xhtml"></ui:include>
 			</ui:insert>
 		</div>
-		Por tan solo $599 usted puede acceder a todas las peliculas durante un mes! 
-		Estado: <p:outputLabel value="Usuario suscrito" rendered="#{userController.suscrito}"></p:outputLabel>
-		<p:outputLabel value="Usuario no pago" rendered="#{not userController.suscrito}"></p:outputLabel>
-		<p:outputLabel value="#{userController.dateExpiration}" rendered="#{userController.suscrito}"></p:outputLabel>
-		<p:outputLabel value="#{userController.wallet}"></p:outputLabel>
-		<p:commandButton value="Suscribirse"></p:commandButton>
+		
+		<div>
+			<b:jumbotron>
+			  <h1>Por tan solo $599 usted puede acceder a todas las peliculas durante un mes!,Saldo Actual:  $<h:outputText  value="#{userController.wallet}"></h:outputText></h1>
+			  <p>
+			  		Estado: <p:outputLabel value="Usuario suscrito" rendered="#{userController.suscrito}"></p:outputLabel>
+					<p:outputLabel value="Usuario no pago" rendered="#{userController.suscrito}"></p:outputLabel>
+					
+			  </p>
+			  <p>
+			  		<p:outputLabel value="#{userController.dateExpiration}" rendered="#{userController.suscrito}"></p:outputLabel>
+			  </p>
+			  <h2>
+			  	<p:outputLabel value="#{userController.wallet}"></p:outputLabel>
+			  </h2>
+			  <h:form>
+				  <b:commandButton value="Suscribirse" look="success" action="#"/>
+			  </h:form>
+			</b:jumbotron>
+		</div>		
+		 
 
 		<div id="footer">
 		    <ui:insert name="footer">
