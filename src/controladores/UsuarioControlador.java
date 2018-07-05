@@ -26,6 +26,13 @@ public class UsuarioControlador {
 		udao.modificarUsuario(tempUser);
 	}
 	
+	public List<Usuario> getAllUsuario(){
+		UsuarioDAO cdao = new UsuarioDAO();
+		List<Usuario> ret = cdao.getAllUsuario();
+		return ret;
+	}
+
+	
 	public void borrarUsuario(String nickname) {
 		UsuarioDAO udao = new UsuarioDAO();
 		Usuario tempUser = udao.getUsuario(nickname);

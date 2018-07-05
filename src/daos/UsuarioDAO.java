@@ -1,5 +1,6 @@
 package daos;
 
+import java.util.List;
 import java.util.Set;
 
 import database.UsuarioDB;
@@ -24,6 +25,16 @@ public class UsuarioDAO {
 	}
 	
 	//listar
+	
+	public List<Usuario> getAllUsuario() {
+		UsuarioDB cdb = UsuarioDB.getInstance();
+		List<Usuario> ret= cdb.getAllUsuario();
+		return ret;
+	}
+
+
+
+
 	
 	public Usuario getUsuario(String nickname) {
 		UsuarioDB udb = UsuarioDB.getInstance();

@@ -65,6 +65,21 @@
 		<managed-bean-class>beans.categoriaController</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>sisController</managed-bean-name>
+		<managed-bean-class>beans.sisController</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>sisAdminController</managed-bean-name>
+		<managed-bean-class>beans.sisAdminController</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>userSisController</managed-bean-name>
+		<managed-bean-class>beans.userSisController</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
 	<navigation-rule>
 		<display-name>templates/home.xhtml</display-name>
 		<from-view-id>/templates/home.xhtml</from-view-id>
