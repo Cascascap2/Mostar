@@ -205,8 +205,14 @@ public class videoController {
 		String user_nick = this.session.getNickname();
 		Usuario user = uc.getUsuario(user_nick);
 		Contenido con = cc.getContenido(this.contenido_name);
-		cc.like(con, user);
-		updateRating();
+		FacesContext context = FacesContext.getCurrentInstance();
+		if(!cc.userInList(con.getLikers(), user_nick)){
+			cc.likeSinCheck(con, user);
+			updateRating();
+			context.addMessage(null, new FacesMessage("Exito",  "Gracias por tu calificacion"));
+		}
+		else
+			context.addMessage(null, new FacesMessage("Error",  "Ya has dado like a este video"));
 		//TODO change button color
 	}
 	
@@ -217,8 +223,14 @@ public class videoController {
 		String user_nick = this.session.getNickname();
 		Usuario user = uc.getUsuario(user_nick);
 		Contenido con = cc.getContenido(this.contenido_name);
-		cc.dislike(con, user);
-		updateRating();
+		FacesContext context = FacesContext.getCurrentInstance();
+		if(!cc.userInList(con.getDislikers(), user_nick)){
+			cc.dislikeSinCheck(con, user);
+			updateRating();
+			context.addMessage(null, new FacesMessage("Exito",  "Gracias por tu calificacion"));
+		}
+		else
+			context.addMessage(null, new FacesMessage("Error",  "Ya has dado dislike a este video"));
 		//TODO change button color
 	}
 	
@@ -241,10 +253,15 @@ public class videoController {
 		Contenido con = cc.getContenido(this.contenido_name);
 		String user_nick = this.session.getNickname();
 		Usuario user = uc.getUsuario(user_nick);
-		uc.agregarFavorito(user, con);
+		FacesContext context = FacesContext.getCurrentInstance();
+		if(!uc.favInList(user.getFavoritesInList(), this.contenido_name)){
+			uc.agregarFavoritoSinCheck(user, con);
+			context.addMessage(null, new FacesMessage("Exito",  "Se ah agregado esta pelicula a tu lista de favoritos"));
+		}
+		else
+			context.addMessage(null, new FacesMessage("Error",  "Esta pelicula ya pertenece a tu lista de favoritos"));
 	}
 	
-	//TODO notificacion cuando no esta suscrito
 	public void verStream(ActionEvent event){
 		this.contenido_name = (String) event.getComponent().getAttributes().get("pelicula_elejida");
 		FacesContext context = FacesContext.getCurrentInstance();

@@ -39,9 +39,9 @@
 					<h:form>
 					<p:growl id="msgs" showDetail="true" />
 					Vistas: #{videoController.vistas}
-					<b:commandButton value="Favorito" action="#{videoController.favorito}" update="rating"></b:commandButton>
-					<b:commandButton value="Like" action="#{videoController.likeVideo}" update="rating"> </b:commandButton>
-					<b:commandButton value="Dislike" action="#{videoController.dislikeVideo}" update="rating"></b:commandButton>
+					<b:commandButton value="Favorito" action="#{videoController.favorito}" update="rating msgs"></b:commandButton>
+					<b:commandButton value="Like" action="#{videoController.likeVideo}" update="rating msgs"> </b:commandButton>
+					<b:commandButton value="Dislike" action="#{videoController.dislikeVideo}" update="rating msgs"></b:commandButton>
 					<b:label id="rating" value="Rating: #{videoController.rating}%"></b:label>
 					</h:form>
 					</p>

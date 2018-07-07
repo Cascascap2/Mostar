@@ -105,13 +105,13 @@ public class registerController{
 			
 	}
 	
-	public void registerUser() {
+	public String registerUser() {
 		//TODO arreglar
 //		if(validateNick() && validateMail() && validatePassword()){
 			Manejador man = Manejador.getInstance(); 
 			UsuarioControlador controllerUser = man.getUsuarioControlador();
 			controllerUser.registrarUsuario(nickname, mail, password, 0.0,new Date(),1);
-			//return "home";
+			return "home";
 //		}
 //		else {
 //			return "register";

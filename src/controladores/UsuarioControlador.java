@@ -69,6 +69,12 @@ public class UsuarioControlador {
 			udao.agregarFavorito(user, con);
 			this.modificarUsuario(user);
 		}
+	}
+	
+	public void agregarFavoritoSinCheck(Usuario user, Contenido con){
+		UsuarioDAO udao = new UsuarioDAO();
+		udao.agregarFavorito(user, con);
+		this.modificarUsuario(user);
 		
 	}
 

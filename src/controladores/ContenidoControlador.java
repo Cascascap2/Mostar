@@ -149,6 +149,12 @@ public class ContenidoControlador {
 			con.add_liker(user);
 			this.modificarContenido(con);
 		}
+	}
+	
+	public void likeSinCheck(Contenido con, Usuario user){
+		con.setLikes(con.getLikes() + 1);
+		con.add_liker(user);
+		this.modificarContenido(con);
 		
 	}
 	
@@ -162,6 +168,12 @@ public class ContenidoControlador {
 			con.add_disiker(user);
 			this.modificarContenido(con);
 		}
+	}
+	
+	public void dislikeSinCheck(Contenido con, Usuario user){
+		con.setDislikes(con.getDislikes() + 1);
+		con.add_disiker(user);
+		this.modificarContenido(con);
 		
 	}
 	
