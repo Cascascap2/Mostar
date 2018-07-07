@@ -21,20 +21,19 @@
 		
 		<div>
 			<b:jumbotron>
-			  <h1>Por tan solo $599 usted puede acceder a todas las peliculas durante un mes!,Saldo Actual:  $<h:outputText  value="#{userController.wallet}"></h:outputText></h1>
-			  <p>
+			<h3>
 			  		Estado: <p:outputLabel value="Usuario suscrito" rendered="#{userController.suscrito}"></p:outputLabel>
 					<p:outputLabel value="Usuario no pago" rendered="#{not userController.suscrito}"></p:outputLabel>
-			  </p>
-			  <br></br><br></br>
+			  </h3>
+			  <br></br>
 			  <p>
-			  		<p:outputLabel value="Suscripcion valida hasta el #{suscripcionController.ExpDateString}" rendered="#{userController.suscrito}"></p:outputLabel>
-			  </p>
-			  <h2>
-			  	<p:outputLabel value="#{userController.wallet}"></p:outputLabel>
-			  </h2>
-			  <h:form>
-				  <b:commandButton value="Suscribirse" look="success" action="#{userController.pagarSuscripcion}"/>
+			  		<p:outputLabel value="Suscripcion valida hasta el #{suscripcionController.expDateString}" rendered="#{userController.suscrito}"></p:outputLabel>
+			</p>
+			  <h2><h:outputText  value="Por tan solo $599 usted puede acceder a todas las peliculas durante un mes!" rendered="#{not userController.suscrito}"></h:outputText></h2>
+			  <br></br><br></br>
+			  <h3><h:outputText  value="Saldo Actual:  $#{userController.wallet}" rendered="#{not userController.suscrito}"></h:outputText></h3>
+			   <h:form>
+				  <b:commandButton value="Suscribirse" look="success" action="#{userController.pagarSuscripcion}" rendered="#{not userController.suscrito}"/>
 			  </h:form>
 			</b:jumbotron>
 		</div>		

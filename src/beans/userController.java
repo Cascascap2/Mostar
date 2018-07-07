@@ -282,11 +282,14 @@ public class userController {
 	
 	public boolean checkSuscription(Usuario user) {
 		Date expDate = user.getDateExpiration();
+		Calendar calExp = Calendar.getInstance();
+		Calendar calCurrent = Calendar.getInstance();
+		Date dateExp = user.getDateExpiration();
+		calExp.setTime(dateExp);
 		Date currentDate = new Date();
-		if(currentDate.getYear() <= expDate.getYear())
-			if(currentDate.getMonth() <= expDate.getMonth())
-				if(currentDate.getDay() <= expDate.getDay())
-					return true;
+		calCurrent.setTime(currentDate);
+		if(dateExp.after(currentDate) || dateExp.equals(currentDate))
+				return true;	
 		return false;
 	}
 	
