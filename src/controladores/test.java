@@ -15,12 +15,15 @@ public class test {
 
 	public static void main(String[] args) {
 		System.out.println("testing...");
-		
+				
+				//MANEJADOR Y CONTROLADORES
+		/*
 		Manejador manejador = Manejador.getInstance();
 		UsuarioControlador uc = manejador.getUsuarioControlador();
 		ContenidoControlador cc = manejador.getContenidoControlador();
 		ComentarioControlador coc = manejador.getComentarioControlador();
 		CategoriaControlador cac = manejador.getCategoriaControlador();		
+		*/
 		
 		/*
 				//SPOILER
@@ -144,9 +147,9 @@ public class test {
 		
 		cc.programar_stream(con2, triggerTime.getTime());
 		System.out.println(triggerTime.getTime().toString());
-		System.out.println("Test end");
 		*/
 		
+		System.out.println("Test end");
 	}
 
 }

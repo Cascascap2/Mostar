@@ -244,6 +244,26 @@ public class videoController {
 		uc.agregarFavorito(user, con);
 	}
 	
-	
+	public String verStream(){
+		FacesContext context = FacesContext.getCurrentInstance();
+	    Application application = context.getApplication();
+	    userController uc = application.evaluateExpressionGet(context, "#{userController}", userController.class);
+	    if(uc!= null && uc.isLogged() && uc.isSuscrito()){
+	    	Manejador man = Manejador.getInstance();
+		    //UsuarioControlador usc = man.getUsuarioControlador();
+		    //TODO chequear que tenga suscripcion habil con la date
+		    ContenidoControlador cc = man.getContenidoControlador();
+	    	String user_nick = uc.getNickname();
+	    	Contenido con = cc.getContenido(this.contenido_name);
+	    	if(cc.userInList(con.getPermitidos(), user_nick))
+	    		return "streaming";	  
+	    	else
+	    		return "home";
+	    	  	
+	    }
+	    	
+	    else
+	    	return "home";
+	}	
 	
 }

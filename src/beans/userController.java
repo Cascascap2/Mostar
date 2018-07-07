@@ -1,7 +1,11 @@
 package beans;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Set;
 
 import javax.faces.application.Application;
@@ -75,18 +79,13 @@ public class userController {
 		this.fechTarjExp = fechTarjExp;
 	}
 
-
-
 	public int getNumeroVer() {
 		return numeroVer;
 	}
 
-
-
 	public void setNumeroVer(int numeroVer) {
 		this.numeroVer = numeroVer;
 	}
-
 
 
 	public Double getSaldoRecarga() {
@@ -98,8 +97,6 @@ public class userController {
 	public void setSaldoRecarga(Double saldoRecarga) {
 		this.saldoRecarga = saldoRecarga;
 	}
-
-
 
 	public String getNickname() {
 		return nickname;
@@ -144,6 +141,7 @@ public class userController {
 	public Date getDateExpiration() {
 		return DateExpiration;
 	}
+	
 
 	public void setDateExpiration(Date dateExpiration) {
 		DateExpiration = dateExpiration;
@@ -177,8 +175,6 @@ public class userController {
 		return msg;
 	}
 
-
-
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
@@ -191,12 +187,20 @@ public class userController {
 		this.suscrito = suscrito;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "userController [nickname=" + nickname + ", mail=" + mail + ", password=" + password + ", favorites="
-				+ favorites + ", wallet=" + wallet + ", DateExpiration=" + DateExpiration + ", PermissionId="
-				+ PermissionId + ", Logged=" + Logged + ", massages=" + massages + "]";
+		return "userController [nickname=" + nickname + ", mail=" + mail
+				+ ", password=" + password + ", favorites=" + favorites
+				+ ", wallet=" + wallet + ", saldoRecarga=" + saldoRecarga
+				+ ", DateExpiration=" + DateExpiration + ", PermissionId="
+				+ PermissionId + ", Logged=" + Logged + ", massages="
+				+ massages + ", numeroTarj=" + numeroTarj + ", fechTarjExp="
+				+ fechTarjExp + ", numeroVer=" + numeroVer + ", msg=" + msg
+				+ ", suscrito=" + suscrito + "]";
 	}
+
 
 	public void debug() {
 		java.lang.System.out.println(this.toString());
@@ -353,15 +357,19 @@ public class userController {
 	}
 	
 	public String pagarSuscripcion(){
+		if(this.suscrito)
+			return "suscripcion";
 		if(this.wallet >= 599){
 			this.wallet-=599;
 			Manejador man = Manejador.getInstance();
 			UsuarioControlador uc = man.getUsuarioControlador();
 			Usuario user = uc.getUsuario(this.nickname);
 			user.setWallet(this.wallet);
-			Date date = new Date();
-			date.setMonth(date.getMonth()+1);
+			Calendar cal = Calendar.getInstance();
+			Date date = cal.getTime();
+			date.setMonth(cal.get(Calendar.MONTH) + 1);
 			this.DateExpiration = date;
+			this.suscrito = true;
 			user.setDateExpiration(date);
 			uc.modificarUsuario(user);
 			return "suscripcion";

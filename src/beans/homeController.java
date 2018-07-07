@@ -1,6 +1,7 @@
 package beans;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -103,7 +104,7 @@ public class homeController implements Serializable{
 		Categorias cat;
 		while(it.hasNext()){
 			con = (Contenido) it.next();
-			if(con.getTipo().equals("Pelicula")){
+			if(con.getTipo().equals("Pelicula")  && con.isVisible_adm_cont() && con.isVisible_adm_sist()){
 				this.peliculas.add(con);
 				if(ultimas.size()<ESTRENOS){
 					ultimas.add(con);
@@ -113,7 +114,7 @@ public class homeController implements Serializable{
 					ultimas.add(con);
 				}
 			}
-			else if(con.getTipo().equals("Evento"))
+			else if(con.getTipo().equals("Evento") && con.isVisible_adm_cont() && con.isVisible_adm_sist())
 				this.eventos.add(con);
 		}
 		while(it2.hasNext()){
@@ -131,7 +132,4 @@ public class homeController implements Serializable{
 		return con.getHora_streaming().toString();
 	}
 	
-	public String verStream(){
-		return "streaming";
-	}
 }

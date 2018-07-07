@@ -24,17 +24,17 @@
 			  <h1>Por tan solo $599 usted puede acceder a todas las peliculas durante un mes!,Saldo Actual:  $<h:outputText  value="#{userController.wallet}"></h:outputText></h1>
 			  <p>
 			  		Estado: <p:outputLabel value="Usuario suscrito" rendered="#{userController.suscrito}"></p:outputLabel>
-					<p:outputLabel value="Usuario no pago" rendered="#{userController.suscrito}"></p:outputLabel>
-					
+					<p:outputLabel value="Usuario no pago" rendered="#{not userController.suscrito}"></p:outputLabel>
 			  </p>
+			  <br></br><br></br>
 			  <p>
-			  		<p:outputLabel value="#{userController.dateExpiration}" rendered="#{userController.suscrito}"></p:outputLabel>
+			  		<p:outputLabel value="Suscripcion valida hasta el #{suscripcionController.ExpDateString}" rendered="#{userController.suscrito}"></p:outputLabel>
 			  </p>
 			  <h2>
 			  	<p:outputLabel value="#{userController.wallet}"></p:outputLabel>
 			  </h2>
 			  <h:form>
-				  <b:commandButton value="Suscribirse" look="success" action="#"/>
+				  <b:commandButton value="Suscribirse" look="success" action="#{userController.pagarSuscripcion}"/>
 			  </h:form>
 			</b:jumbotron>
 		</div>		
