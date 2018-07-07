@@ -258,8 +258,7 @@ public class videoController {
 	    	if(!cc.userInList(con.getPermitidos(), user_nick))
 	    		context.addMessage(null, new FacesMessage("Error",  "No esta registrado a este evento"));
 	    }
-	    else
-	    	context.addMessage(null, new FacesMessage("Error",  "Debe estar suscrito para registrarse y ver eventos"));
+	    context.addMessage(null, new FacesMessage("Error",  "Debe estar suscrito para registrarse y ver eventos"));
 	}	
 	
 	public String goStream(){
@@ -277,7 +276,7 @@ public class videoController {
 	    		return "";
 	    }
 	    else
-	    	return "home";
+	    	return "";
 	}	
 	
 }
