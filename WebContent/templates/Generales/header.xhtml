@@ -28,6 +28,8 @@
 		</b:navbarLinks>
 		<b:navbarLinks pull="right" styleClass="hidden-xs" name="loginOn" >
 		    <b:navLink value="Notificaciones" id="notification" rendered="#{userController.logged}"></b:navLink>
+		    <b:navLink value="Borrar Usuarios" id="DelUser" rendered="#{userController.logged}" outcome="BorrarUser"></b:navLink>
+		    <b:navLink value="Modificar Usuarios" id="ModUser" rendered="#{userController.logged}" outcome="ModifUser"></b:navLink>
 		    <b:navLink value="Pagar Suscripcion" id="payment" outcome="suscripcion" rendered="#{userController.logged}"></b:navLink>
 		     <b:dropMenu value="Cuenta" id="cuenta" rendered="#{userController.logged}" >
 			      <b:navLink value="Billetera" outcome="billetera"></b:navLink>

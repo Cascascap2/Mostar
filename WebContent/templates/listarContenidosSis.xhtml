@@ -47,21 +47,6 @@
 		       <p:column headerText="Visitas">
 		           <h:outputText value="#{content.vistas}" />
 		       </p:column>
-		       <!-- 
-		       <p:column headerText="Calificacion">
-		           <h:outputText value="#{content.calificacion}" />
-		       </p:column>
-		       <p:column headerText="Categorias">
-		           <p:cellEditor>
-		               <f:facet name="output"><h:outputText value="#{content.categorias}" /></f:facet>
-		               <f:facet name="input">
-		                   <h:selectOneMenu value="#{content.categorias}" style="width:100%">
-		                       <f:selectItems value="#{admController.Cats}" var="color" itemLabel="#{categoria}" itemValue="#{categoria.name}" />
-		                   </h:selectOneMenu>
-		               </f:facet>
-		           </p:cellEditor>
-		       </p:column> -->
-		 
 		       <p:column headerText="Contenido Visible">
 		           <p:cellEditor>
 		               <f:facet name="output"><h:outputText value="#{content.visible_adm_cont}" /></f:facet>

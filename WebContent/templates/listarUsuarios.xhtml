@@ -22,7 +22,7 @@
 	<h:form id="form">
 		<b:growl id="msgs" showDetail="true" />
 
-		<p:dataTable id="Usuarios" var="content" value="#{sisAdminController.usu} " selectionMode="single" selection="#{sisAdminController.selectedUser}"  editable="true" style="margin-bottom:20px" rowKey="#{cantent.nickname}">
+		<p:dataTable id="Usuarios" var="usu" value="#{sisAdminController.usu}" editable="true" style="margin-bottom:20px">
 			<f:facet name="header">
 		           Edición de Usuarios
 		       </f:facet>
@@ -31,15 +31,13 @@
 				update=":form:msgs" />
 			<p:ajax event="rowEditCancel" listener="#{sisAdminController.onRowCancel}"
 				update=":form:msgs" />
-			<p:ajax event="rowSelect" listener="#{sisAdminController.onRowSelect}" update=":form:msgs" />
-        	<p:ajax event="rowUnselect" listener="#{sisAdminController.onRowUnselect}" update=":form:msgs" />
 			
 			<p:column headerText="Nombre">
-				<h:outputText value="#{content.nickname}" />
+				<h:outputText value="#{usu.nickname}" />
 			</p:column>
 
 			<p:column headerText="Correo">
-				<h:outputText value="#{content.mail}" />
+				<h:outputText value="#{usu.mail}" />
 			</p:column>
 
 			<!-- <p:column headerText="Fecha de Expiracion">
@@ -64,9 +62,9 @@
 		       
 			<p:column headerText="Tipo Usuario">
 		           <p:cellEditor>
-		               <f:facet name="output"><h:outputText value="#{content.permissionId}" /></f:facet>
+		               <f:facet name="output"><h:outputText value="#{usu.permissionId}" /></f:facet>
 		               <f:facet name="input">
-		                   <h:selectOneMenu value="#{content.permissionId}" style="width:100%">
+		                   <h:selectOneMenu value="#{usu.permissionId}" style="width:100%">
 		                       <f:selectItems value="#{sisAdminController.permiso}" var="permiso" itemLabel="#{permiso.name}" itemValue="#{permiso.id}" />
 		                   </h:selectOneMenu>
 		               </f:facet>
@@ -76,10 +74,10 @@
 			<p:column headerText="Usuario Activo?">
 				<p:cellEditor>
 					<f:facet name="output">
-						<h:outputText value="#{content.activo}" />
+						<h:outputText value="#{usu.activo}" />
 					</f:facet>
 					<f:facet name="input">
-						<h:selectOneMenu value="#{content.activo}"
+						<h:selectOneMenu value="#{usu.activo}"
 							style="width:100%; font-color:black">
 							<f:selectItems value="#{sisAdminController.visible}" var="visible"
 								itemLabel="#{visible}" itemValue="#{visible}" />

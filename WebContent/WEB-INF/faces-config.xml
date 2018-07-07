@@ -246,6 +246,33 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>templates/home.xhtml</display-name>
+		<from-view-id>/templates/home.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>BorrarUser</from-outcome>
+			<to-view-id>/templates/borrarUsuario.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>templates/home.xhtml</display-name>
+		<from-view-id>/templates/home.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ModifUser</from-outcome>
+			<to-view-id>/templates/listarUsuarios.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>templates/borrarUsuario.xhtml</display-name>
+		<from-view-id>/templates/borrarUsuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>BorrarUser</from-outcome>
+			<to-view-id>/templates/borrarUsuario.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 
 
 </faces-config>

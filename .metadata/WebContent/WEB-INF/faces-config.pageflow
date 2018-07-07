@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15281471690110" configfile="/Mostar/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="templates/home.xhtml" x="122" y="967" id="pf15291948030760" referenceLink="//@navigationRule.14/@fromViewId|" outlinks="pf15291950747893 pf15291965500385 pf15291965500386 pf15298978236972 pf15304807006760 pf15304990760410 pf15304990760411 pf15305691229498 pf15305691229499" inlinks="pf15291965500386 pf15293748121380 pf15293748507891 pf15304990760412 pf15304990760413" path="/templates/home.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/home.xhtml" x="122" y="967" id="pf15291948030760" referenceLink="//@navigationRule.14/@fromViewId|" outlinks="pf15291950747893 pf15291965500385 pf15291965500386 pf15298978236972 pf15304807006760 pf15304990760410 pf15304990760411 pf15305691229498 pf15305691229499 pf15309267177970 pf15309267683772" inlinks="pf15291965500386 pf15293748121380 pf15293748507891 pf15304990760412 pf15304990760413" path="/templates/home.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="templates/login.xhtml" x="338" y="178" id="pf15291950747894" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15293748121380" inlinks="pf15291950747893" path="/templates/login.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="templates/register.xhtml" x="338" y="967" id="pf15291965500387" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15293748507891" inlinks="pf15291965500385" path="/templates/register.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="templates/verVideo.xhtml" x="338" y="1351" id="pf15298978236973" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" outlinks="pf15304990760412" inlinks="pf15298978236972" path="/templates/verVideo.xhtml"/>
@@ -10,6 +10,8 @@
   <nodes xsi:type="pageflow:PFPage" name="templates/streaming.xhtml" x="554" y="764" id="pf15304990760427" referenceLink="//@navigationRule.12/@navigationCase.0/@toViewId|" inlinks="pf15304990760411 pf15304990760426" path="/templates/streaming.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="templates/profile.xhtml" x="338" y="1735" id="pf153056912294912" referenceLink="//@navigationRule.13/@navigationCase.0/@toViewId|" inlinks="pf15305691229498" path="/templates/profile.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="templates/suscripcion.xhtml" x="338" y="2119" id="pf153056912294913" referenceLink="//@navigationRule.15/@fromViewId|" outlinks="pf153056912294911" inlinks="pf15305691229499" path="/templates/suscripcion.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/borrarUsuario.xhtml" x="622" y="1111" id="pf15309267177981" outlinks="pf15309268037124" inlinks="pf15309267177970 pf15309268037124" path="/templates/borrarUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/listarUsuarios.xhtml" x="495" y="1204" id="pf15309267683773" inlinks="pf15309267683772" path="/templates/listarUsuarios.xhtml"/>
   <links id="pf15291950747893" target="pf15291950747894" source="pf15291948030760" outcome="login" redirect="true"/>
   <links id="pf15291965500385" target="pf15291965500387" source="pf15291948030760" outcome="register" redirect="true"/>
   <links id="pf15293748121380" target="pf15291948030760" source="pf15291950747894" outcome="home" redirect="true"/>
@@ -36,4 +38,11 @@
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
   <links id="pf153056912294911" target="pf15304811876823" source="pf153056912294913" outcome="recarga" redirect="true"/>
+  <links id="pf15309267177970" target="pf15309267177981" source="pf15291948030760" outcome="BorrarUser" redirect="true"/>
+  <links id="pf15309267683772" target="pf15309267683773" source="pf15291948030760" outcome="ModifUser" redirect="true"/>
+  <links id="pf15309268037124" target="pf15309267177981" source="pf15309267177981" outcome="BorrarUser" redirect="true">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
 </pageflow:Pageflow>

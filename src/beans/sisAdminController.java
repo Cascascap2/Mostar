@@ -27,9 +27,7 @@ public class sisAdminController implements Serializable {
 	private List<Usuario> usu;
 	private Usuario selectedUser;
 
-	public void setSelectedUser(Usuario selectedUser) {
-		this.selectedUser = selectedUser;
-	}
+	
 
 	@ManagedProperty("#{userSisController}")
 	private userSisController service;
@@ -40,6 +38,10 @@ public class sisAdminController implements Serializable {
 
 	public void setUsu(List<Usuario> usu) {
 		this.usu = usu;
+	}
+	public void setSelectedUser(Usuario selectedUser) {
+		this.selectedUser = selectedUser;
+		System.out.println("seleccione el usuario");
 	}
 
 	public userSisController getService() {
@@ -102,6 +104,13 @@ public class sisAdminController implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
+	
+	public String borrarUser(){
+		System.out.println("entre a borrar");
+		Manejador.getInstance().getUsuarioControlador().borrarUsuario(selectedUser.getNickname());
+		selectedUser= null;
+		return "borrarUser";
+	}
 
 	@PostConstruct
 	public void init() {

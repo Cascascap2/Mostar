@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Mostar</title>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
+</h:head>
+<h:body>
+	<div id="Header">
+		<ui:insert name="header">
+			<ui:include src="Generales/header.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+	<h:form id="formDelete">
+		<p:dataTable id="BorrarUsuarios" var="usu" value="#{sisAdminController.usu}" selectionMode="single" selection="#{sisAdminController.selectedUser}" rowKey="#{usu.nickname}">
+	        <f:facet name="header">
+	            Eliminar Usuarios 
+	        </f:facet>
+	        <p:column headerText="Nickname">
+	            <h:outputText value="#{usu.nickname}" />
+	        </p:column>
+	        <p:column headerText="Mail">
+	            <h:outputText value="#{usu.mail}" />
+	        </p:column>
+	        <p:column headerText="Activo">
+	            <h:outputText value="#{usu.activo}" />
+	        </p:column>
+	        <p:column headerText="Nombre Empresa">
+	            <h:outputText value="#{usu.empresa_nombre}" />
+	        </p:column>
+	        <f:facet name="footer">
+	            <p:commandButton process="BorrarUsuarios" update="BorrarUsuarios formDelete" icon="ui-icon-delete" value="Borrar" action="#{sisAdminController.borrarUser}" />
+	        </f:facet>
+	    </p:dataTable>
+	</h:form>
+
+
+
+
+	<div id="footer">
+		<ui:insert name="footer">
+			<ui:include src="Generales/footer.xhtml" />
+		</ui:insert>
+	</div>
+
+
+</h:body>
+</html>
