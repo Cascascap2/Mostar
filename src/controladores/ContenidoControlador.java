@@ -95,9 +95,6 @@ public class ContenidoControlador {
 		return false;
 	}
 	
-	public void agregar_categoria(Contenido con, Categorias cat){
-		
-	}
 	
 	public List<Contenido> buscar_por_categoria(String cat_name){
 		List<Contenido> allContent = this.getAllContenido();
@@ -198,8 +195,12 @@ public class ContenidoControlador {
 			this.modificarContenido(con);
 			return "Se ah registrado correctamente a este evento";
 		}
-		
 	}
 	
+	public boolean usuarioPermitido(String user, Contenido con){
+		if(userInList(con.getPermitidos(), user))
+				return true;
+		return false;
+	}
 
 }

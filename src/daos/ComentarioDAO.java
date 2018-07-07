@@ -5,6 +5,7 @@ import java.util.List;
 
 import database.ComentarioDB;
 import logica.modelos.Comentarios;
+import logica.modelos.Notificacion;
 
 public class ComentarioDAO {
 

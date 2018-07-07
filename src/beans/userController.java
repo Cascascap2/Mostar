@@ -53,8 +53,6 @@ public class userController {
 	
 	private boolean suscrito;
 	
-	private String notif_msg;
-	
 
 
 	public int getNumeroTarj() {
@@ -253,6 +251,7 @@ public class userController {
 						this.favorites = NewUser.getFavorites();
 						this.Logged = true;
 						this.suscrito = checkSuscription(NewUser);
+						man.setUser_nick(this.nickname);
 						FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(AUTH_KEY, nickname);
 						FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(PERMISSION_KEY, (Integer)PermissionId);
 						return "home";
@@ -305,6 +304,7 @@ public class userController {
 		this.PermissionId = 0;
 		this.Logged = false;
 		this.massages = "Usuario deslogueado correctamente";
+		man.setUser_nick("");
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove(AUTH_KEY);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove(PERMISSION_KEY);
 		return "home";
@@ -339,13 +339,6 @@ public class userController {
 		cc.programar_stream(con2, triggerTime.getTime());
 		System.out.println(triggerTime.getTime().toString());
 		System.out.println("Test end");
-	}
-	
-	public void testTrigger(){
-		FacesContext context = FacesContext.getCurrentInstance();
-		System.out.println("test: " + this.msg);
-		context.addMessage(null, new FacesMessage("Evento", "testing the testing test for the tester"));
-		System.out.println("Why don't i execute?");
 	}
 	
 	public void cambiarPassword(){
@@ -386,23 +379,6 @@ public class userController {
 			return "suscripcion";
 		else
 			return "";
-	}
-
-	public String getNotif_msg() {
-		return notif_msg;
-	}
-
-	public void setNotif_msg(String notif_msg) {
-		this.notif_msg = notif_msg;
-	}
-	
-	public void mostrarNotificacion(){
-		System.out.println("msgj: " + this.notif_msg);
-		if(!this.notif_msg.equals("")){
-			FacesContext context = FacesContext.getCurrentInstance();
-			context.addMessage(null, new FacesMessage("Evento",  this.notif_msg));
-			this.notif_msg="";
-		}
 	}
 
 }

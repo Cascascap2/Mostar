@@ -11,6 +11,7 @@ public class Manejador {
 	private static Manejador instance = null;
 	
 	private List<Categorias> categorias;
+	private String user_nick;
 	private userController sessionBean;
 	private notificacionesControlador notificacionBean;
 
@@ -19,6 +20,7 @@ public class Manejador {
 		CategoriaControlador cc = new CategoriaControlador();
 		this.categorias = cc.getAllCategorias();
 		this.notificacionBean = notificacionesControlador.getInstance();
+		this.user_nick = "";
 	}
 
 	public static Manejador getInstance() {
@@ -47,6 +49,10 @@ public class Manejador {
 	public ComentarioControlador getComentarioControlador(){
 		return new ComentarioControlador();
 	}
+	
+	public NotificacionControlador getNotificacionControlador(){
+		return new NotificacionControlador();
+	}
 
 	public userController getSessionBean() {
 		return sessionBean;
@@ -63,6 +69,13 @@ public class Manejador {
 	public void setNotificacionBean(notificacionesControlador notificacionBean) {
 		this.notificacionBean = notificacionBean;
 	}
-	
+
+	public String getUser_nick() {
+		return user_nick;
+	}
+
+	public void setUser_nick(String user_nick) {
+		this.user_nick = user_nick;
+	}
 	
 }
