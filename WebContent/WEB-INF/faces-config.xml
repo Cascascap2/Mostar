@@ -80,6 +80,11 @@
 		<managed-bean-class>beans.suscripcionController</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>notificacionesControlador</managed-bean-name>
+		<managed-bean-class>beans.notificacionesControlador</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
 	<navigation-rule>
 		<display-name>templates/home.xhtml</display-name>
 		<from-view-id>/templates/home.xhtml</from-view-id>

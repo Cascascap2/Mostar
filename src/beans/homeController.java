@@ -132,4 +132,8 @@ public class homeController implements Serializable{
 		return con.getHora_streaming().toString();
 	}
 	
+	public void setEventAlarm(){
+		
+	}
+	
 }

@@ -53,6 +53,8 @@ public class userController {
 	
 	private boolean suscrito;
 	
+	private String notif_msg;
+	
 
 
 	public int getNumeroTarj() {
@@ -325,8 +327,8 @@ public class userController {
 		Contenido con2 = cc.getContenido("StreamTest");
 		System.out.println("Test get");
 		
-		int hour 	= 01;
-		int minutes = 40;
+		int hour 	= 4;
+		int minutes = 20;
 		int seconds = 00;
 		
 		Calendar triggerTime = Calendar.getInstance();
@@ -384,6 +386,23 @@ public class userController {
 			return "suscripcion";
 		else
 			return "";
+	}
+
+	public String getNotif_msg() {
+		return notif_msg;
+	}
+
+	public void setNotif_msg(String notif_msg) {
+		this.notif_msg = notif_msg;
+	}
+	
+	public void mostrarNotificacion(){
+		System.out.println("msgj: " + this.notif_msg);
+		if(!this.notif_msg.equals("")){
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage(null, new FacesMessage("Evento",  this.notif_msg));
+			this.notif_msg="";
+		}
 	}
 
 }

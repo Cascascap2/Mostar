@@ -2,6 +2,7 @@ package controladores;
 
 import java.util.List;
 
+import beans.notificacionesControlador;
 import beans.userController;
 import logica.modelos.Categorias;
 
@@ -11,11 +12,13 @@ public class Manejador {
 	
 	private List<Categorias> categorias;
 	private userController sessionBean;
+	private notificacionesControlador notificacionBean;
 
 	
 	protected Manejador() {
 		CategoriaControlador cc = new CategoriaControlador();
 		this.categorias = cc.getAllCategorias();
+		this.notificacionBean = notificacionesControlador.getInstance();
 	}
 
 	public static Manejador getInstance() {
@@ -52,5 +55,14 @@ public class Manejador {
 	public void setSessionBean(userController sessionBean) {
 		this.sessionBean = sessionBean;
 	}
+
+	public notificacionesControlador getNotificacionBean() {
+		return notificacionBean;
+	}
+
+	public void setNotificacionBean(notificacionesControlador notificacionBean) {
+		this.notificacionBean = notificacionBean;
+	}
+	
 	
 }
