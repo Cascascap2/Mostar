@@ -76,7 +76,7 @@
 		    		<br></br>
 		    		Precio del evento: $200
 		    		<br></br><br></br>
-		    		<h:commandButton value="Ver este evento »" look="success" action="#{videoController.verStream}" actionListener="#{videoController.getPeliculaElejida}">
+		    		<h:commandButton value="Ver este evento »" look="success" update="msgs" actionListener="#{videoController.verStream}" action="#{videoController.goStream}">
 		    		<f:attribute name="pelicula_elejida" value="#{evento.name}" />
 		    		</h:commandButton>
 		    		<h:commandButton value="Registrarse »" look="success" update="msgs" actionListener="#{videoController.registrarseEnEvento}">

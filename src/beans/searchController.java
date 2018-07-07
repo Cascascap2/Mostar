@@ -56,7 +56,6 @@ public class searchController{
 	}
 	
 	public String busquedaGeneral(){
-		java.lang.System.out.println("Test: " + this.busqueda);
 		this.search_msg = "Buscando por palabra: " + this.busqueda;
 		Manejador man = Manejador.getInstance();
 		ContenidoControlador cc = man.getContenidoControlador();

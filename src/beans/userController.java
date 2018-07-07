@@ -1,16 +1,14 @@
 package beans;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
+
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Set;
 
 import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import controladores.ContenidoControlador;
 import controladores.Manejador;
@@ -281,7 +279,6 @@ public class userController {
 	}
 	
 	public boolean checkSuscription(Usuario user) {
-		Date expDate = user.getDateExpiration();
 		Calendar calExp = Calendar.getInstance();
 		Calendar calCurrent = Calendar.getInstance();
 		Date dateExp = user.getDateExpiration();
@@ -359,9 +356,8 @@ public class userController {
 	    context.addMessage(null, new FacesMessage("Exito",  "La password fue cambiada") );
 	}
 	
-	public String pagarSuscripcion(){
-		if(this.suscrito)
-			return "suscripcion";
+	public void pagarSuscripcion(ActionEvent event){
+		FacesContext context = FacesContext.getCurrentInstance();
 		if(this.wallet >= 599){
 			this.wallet-=599;
 			Manejador man = Manejador.getInstance();
@@ -370,16 +366,24 @@ public class userController {
 			user.setWallet(this.wallet);
 			Calendar cal = Calendar.getInstance();
 			Date date = cal.getTime();
+			//TODO change this so it's not depracted
 			date.setMonth(cal.get(Calendar.MONTH) + 1);
 			this.DateExpiration = date;
 			this.suscrito = true;
 			user.setDateExpiration(date);
 			uc.modificarUsuario(user);
-			return "suscripcion";
+			context.addMessage(null, new FacesMessage("Exito",  "Se ah suscrito con exito"));
 		}
 		else{
-			return "recarga";
+			context.addMessage(null, new FacesMessage("Error",  "Saldo insuficiente, por favor cargue credito suficiente en su cuenta"));
 		}
+	}
+	
+	public String goSuscribirse(){
+		if(this.suscrito)
+			return "suscripcion";
+		else
+			return "";
 	}
 
 }

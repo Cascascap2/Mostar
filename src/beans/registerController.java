@@ -106,6 +106,7 @@ public class registerController{
 	}
 	
 	public void registerUser() {
+		//TODO arreglar
 //		if(validateNick() && validateMail() && validatePassword()){
 			Manejador man = Manejador.getInstance(); 
 			UsuarioControlador controllerUser = man.getUsuarioControlador();

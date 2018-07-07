@@ -244,24 +244,38 @@ public class videoController {
 		uc.agregarFavorito(user, con);
 	}
 	
-	public String verStream(){
+	//TODO notificacion cuando no esta suscrito
+	public void verStream(ActionEvent event){
+		this.contenido_name = (String) event.getComponent().getAttributes().get("pelicula_elejida");
 		FacesContext context = FacesContext.getCurrentInstance();
 	    Application application = context.getApplication();
 	    userController uc = application.evaluateExpressionGet(context, "#{userController}", userController.class);
 	    if(uc!= null && uc.isLogged() && uc.isSuscrito()){
 	    	Manejador man = Manejador.getInstance();
-		    //UsuarioControlador usc = man.getUsuarioControlador();
-		    //TODO chequear que tenga suscripcion habil con la date
+		    ContenidoControlador cc = man.getContenidoControlador();
+	    	String user_nick = uc.getNickname();
+	    	Contenido con = cc.getContenido(this.contenido_name);
+	    	if(!cc.userInList(con.getPermitidos(), user_nick))
+	    		context.addMessage(null, new FacesMessage("Error",  "No esta registrado a este evento"));
+	    }
+	    else
+	    	context.addMessage(null, new FacesMessage("Error",  "Debe estar suscrito para registrarse y ver eventos"));
+	}	
+	
+	public String goStream(){
+		FacesContext context = FacesContext.getCurrentInstance();
+	    Application application = context.getApplication();
+	    userController uc = application.evaluateExpressionGet(context, "#{userController}", userController.class);
+	    if(uc!= null && uc.isLogged() && uc.isSuscrito()){
+	    	Manejador man = Manejador.getInstance();
 		    ContenidoControlador cc = man.getContenidoControlador();
 	    	String user_nick = uc.getNickname();
 	    	Contenido con = cc.getContenido(this.contenido_name);
 	    	if(cc.userInList(con.getPermitidos(), user_nick))
 	    		return "streaming";	  
 	    	else
-	    		return "home";
-	    	  	
+	    		return "";
 	    }
-	    	
 	    else
 	    	return "home";
 	}	
