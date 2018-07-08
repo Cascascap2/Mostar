@@ -1,5 +1,6 @@
 package beans;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -159,7 +160,8 @@ public class videoController {
 				ContenidoControlador cc = man.getContenidoControlador();
 				Contenido con = cc.getContenido(this.contenido_name);
 				this.msg = cc.addUsuarioPermitido(con, user);
-				context.addMessage(null, new FacesMessage(this.contenido_name,  this.msg) );
+				context.addMessage(null, new FacesMessage(this.contenido_name,  this.msg));
+				setearAlarma(con);
 			}
 			else{
 				this.msg = "No tiene saldo suficiente para registrarse a este evento";
@@ -277,6 +279,13 @@ public class videoController {
 	    }
 	    context.addMessage(null, new FacesMessage("Error",  "Debe estar suscrito para registrarse y ver eventos"));
 	}	
+	
+	public void setearAlarma(Contenido con){
+		System.out.println("Seteando alarma");
+		Manejador man = Manejador.getInstance();
+		ContenidoControlador cc = man.getContenidoControlador(); 
+		cc.programar_stream(con);
+	}
 	
 	public String goStream(){
 		FacesContext context = FacesContext.getCurrentInstance();

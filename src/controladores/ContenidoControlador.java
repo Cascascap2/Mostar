@@ -57,21 +57,20 @@ public class ContenidoControlador {
 		cdao.modificarContenido(con);
 	}
 	
-	public void programar_stream(Contenido con, Date hora_de_comienzo){
-		ContenidoDAO cdao = new ContenidoDAO();
-		//Date hora_de_comienzo = con.getHora_streaming();
-		cdao.modificarContenido(con);
+	public void programar_stream(Contenido con){
+		//ContenidoDAO cdao = new ContenidoDAO();		
+		//cdao.modificarContenido(con);
 		
+		Date hora_de_comienzo = con.getHora_streaming();
 		JobDetail evento = JobBuilder.newJob(StreamAlert.class).withIdentity(con.getName()).build();
 		
-		Trigger trigger = TriggerBuilder.newTrigger().withIdentity("CroneTrigger2")
+		Trigger trigger = TriggerBuilder.newTrigger().withIdentity("CroneTrigger")
 							.startAt(hora_de_comienzo).forJob(con.getName()).build();
 		
 		try {
 			Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 			scheduler.start();
 			scheduler.scheduleJob(evento, trigger);
-			System.out.println("Evento programado con exito");
 		} catch (SchedulerException e) {
 			e.printStackTrace();
 		}

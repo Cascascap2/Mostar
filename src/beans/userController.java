@@ -321,25 +321,6 @@ public class userController {
 		this.favorites = NewUser.getFavorites();
 	}
 	
-	public void testAviso(){
-		Manejador man = Manejador.getInstance();
-		ContenidoControlador cc = man.getContenidoControlador(); 
-		Contenido con2 = cc.getContenido("StreamTest");
-		System.out.println("Test get");
-		
-		int hour 	= 4;
-		int minutes = 20;
-		int seconds = 00;
-		
-		Calendar triggerTime = Calendar.getInstance();
-		triggerTime.set(Calendar.HOUR, hour);
-		triggerTime.set(Calendar.MINUTE, minutes);
-		triggerTime.set(Calendar.SECOND, seconds);		
-		
-		cc.programar_stream(con2, triggerTime.getTime());
-		System.out.println(triggerTime.getTime().toString());
-		System.out.println("Test end");
-	}
 	
 	public void cambiarPassword(){
 		Manejador man = Manejador.getInstance();

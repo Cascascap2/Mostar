@@ -34,13 +34,12 @@
 			      <b:navLink value="Perfil"  outcome="profile"></b:navLink>
 			      <h:form>
 			      	<h:commandLink value="Cerrar Sesion" action="#{userController.cerrarSession}"></h:commandLink>
-			      	<p:commandButton value="Test evento" action="#{userController.testAviso}"></p:commandButton>
 			      </h:form>
 			 </b:dropMenu>
 	  </b:navbarLinks>
 	   <h:form>
 	   		<p:growl id="header_growl" showDetail="true"/>  
-	   		<p:poll interval="10" listener="#{notificacionesControlador.mostrarNotificacion}" update="header_growl" />
+	   		<p:poll interval="60" listener="#{notificacionesControlador.mostrarNotificacion}" update="header_growl" />
 		</h:form>
 	</b:navBar>
 
