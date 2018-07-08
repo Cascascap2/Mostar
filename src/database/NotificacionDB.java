@@ -3,7 +3,7 @@ package database;
 import java.util.ArrayList;
 import java.util.List;
 
-import logica.modelos.Comentarios;
+import logica.modelos.Notificacion;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -11,61 +11,47 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 
-public class ComentarioDB{
-	
-	private static ComentarioDB instance = null;
+public class NotificacionDB {
+
+	private static NotificacionDB instance = null;
 
 	private SessionFactory SessionFactory = new Configuration()
 									.configure("hibernate.cfg.xml")
 									.buildSessionFactory();
 
-	public static ComentarioDB getInstance() {
+	public static NotificacionDB getInstance() {
 		if (instance == null) {
-			instance = new ComentarioDB();
+			instance = new NotificacionDB();
 		}
 		return instance;
 	}
 
-	public void altaComentario(Comentarios com) {
+	public void altaNotificacion(Notificacion not) {
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
-		session.save(com);
+		session.save(not);
 		session.getTransaction().commit();
 		session.close();
 	}
-	
-	public Comentarios getComentario(int id){
-		Session session = this.SessionFactory.getCurrentSession();
-		session.beginTransaction();
-		try{			
-			Comentarios com = session.get(Comentarios.class, id);
-			session.close();
-			return com;
-		}catch(Exception e){
-			System.out.println(e.getMessage());
-			session.close();
-			return null;
-		}
-	}
 
-	public void borrarComentario(Comentarios com) {
+	public void borrarNotificacion(Notificacion not) {
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
 		try{			
-			session.delete(com);
+			session.delete(not);
 			session.getTransaction().commit();
 			session.close();
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 			session.close();
-		}		
+		}			
 	}
 
-	public void modificarComentario(Comentarios nuevo_com) {
+	public void modificarNotificacion(Notificacion nueva_not) {
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
 		try{			
-			session.merge(nuevo_com);
+			session.merge(nueva_not);
 			session.getTransaction().commit();
 			session.close();
 		}catch(Exception e){
@@ -75,22 +61,30 @@ public class ComentarioDB{
 		
 	}
 
-	public List<Comentarios> getAllComentariosByContName(String contenido_name) {
+	public Notificacion getNotificacion(int id) {
 		Session session = this.SessionFactory.getCurrentSession();
 		session.beginTransaction();
-		try{
-			@SuppressWarnings("deprecation")
-			Criteria criteria = session.createCriteria(Comentarios.class);
-			criteria.add(Restrictions.eq("contenido_name",contenido_name));
-			@SuppressWarnings("unchecked")
-			List<Comentarios> list = criteria.list();
+		try{			
+			Notificacion not = session.get(Notificacion.class, id);
 			session.close();
-			return list;
+			return not;
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 			session.close();
-			return new ArrayList<Comentarios>();
-		}		
+			return null;
+		}
+	}
+
+	public List<Notificacion> getAllNotificaciones(String user_name) {
+		Session session = this.SessionFactory.getCurrentSession();
+		session.beginTransaction();
+		@SuppressWarnings("deprecation")
+		Criteria criteria = session.createCriteria(Notificacion.class);
+		criteria.add(Restrictions.eq("user_name", user_name));
+		@SuppressWarnings("unchecked")
+		List<Notificacion> list = criteria.list();
+		session.close();
+		return list;
 	}
 
 }

@@ -25,7 +25,18 @@
 		
 	<h:form>
     	<p:growl id="msgs" showDetail="true" />
-    	<p:password id="password" placeholder="New Password" value="#{userController.password}"></p:password>
+    	<p:outputLabel value="Nickname: #{userController.nickname}"></p:outputLabel>
+    	<br></br>
+    	<p:outputLabel value="Mail: #{userController.mail}"></p:outputLabel>
+    	<p>
+			Estado: <p:outputLabel value="Usuario suscrito hasta el #{userController.dateExpiration}" rendered="#{userController.suscrito}"></p:outputLabel>
+					<p:outputLabel value="Usuario no pago" rendered="#{not userController.suscrito}"></p:outputLabel>
+		</p>
+		<p>
+			<p:outputLabel value="Suscripcion valida hasta el #{suscripcionController.expDateString}" rendered="#{userController.suscrito}"></p:outputLabel>
+		</p>
+    	Cambiar contraseña:
+    	<p:password id="password" placeholder="New Password" value="#{userController.password}"></p:password>    	
     	<p:commandButton type="submit" value="Cambiar password" update="msgs" actionListener="#{userController.cambiarPassword}"></p:commandButton>
 	</h:form>
     

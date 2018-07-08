@@ -12,7 +12,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
 
+import logica.modelos.Usuario;
 import controladores.Manejador;
+import controladores.UsuarioControlador;
 
 public class StreamingController {
 	private String nick;
@@ -115,6 +117,12 @@ public class StreamingController {
 		 Application application = context.getApplication();
 		 userController uc = application.evaluateExpressionGet(context, "#{userController}", userController.class);
 		 this.nick = uc.getNickname();
+		 Manejador man = Manejador.getInstance();
+		 UsuarioControlador usc = man.getUsuarioControlador();
+		 this.empresa_name = man.getUsuarioControlador().getUsuario(nick).getNickname();
+		 Usuario user = usc.getUsuario(this.nick);
+		 
+//			---------------------Agregar campo nombre empresa a usuarios administradores de contenido----------------------------------------
 		 this.empresa_name = uc.getNombreEmpresa();
 		 
 	 }

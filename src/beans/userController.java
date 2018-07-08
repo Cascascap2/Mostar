@@ -1,11 +1,13 @@
 package beans;
 
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import controladores.ContenidoControlador;
 import controladores.Manejador;
@@ -88,18 +90,13 @@ public class userController {
 		this.fechTarjExp = fechTarjExp;
 	}
 
-
-
 	public int getNumeroVer() {
 		return numeroVer;
 	}
 
-
-
 	public void setNumeroVer(int numeroVer) {
 		this.numeroVer = numeroVer;
 	}
-
 
 
 	public Double getSaldoRecarga() {
@@ -111,8 +108,6 @@ public class userController {
 	public void setSaldoRecarga(Double saldoRecarga) {
 		this.saldoRecarga = saldoRecarga;
 	}
-
-
 
 	public String getNickname() {
 		return nickname;
@@ -157,6 +152,7 @@ public class userController {
 	public Date getDateExpiration() {
 		return DateExpiration;
 	}
+	
 
 	public void setDateExpiration(Date dateExpiration) {
 		DateExpiration = dateExpiration;
@@ -190,8 +186,6 @@ public class userController {
 		return msg;
 	}
 
-
-
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
@@ -204,12 +198,20 @@ public class userController {
 		this.suscrito = suscrito;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "userController [nickname=" + nickname + ", mail=" + mail + ", password=" + password + ", favorites="
-				+ favorites + ", wallet=" + wallet + ", DateExpiration=" + DateExpiration + ", PermissionId="
-				+ PermissionId + ", Logged=" + Logged + ", massages=" + massages + "]";
+		return "userController [nickname=" + nickname + ", mail=" + mail
+				+ ", password=" + password + ", favorites=" + favorites
+				+ ", wallet=" + wallet + ", saldoRecarga=" + saldoRecarga
+				+ ", DateExpiration=" + DateExpiration + ", PermissionId="
+				+ PermissionId + ", Logged=" + Logged + ", massages="
+				+ massages + ", numeroTarj=" + numeroTarj + ", fechTarjExp="
+				+ fechTarjExp + ", numeroVer=" + numeroVer + ", msg=" + msg
+				+ ", suscrito=" + suscrito + "]";
 	}
+
 
 	public void debug() {
 		java.lang.System.out.println(this.toString());
@@ -269,6 +271,9 @@ public class userController {
 						context.getExternalContext().getSessionMap().put(AUTH_KEY, nickname);
 						context.getExternalContext().getSessionMap().put(PERMISSION_KEY, (Integer)PermissionId);
 						context.addMessage(null, new FacesMessage("Info", this.massages));
+						man.setUser_nick(this.nickname);
+						FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(AUTH_KEY, nickname);
+						FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(PERMISSION_KEY, (Integer)PermissionId);
 						return "home";
 					}else {
 						this.massages = "Usuario Inactivo";
@@ -298,12 +303,14 @@ public class userController {
 	}
 	
 	public boolean checkSuscription(Usuario user) {
-		Date expDate = user.getDateExpiration();
+		Calendar calExp = Calendar.getInstance();
+		Calendar calCurrent = Calendar.getInstance();
+		Date dateExp = user.getDateExpiration();
+		calExp.setTime(dateExp);
 		Date currentDate = new Date();
-		if(currentDate.getYear() <= expDate.getYear())
-			if(currentDate.getMonth() <= expDate.getMonth())
-				if(currentDate.getDay() <= expDate.getDay())
-					return true;
+		calCurrent.setTime(currentDate);
+		if(dateExp.after(currentDate) || dateExp.equals(currentDate))
+				return true;	
 		return false;
 	}
 	
@@ -321,6 +328,7 @@ public class userController {
 		this.Logged = false;
 		this.NombreEmpresa = null;
 		this.massages = "Usuario deslogueado correctamente";
+		man.setUser_nick("");
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove(AUTH_KEY);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove(PERMISSION_KEY);
 		return "home";
@@ -337,32 +345,6 @@ public class userController {
 		this.favorites = NewUser.getFavorites();
 	}
 	
-	public void testAviso(){
-		Manejador man = Manejador.getInstance();
-		ContenidoControlador cc = man.getContenidoControlador(); 
-		Contenido con2 = cc.getContenido("StreamTest");
-		System.out.println("Test get");
-		
-		int hour 	= 01;
-		int minutes = 40;
-		int seconds = 00;
-		
-		Calendar triggerTime = Calendar.getInstance();
-		triggerTime.set(Calendar.HOUR, hour);
-		triggerTime.set(Calendar.MINUTE, minutes);
-		triggerTime.set(Calendar.SECOND, seconds);		
-		
-		cc.programar_stream(con2, triggerTime.getTime());
-		System.out.println(triggerTime.getTime().toString());
-		System.out.println("Test end");
-	}
-	
-	public void testTrigger(){
-		FacesContext context = FacesContext.getCurrentInstance();
-		System.out.println("test: " + this.msg);
-		context.addMessage(null, new FacesMessage("Evento", "testing the testing test for the tester"));
-		System.out.println("Why don't i execute?");
-	}
 	
 	public void cambiarPassword(){
 		Manejador man = Manejador.getInstance();
@@ -374,23 +356,34 @@ public class userController {
 	    context.addMessage(null, new FacesMessage("Exito",  "La password fue cambiada") );
 	}
 	
-	public String pagarSuscripcion(){
+	public void pagarSuscripcion(ActionEvent event){
+		FacesContext context = FacesContext.getCurrentInstance();
 		if(this.wallet >= 599){
 			this.wallet-=599;
 			Manejador man = Manejador.getInstance();
 			UsuarioControlador uc = man.getUsuarioControlador();
 			Usuario user = uc.getUsuario(this.nickname);
 			user.setWallet(this.wallet);
-			Date date = new Date();
-			date.setMonth(date.getMonth()+1);
+			Calendar cal = Calendar.getInstance();
+			Date date = cal.getTime();
+			//TODO change this so it's not depracted
+			date.setMonth(cal.get(Calendar.MONTH) + 1);
 			this.DateExpiration = date;
+			this.suscrito = true;
 			user.setDateExpiration(date);
 			uc.modificarUsuario(user);
-			return "suscripcion";
+			context.addMessage(null, new FacesMessage("Exito",  "Se ah suscrito con exito"));
 		}
 		else{
-			return "recarga";
+			context.addMessage(null, new FacesMessage("Error",  "Saldo insuficiente, por favor cargue credito suficiente en su cuenta"));
 		}
+	}
+	
+	public String goSuscribirse(){
+		if(this.suscrito)
+			return "suscripcion";
+		else
+			return "";
 	}
 
 }

@@ -107,18 +107,18 @@ public class registerController{
 		FacesContext context = FacesContext.getCurrentInstance();
 		if(password != null && password.length() >= 8) {
 			if(this.repeatPassword.equals(password)) {
-				this.setMessages("Contraseña valida.");
+				this.setMessages("Contraseï¿½a valida.");
 				context.addMessage(null, new FacesMessage("Info", this.Messages));
 				return true;
 			}
 			else {
-				this.setMessages("Las Contraseñas deben ser iguales.");
+				this.setMessages("Las Contraseï¿½as deben ser iguales.");
 				context.addMessage(null, new FacesMessage("Info", this.Messages));
 				return false;
 			}
 			
 		}else{
-			this.setMessages("Contraseña invalida debe contener al menos 8 caracteres.");
+			this.setMessages("Contraseï¿½a invalida debe contener al menos 8 caracteres.");
 			context.addMessage(null, new FacesMessage("Info", this.Messages));
 			return false;
 		}

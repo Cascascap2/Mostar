@@ -18,5 +18,6 @@
     	<mapping class="logica.modelos.Categorias_Contenido"/>
     	<mapping class="logica.modelos.Favorito"/>
     	<mapping class="logica.modelos.Comentarios"/>
+    	<mapping class="logica.modelos.Notificacion"/>
     </session-factory>
 </hibernate-configuration>

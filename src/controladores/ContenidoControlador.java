@@ -57,33 +57,27 @@ public class ContenidoControlador {
 		cdao.modificarContenido(con);
 	}
 	
+	public void programar_stream(Contenido con){
+		//ContenidoDAO cdao = new ContenidoDAO();		
+		//cdao.modificarContenido(con);
+		
+		Date hora_de_comienzo = con.getHora_streaming();
+		JobDetail evento = JobBuilder.newJob(StreamAlert.class).withIdentity(con.getName()).build();
+		
+		Trigger trigger = TriggerBuilder.newTrigger().withIdentity("CroneTrigger")
+							.startAt(hora_de_comienzo).forJob(con.getName()).build();
+		
+		try {
+			Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+			scheduler.start();
+			scheduler.scheduleJob(evento, trigger);
+		} catch (SchedulerException e) {
+			e.printStackTrace();
 	public void agregarCategoriaContenido(Contenido con, List<Categorias> cats){
 		ContenidoDAO cdao = new ContenidoDAO();
 		cdao.agregarCategoriaContenido(con, cats);
 	}
-	
-	public void programar_stream(Contenido con, Date hora_de_comienzo){
-		if(con.getTipo().equals("Evento")){
-			ContenidoDAO cdao = new ContenidoDAO();
-			con.setHora_streaming(hora_de_comienzo);
-			cdao.modificarContenido(con);
-			
-			JobDetail evento = JobBuilder.newJob(StreamAlert.class).withIdentity(con.getName()).build();
-			
-			Trigger trigger = TriggerBuilder.newTrigger().withIdentity("CroneTrigger2")
-								.startAt(hora_de_comienzo).forJob(con.getName()).build();
-			
-			try {
-				Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
-				scheduler.start();
-				scheduler.scheduleJob(evento, trigger);
-				System.out.println("Evento programado con exito");
-			} catch (SchedulerException e) {
-				e.printStackTrace();
-			}
 		}
-		else
-			System.out.println("El contenido no es un stream y no es programable.");
 	}
 	
 	public void aumentar_view(Contenido con){
@@ -111,6 +105,7 @@ public class ContenidoControlador {
 		}
 		return false;
 	}
+	
 	
 	public List<Contenido> buscar_por_categoria(String cat_name){
 		List<Contenido> allContent = this.getAllContenido();
@@ -162,6 +157,12 @@ public class ContenidoControlador {
 			con.add_liker(user);
 			this.modificarContenido(con);
 		}
+	}
+	
+	public void likeSinCheck(Contenido con, Usuario user){
+		con.setLikes(con.getLikes() + 1);
+		con.add_liker(user);
+		this.modificarContenido(con);
 		
 	}
 	
@@ -175,6 +176,12 @@ public class ContenidoControlador {
 			con.add_disiker(user);
 			this.modificarContenido(con);
 		}
+	}
+	
+	public void dislikeSinCheck(Contenido con, Usuario user){
+		con.setDislikes(con.getDislikes() + 1);
+		con.add_disiker(user);
+		this.modificarContenido(con);
 		
 	}
 	
@@ -199,8 +206,12 @@ public class ContenidoControlador {
 			this.modificarContenido(con);
 			return "Se ah registrado correctamente a este evento";
 		}
-		
 	}
 	
+	public boolean usuarioPermitido(String user, Contenido con){
+		if(userInList(con.getPermitidos(), user))
+				return true;
+		return false;
+	}
 
 }

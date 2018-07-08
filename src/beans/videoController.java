@@ -1,5 +1,6 @@
 package beans;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -159,7 +160,8 @@ public class videoController {
 				ContenidoControlador cc = man.getContenidoControlador();
 				Contenido con = cc.getContenido(this.contenido_name);
 				this.msg = cc.addUsuarioPermitido(con, user);
-				context.addMessage(null, new FacesMessage(this.contenido_name,  this.msg) );
+				context.addMessage(null, new FacesMessage(this.contenido_name,  this.msg));
+				setearAlarma(con);
 			}
 			else{
 				this.msg = "No tiene saldo suficiente para registrarse a este evento";
@@ -205,8 +207,14 @@ public class videoController {
 		String user_nick = this.session.getNickname();
 		Usuario user = uc.getUsuario(user_nick);
 		Contenido con = cc.getContenido(this.contenido_name);
-		cc.like(con, user);
-		updateRating();
+		FacesContext context = FacesContext.getCurrentInstance();
+		if(!cc.userInList(con.getLikers(), user_nick)){
+			cc.likeSinCheck(con, user);
+			updateRating();
+			context.addMessage(null, new FacesMessage("Exito",  "Gracias por tu calificacion"));
+		}
+		else
+			context.addMessage(null, new FacesMessage("Error",  "Ya has dado like a este video"));
 		//TODO change button color
 	}
 	
@@ -217,8 +225,14 @@ public class videoController {
 		String user_nick = this.session.getNickname();
 		Usuario user = uc.getUsuario(user_nick);
 		Contenido con = cc.getContenido(this.contenido_name);
-		cc.dislike(con, user);
-		updateRating();
+		FacesContext context = FacesContext.getCurrentInstance();
+		if(!cc.userInList(con.getDislikers(), user_nick)){
+			cc.dislikeSinCheck(con, user);
+			updateRating();
+			context.addMessage(null, new FacesMessage("Exito",  "Gracias por tu calificacion"));
+		}
+		else
+			context.addMessage(null, new FacesMessage("Error",  "Ya has dado dislike a este video"));
 		//TODO change button color
 	}
 	
@@ -241,9 +255,54 @@ public class videoController {
 		Contenido con = cc.getContenido(this.contenido_name);
 		String user_nick = this.session.getNickname();
 		Usuario user = uc.getUsuario(user_nick);
-		uc.agregarFavorito(user, con);
+		FacesContext context = FacesContext.getCurrentInstance();
+		if(!uc.favInList(user.getFavoritesInList(), this.contenido_name)){
+			uc.agregarFavoritoSinCheck(user, con);
+			context.addMessage(null, new FacesMessage("Exito",  "Se ah agregado esta pelicula a tu lista de favoritos"));
+		}
+		else
+			context.addMessage(null, new FacesMessage("Error",  "Esta pelicula ya pertenece a tu lista de favoritos"));
 	}
 	
+	public void verStream(ActionEvent event){
+		this.contenido_name = (String) event.getComponent().getAttributes().get("pelicula_elejida");
+		FacesContext context = FacesContext.getCurrentInstance();
+	    Application application = context.getApplication();
+	    userController uc = application.evaluateExpressionGet(context, "#{userController}", userController.class);
+	    if(uc!= null && uc.isLogged() && uc.isSuscrito()){
+	    	Manejador man = Manejador.getInstance();
+		    ContenidoControlador cc = man.getContenidoControlador();
+	    	String user_nick = uc.getNickname();
+	    	Contenido con = cc.getContenido(this.contenido_name);
+	    	if(!cc.userInList(con.getPermitidos(), user_nick))
+	    		context.addMessage(null, new FacesMessage("Error",  "No esta registrado a este evento"));
+	    }
+	    context.addMessage(null, new FacesMessage("Error",  "Debe estar suscrito para registrarse y ver eventos"));
+	}	
 	
+	public void setearAlarma(Contenido con){
+		System.out.println("Seteando alarma");
+		Manejador man = Manejador.getInstance();
+		ContenidoControlador cc = man.getContenidoControlador(); 
+		cc.programar_stream(con);
+	}
+	
+	public String goStream(){
+		FacesContext context = FacesContext.getCurrentInstance();
+	    Application application = context.getApplication();
+	    userController uc = application.evaluateExpressionGet(context, "#{userController}", userController.class);
+	    if(uc!= null && uc.isLogged() && uc.isSuscrito()){
+	    	Manejador man = Manejador.getInstance();
+		    ContenidoControlador cc = man.getContenidoControlador();
+	    	String user_nick = uc.getNickname();
+	    	Contenido con = cc.getContenido(this.contenido_name);
+	    	if(cc.userInList(con.getPermitidos(), user_nick))
+	    		return "streaming";	  
+	    	else
+	    		return "";
+	    }
+	    else
+	    	return "";
+	}	
 	
 }
