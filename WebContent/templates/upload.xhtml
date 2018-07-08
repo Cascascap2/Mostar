@@ -62,6 +62,17 @@
 			    </b:column>
 			  </b:row>
 			  <br></br>
+			   <b:row>
+			    <b:column medium-screen="2">
+			      <h:outputText value="Seleccionar Categoria:"/>
+			    </b:column>
+			    <b:column medium-screen="4">
+		        <p:selectCheckboxMenu id="multiple" value="#{fileController.catContent}"  label="Categorias" multiple="true"
+		                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+		            <f:selectItems value="#{fileController.listCategoria}" />
+		        </p:selectCheckboxMenu>
+			    </b:column>
+			  </b:row>
 			  <b:row>
 			    <b:column medium-screen="2">
 			    </b:column>
@@ -71,6 +82,7 @@
 			    </b:column>
 			    </b:column>
 			  </b:row>
+			  
 			  <b:growl id="Growl" placementFrom="top" show-detail="true"
 		         global-only="false"
 		         show-summary="true" allow-dismiss="true"

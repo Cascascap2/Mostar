@@ -38,28 +38,7 @@
 
 			<p:column headerText="Correo">
 				<h:outputText value="#{usu.mail}" />
-			</p:column>
-
-			<!-- <p:column headerText="Fecha de Expiracion">
-				<p:cellEditor>
-					<f:facet name="output">
-						<h:outputText value="#{content.dateExpiration}" />
-					</f:facet>
-					<f:facet name="input">
-						<p:inputText value="#{content.dateExpiration}" style="width:100%"
-							label="Descripcion" />
-					</f:facet>
-				</p:cellEditor>
-			</p:column> -->
-
-			<!--<p:column headerText="Visitas">
-		           <h:outputText value="#{content.vistas}" />
-		       </p:column>
-		       
-		       <p:column headerText="Calificacion">
-		           <h:outputText value="#{content.calificacion}" />
-		       </p:column>-->
-		       
+			</p:column>		       
 			<p:column headerText="Tipo Usuario">
 		           <p:cellEditor>
 		               <f:facet name="output"><h:outputText value="#{usu.permissionId}" /></f:facet>
@@ -85,23 +64,7 @@
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
-
 			
-			<!-- <p:column headerText="Eliminar">
-				<p:cellEditor>
-					<f:facet name="output">
-						<h:outputText value="#{content.activo}" />
-					</f:facet>
-					<f:facet name="input">
-						<h:selectOneMenu value="#{content.activo}"
-							style="width:100%; font-color:'black'">
-							<f:selectItems value="#{sisAdminController.eliminar}" var="eliminar"
-								itemLabel="#{eliminar}" itemValue="#{eliminar}" />
-						</h:selectOneMenu>
-					</f:facet>
-				</p:cellEditor>
-			</p:column> -->
-
 			<p:column style="width:32px">
 				<p:rowEditor />
 			</p:column>

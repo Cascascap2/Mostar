@@ -273,6 +273,42 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>templates/home.xhtml</display-name>
+		<from-view-id>/templates/home.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>NuevoContenido</from-outcome>
+			<to-view-id>/templates/upload.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>templates/upload.xhtml</display-name>
+		<from-view-id>/templates/upload.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>admContent</from-outcome>
+			<to-view-id>/templates/listarContenidos.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>templates/listarContenidos.xhtml</display-name>
+		<from-view-id>/templates/listarContenidos.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>NuevoContenido</from-outcome>
+			<to-view-id>/templates/upload.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>templates/home.xhtml</display-name>
+		<from-view-id>/templates/home.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>Estadisticas</from-outcome>
+			<to-view-id>/templates/Estadisticas.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 
 
 </faces-config>

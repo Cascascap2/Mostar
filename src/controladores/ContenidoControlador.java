@@ -57,6 +57,11 @@ public class ContenidoControlador {
 		cdao.modificarContenido(con);
 	}
 	
+	public void agregarCategoriaContenido(Contenido con, List<Categorias> cats){
+		ContenidoDAO cdao = new ContenidoDAO();
+		cdao.agregarCategoriaContenido(con, cats);
+	}
+	
 	public void programar_stream(Contenido con, Date hora_de_comienzo){
 		if(con.getTipo().equals("Evento")){
 			ContenidoDAO cdao = new ContenidoDAO();
@@ -84,6 +89,14 @@ public class ContenidoControlador {
 	public void aumentar_view(Contenido con){
 		con.setVistas(con.getVistas()+1);
 		this.modificarContenido(con);
+	}
+	
+	public void agegar_categoria(Contenido con, List<Categorias> cats){
+		for(int i=0;i<cats.size();i++){
+			con.add_categoria(cats.get(i));
+		}
+		modificarContenido(con);
+		
 	}
 	
 	public boolean tiene_categoria(Contenido con, String cat_check){

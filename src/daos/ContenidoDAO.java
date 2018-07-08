@@ -42,7 +42,11 @@ public class ContenidoDAO {
 		ContenidoDB cdb = ContenidoDB.getInstance();
 		cdb.modificarContenido(con);
 	}
-
+	
+	public void agregarCategoriaContenido(Contenido con, List<Categorias> cats) {
+		ContenidoDB cdb = ContenidoDB.getInstance();
+		cdb.agregarCategoriaContenido(con, cats);
+	}
 
 	public List<Contenido> getAllContenido() {
 		ContenidoDB cdb = ContenidoDB.getInstance();

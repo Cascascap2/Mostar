@@ -8,6 +8,7 @@ import java.util.Set;
 
 
 import logica.modelos.Categorias;
+import logica.modelos.Categorias_Contenido;
 import logica.modelos.Contenido;
 
 import org.hibernate.Criteria;
@@ -47,7 +48,24 @@ public class ContenidoDB {
 		}
 		
 	}
-	
+	public void agregarCategoriaContenido(Contenido con, List<Categorias> cats){
+		Session session = this.SessionFactory.getCurrentSession();
+		session.beginTransaction();
+		for(int i=0; i<cats.size(); i++){
+			Categorias_Contenido nuevo = new Categorias_Contenido(con.getName(),cats.get(i).getName());
+			session.save(nuevo);
+		}
+		try{
+			session.getTransaction().commit();
+			session.close();
+		}catch(Exception e){
+			System.out.println("Error al persistir un Categorias del Contenido.");
+			System.out.println(e.getMessage());
+			System.out.println(e.getCause());
+			session.close();
+		}
+		
+	}
 	public void modificarContenido(Contenido con){
 		System.out.println("Updating content...");
 		Session session = this.SessionFactory.getCurrentSession();

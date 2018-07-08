@@ -94,6 +94,10 @@ public class StreamingController {
 		        this.message ="Archivo cargado correctamente!!";
 		        context.addMessage(null, new FacesMessage("Successful", "Exito!") );
 		        context.addMessage(null, new FacesMessage("Info",this.message) );
+		        man.getContenidoControlador().altaContenido(name, empresa_name,ruta_trans, descripcion, tipo, ruta_imagen);
+				 this.message = "Evento registrado con exito ...";
+				 context.addMessage(null, new FacesMessage("Successful",  "Mostar dice: " + "La transaccion a sido realizada con exito...") );
+				 context.addMessage(null, new FacesMessage("Info", this.message));
 		    }
 		    catch (IOException e) {
 		    	this.message = "Error al cargar el archivo...";
@@ -102,12 +106,7 @@ public class StreamingController {
 		    }
 		    
 		    
-		 man.getContenidoControlador().altaContenido(name, empresa_name,ruta_trans, descripcion, tipo, ruta_imagen);
-		 //StreamAlert alert = new StreamAlert();
-		 //alert.execute(arg0); ----------------------REVISAR CON GIAN----------------------- 
-		 this.message = "Evento registrado con exito ...";
-		 context.addMessage(null, new FacesMessage("Successful",  "Mostar dice: " + "La transaccion a sido realizada con exito...") );
-		 context.addMessage(null, new FacesMessage("Info", this.message));
+		 
 	 }
 	 
 	 @PostConstruct
@@ -116,9 +115,7 @@ public class StreamingController {
 		 Application application = context.getApplication();
 		 userController uc = application.evaluateExpressionGet(context, "#{userController}", userController.class);
 		 this.nick = uc.getNickname();
-		 Manejador man = Manejador.getInstance();
-		 this.empresa_name = man.getUsuarioControlador().getUsuario(nick).getNickname();
-//			---------------------Agregar campo nombre empresa a usuarios administradores de contenido----------------------------------------
+		 this.empresa_name = uc.getNombreEmpresa();
 		 
 	 }
 	

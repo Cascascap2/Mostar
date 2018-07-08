@@ -4,7 +4,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
 
-import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -51,6 +50,20 @@ public class userController {
 	
 	private boolean suscrito;
 	
+	private String NombreEmpresa;
+	
+
+
+	public String getNombreEmpresa() {
+		return NombreEmpresa;
+	}
+
+
+
+	public void setNombreEmpresa(String nombreEmpresa) {
+		NombreEmpresa = nombreEmpresa;
+	}
+
 
 
 	public int getNumeroTarj() {
@@ -211,7 +224,7 @@ public class userController {
 		System.out.println("suma saldo");
 		man.getUsuarioControlador().modificarUsuario(user);
 		this.wallet = user.getWallet();
-		System.out.println("Usuario modificado corredctamente");
+		System.out.println("Usuario modificado correctamente");
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.addMessage(null, new FacesMessage("Info","Recarga realizada con exito!") );
 		return "billetera";
@@ -219,6 +232,7 @@ public class userController {
 	}
 	
 	public void validateNick(){
+		FacesContext context = FacesContext.getCurrentInstance();
 		Manejador man = Manejador.getInstance();
 		Usuario user = man.getUsuarioControlador().getUsuario(this.nickname);
 		if(user == null){
@@ -226,6 +240,7 @@ public class userController {
 		}else {
 			this.massages = "Invalido";
 		}
+		context.addMessage(null, new FacesMessage("Info", this.massages));
 		
 	}
 	
@@ -234,6 +249,7 @@ public class userController {
 	} 
 
 	public String login() {
+		FacesContext context = FacesContext.getCurrentInstance();
 		Usuario NewUser = new Usuario();
 		Manejador man = Manejador.getInstance();
 		UsuarioControlador controllerUser = man.getUsuarioControlador();
@@ -249,29 +265,34 @@ public class userController {
 						this.favorites = NewUser.getFavorites();
 						this.Logged = true;
 						this.suscrito = checkSuscription(NewUser);
-						FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(AUTH_KEY, nickname);
-						FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(PERMISSION_KEY, (Integer)PermissionId);
+						this.NombreEmpresa = NewUser.getEmpresa_nombre();
+						context.getExternalContext().getSessionMap().put(AUTH_KEY, nickname);
+						context.getExternalContext().getSessionMap().put(PERMISSION_KEY, (Integer)PermissionId);
+						context.addMessage(null, new FacesMessage("Info", this.massages));
 						return "home";
 					}else {
 						this.massages = "Usuario Inactivo";
+						context.addMessage(null, new FacesMessage("Fatal", this.massages));
 						return "login";
 					}
 				}else {
 					this.massages="Contraseña incorrecta ...";
 					this.Logged = false;
+					context.addMessage(null, new FacesMessage("Fatal", this.massages));
 					return "login";
 				}
 			} else {
 				this.massages ="Mail invalido ...";
 				System.out.println("No encuentro usuario por mail");
 				this.Logged = false;
+				context.addMessage(null, new FacesMessage("Fatal", this.massages));
 				return "login";
 			}
 
 		} else {
-			this.massages="El mail no debe ser vacio...";
-			System.out.println("no encuentro usuario por mail");
+			this.massages="No existe Usuario registrado con: "+mail.toString();
 			this.Logged = false;
+			context.addMessage(null, new FacesMessage("Fatal", this.massages));
 			return "login";
 		}
 	}
@@ -298,6 +319,7 @@ public class userController {
 		this.DateExpiration = null;
 		this.PermissionId = 0;
 		this.Logged = false;
+		this.NombreEmpresa = null;
 		this.massages = "Usuario deslogueado correctamente";
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove(AUTH_KEY);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove(PERMISSION_KEY);

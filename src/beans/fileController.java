@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.Application;
@@ -14,6 +16,8 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
 
 import controladores.Manejador;
+import logica.modelos.Categorias;
+import logica.modelos.Contenido;
 
 @MultipartConfig(location = "/Mostar/videos")
 public class fileController implements Serializable{
@@ -28,8 +32,38 @@ public class fileController implements Serializable{
 	private String message;
 	private String tipo= "Pelicula";
 	private String nick;
+	private String NombreEmpresa;
+	private List<String> catContent;
+	private List<String> ListCategoria;
 	
 	
+	
+	
+
+	public List<String> getCatContent() {
+		return catContent;
+	}
+
+	public void setCatContent(List<String> catContent) {
+		this.catContent = catContent;
+	}
+
+	public List<String> getListCategoria() {
+		return ListCategoria;
+	}
+
+	public void setListCategoria(List<String> listCategoria) {
+		ListCategoria = listCategoria;
+	}
+
+	public String getNombreEmpresa() {
+		return NombreEmpresa;
+	}
+
+	public void setNombreEmpresa(String nombreEmpresa) {
+		NombreEmpresa = nombreEmpresa;
+	}
+
 	
 	public String getNick() {
 		return nick;
@@ -89,7 +123,7 @@ public class fileController implements Serializable{
 		this.filename = filename;
 	}
 
-	public void saveVideo() {
+	public boolean saveVideo() {
 		FacesContext context = FacesContext.getCurrentInstance();
 	    try (InputStream input = file2.getInputStream()) {
 	    	File nuevo = new File("C:/Users/lucas/Videos/Videos", filename+".mp4");
@@ -98,15 +132,16 @@ public class fileController implements Serializable{
 	        System.out.println("copio el archivo");
 	        this.message ="Video cargado correctamente!!";
 	        context.addMessage(null, new FacesMessage("Info1",this.message) );
-	        this.cargaFinalizada();
+	        return true;
 	    }
 	    catch (IOException e) {
 	    	this.message = "Error al cargar el archivo...";
 	    	context.addMessage(null, new FacesMessage("Warning",  "Mostar dice: " + "Error...") );
 	    	context.addMessage(null, new FacesMessage("Info1", this.message));
+	    	return false;
 	    }
 	}
-	public void saveImagen() {
+	public boolean saveImagen() {
 		FacesContext context = FacesContext.getCurrentInstance();
 	    try (InputStream input = file1.getInputStream()) {
 	    	File nuevo = new File("C:/Users/lucas/Videos/Imagenes", filename+".jpg");
@@ -114,23 +149,31 @@ public class fileController implements Serializable{
 	        Files.copy(input, nuevo.toPath());
 	        System.out.println("copio el archivo");
 	        this.message ="Imagen cargada correctamente!!";
-	        context.addMessage(null, new FacesMessage("Info2",this.message) );
-	        this.cargaFinalizada();
+	        context.addMessage(null, new FacesMessage("Info",this.message) );
+	        return true;
 	    }
 	    catch (IOException e) {
 	    	this.message = "Error al cargar el archivo...";
 	    	context.addMessage(null, new FacesMessage("Warning",  "Mostar dice: " + "Error...") );
-	    	context.addMessage(null, new FacesMessage("Info2", this.message));
+	    	context.addMessage(null, new FacesMessage("Info", this.message));
+	    	return false;
 	    }
 	}
+	
 	public void saveContenido(){
+		System.out.println("Agrego categorias:::"+this.catContent.size());
 		FacesContext context = FacesContext.getCurrentInstance();
-		this.saveImagen();
-		this.saveVideo();
-		Manejador man = Manejador.getInstance();
-		man.getContenidoControlador().altaContenido(filename,nick, "http://localhost:8080/localVideo/Videos/"+this.filename+".mp4", Description, tipo, "http://localhost:8080/localVideo/Imagenes/"+this.filename+".jpg");
-		context.addMessage(null, new FacesMessage("Info","El Contenido se cargo Correctamente!! ") );
-		
+		if(this.saveVideo()&& this.saveImagen()){
+			Manejador man = Manejador.getInstance();
+			man.getContenidoControlador().altaContenido(filename,NombreEmpresa, "http://localhost:8080/localVideo/Videos/"+this.filename+".mp4", Description, tipo, "http://localhost:8080/localVideo/Imagenes/"+this.filename+".jpg");
+			List<Categorias> ListaCatCon = new ArrayList<Categorias>();
+			for(int i=0; i<catContent.size();i++) {
+				ListaCatCon.add(new Categorias(catContent.get(i)));
+			}
+			man.getContenidoControlador().agegar_categoria(man.getContenidoControlador().getContenido(filename), ListaCatCon);
+			context.addMessage(null, new FacesMessage("Info","El Contenido se cargo Correctamente!! ") );
+			this.cargaFinalizada();
+		}
 	}
 	
 	public String cargaFinalizada() {
@@ -142,6 +185,14 @@ public class fileController implements Serializable{
 		 Application application = context.getApplication();
 		 userController uc = application.evaluateExpressionGet(context, "#{userController}", userController.class);
 		 this.nick = uc.getNickname();
+		 this.NombreEmpresa = uc.getNombreEmpresa();
+		 System.out.println(this.NombreEmpresa);
+		 System.out.println(this.nick);
+		 List<Categorias> ListCat = (List<Categorias>) Manejador.getInstance().getCategoriaControlador().getAllCategorias();
+		 ListCategoria = new ArrayList<String>();
+		 for(int i=0; i<ListCat.size(); i++){
+			 ListCategoria.add(ListCat.get(i).getName());
+		 }
 	}
 	
 }
