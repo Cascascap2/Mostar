@@ -27,8 +27,8 @@
 			<div class="col-lg-8">
 
 				<div id="rtmp" class="rtmp" style="height: 400px"></div>
-				<h:inputHidden id="rutaStr" value="rtmp://192.168.1.11/live"></h:inputHidden>
-				<h:inputHidden id="name"  value ="live" ></h:inputHidden>
+				<h:inputHidden id="rutaStr" value="#{streamingController.ruta_trans}"></h:inputHidden>
+				<h:inputHidden id="name"  value ="#{streamingController.name}" ></h:inputHidden>
 
 			</div>
 			<div class="col-lg-4">

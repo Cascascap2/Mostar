@@ -9,7 +9,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import controladores.ContenidoControlador;
 import controladores.Manejador;
 import controladores.UsuarioControlador;
 import logica.modelos.Contenido;
@@ -274,7 +273,12 @@ public class userController {
 						man.setUser_nick(this.nickname);
 						FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(AUTH_KEY, nickname);
 						FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(PERMISSION_KEY, (Integer)PermissionId);
-						return "home";
+						switch (this.PermissionId) {
+							case 1 : return "home";
+							case 2 : return "listarContenidos";
+							case 3 : return "listarContenidosSis";
+							default: return "home";
+						}
 					}else {
 						this.massages = "Usuario Inactivo";
 						context.addMessage(null, new FacesMessage("Fatal", this.massages));

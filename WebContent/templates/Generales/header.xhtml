@@ -27,17 +27,18 @@
 		    <b:navLink value="Registrarme" id="register" outcome="register"></b:navLink>
 		</b:navbarLinks>
 		<b:navbarLinks pull="right" styleClass="hidden-xs" name="loginOn" >
-		    <b:navLink value="Notificaciones" id="notification" rendered="#{userController.logged}"></b:navLink>
-		    <b:navLink value="Ver Estadisticas" id="Estadisticas" rendered="#{userController.logged}" outcome="Estadisticas"></b:navLink>
-		    <b:navLink value="Borrar Usuarios" id="DelUser" rendered="#{userController.logged}" outcome="BorrarUser"></b:navLink>
-		    <b:navLink value="Modificar Usuarios" id="ModUser" rendered="#{userController.logged}" outcome="ModifUser"></b:navLink>
-		    <b:navLink value="Pagar Suscripcion" id="payment" outcome="suscripcion" rendered="#{userController.logged}"></b:navLink>
+		    <b:navLink value="Notificaciones" id="notification" rendered="#{userController.permissionId == 1}"></b:navLink>
+		    <b:navLink value="Ver Estadisticas" id="Estadisticas" rendered="#{userController.permissionId == 2 }" outcome="Estadisticas"></b:navLink>
+		    <b:navLink value="Borrar Usuarios" id="DelUser" rendered="#{userController.permissionId == 3}" outcome="BorrarUser"></b:navLink>
+		    <b:navLink value="Modificar Usuarios" id="ModUser" rendered="#{userController.permissionId == 3 }" outcome="ModifUser"></b:navLink>
+		    <b:navLink value="Pagar Suscripcion" id="payment" outcome="suscripcion" rendered="#{userController.permissionId == 1}"></b:navLink>
 		     <b:dropMenu value="Cuenta" id="cuenta" rendered="#{userController.logged}" >
-			      <b:navLink value="Billetera" outcome="billetera"></b:navLink>
-			      <b:navLink value="Perfil"  outcome="profile"></b:navLink>
-			      <h:form>
+			      <b:navLink value="Billetera" outcome="billetera"  renedred = "#{userController.permissionId == 1}"></b:navLink>
+			      <b:navLink value="Perfil" renedred = "#{userController.permissionId == 1}"  outcome="profile"></b:navLink>
+			      <b:navLink value="Cerrar Sesion" href ="#{userController.cerrarSession}" renedred = "#{userController.logged}" ></b:navLink>
+			      <!-- <h:form>
 			      	<h:commandLink value="Cerrar Sesion" action="#{userController.cerrarSession}"></h:commandLink>
-			      </h:form>
+			      </h:form> -->
 			 </b:dropMenu>
 	  </b:navbarLinks>
 	   <h:form>

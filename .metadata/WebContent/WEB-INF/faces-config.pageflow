@@ -1,72 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15281471690110" configfile="/Mostar/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="templates/home.xhtml" x="122" y="1265" id="pf15291948030760" referenceLink="//@navigationRule.15/@fromViewId|" outlinks="pf15291950747893 pf15291965500385 pf15291965500386 pf15298978236972 pf15304807006760 pf15304990760410 pf15304990760411 pf15305691229498 pf15309324065090" inlinks="pf15291965500386 pf15293748121380 pf15293748507891 pf15304990760412 pf15304990760413" path="/templates/home.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/home.xhtml" x="122" y="967" id="pf15291948030760" referenceLink="//@navigationRule.19/@fromViewId|" outlinks="pf15291950747893 pf15291965500385 pf15291965500386 pf15298978236972 pf15304807006760 pf15304990760410 pf15304990760411 pf15305691229498 pf15305691229499 pf15309267177970 pf15309267683772 pf15310025103810 pf15310755918425" inlinks="pf15291965500386 pf15293748121380 pf15293748507891 pf15304990760412 pf15304990760413" path="/templates/home.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/login.xhtml" x="338" y="178" id="pf15291950747894" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15293748121380" inlinks="pf15291950747893" path="/templates/login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/register.xhtml" x="338" y="562" id="pf15291965500387" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15293748507891" inlinks="pf15291965500385" path="/templates/register.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/verVideo.xhtml" x="338" y="2140" id="pf15298978236973" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" outlinks="pf15304990760412" inlinks="pf15298978236972 pf15309828821780" path="/templates/verVideo.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/billetera.xhtml" x="770" y="1047" id="pf15304807006781" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" outlinks="pf15304811876822" inlinks="pf15304807006760 pf153056912294910" path="/templates/billetera.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/recagaWallet.xhtml" x="554" y="946" id="pf15304811876823" referenceLink="//@navigationRule.17/@navigationCase.0/@toViewId|" outlinks="pf153056912294910" inlinks="pf15304811876822 pf153056912294911" path="/templates/recagaWallet.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/searchResult.xhtml" x="338" y="1735" id="pf15304990760424" referenceLink="//@navigationRule.13/@fromViewId|" outlinks="pf15304990760413 pf15304990760425 pf15304990760426" inlinks="pf15304990760410 pf15304990760425" path="/templates/searchResult.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/streaming.xhtml" x="554" y="1937" id="pf15304990760427" referenceLink="//@navigationRule.13/@navigationCase.0/@toViewId|" inlinks="pf15304990760411 pf15304990760426" path="/templates/streaming.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/profile.xhtml" x="338" y="1351" id="pf153056912294912" referenceLink="//@navigationRule.14/@navigationCase.0/@toViewId|" inlinks="pf15305691229498" path="/templates/profile.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/suscripcion.xhtml" x="338" y="946" id="pf153056912294913" referenceLink="//@navigationRule.17/@fromViewId|" outlinks="pf153056912294911 pf15309324065101" inlinks="pf15309324065090 pf15309324065101" path="/templates/suscripcion.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/favoritos.xhtml" x="122" y="2140" id="pf15309828821791" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf15309828821780" path="/templates/favoritos.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/register.xhtml" x="338" y="967" id="pf15291965500387" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15293748507891" inlinks="pf15291965500385" path="/templates/register.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/verVideo.xhtml" x="338" y="1351" id="pf15298978236973" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" outlinks="pf15304990760412" inlinks="pf15298978236972" path="/templates/verVideo.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/billetera.xhtml" x="338" y="2503" id="pf15304807006781" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" outlinks="pf15304811876822" inlinks="pf15304807006760 pf153056912294910" path="/templates/billetera.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/recagaWallet.xhtml" x="122" y="2503" id="pf15304811876823" referenceLink="//@navigationRule.15/@navigationCase.0/@toViewId|" outlinks="pf153056912294910" inlinks="pf15304811876822 pf153056912294911" path="/templates/recagaWallet.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/searchResult.xhtml" x="338" y="562" id="pf15304990760424" referenceLink="//@navigationRule.12/@fromViewId|" outlinks="pf15304990760413 pf15304990760425 pf15304990760426" inlinks="pf15304990760410 pf15304990760425" path="/templates/searchResult.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/streaming.xhtml" x="554" y="764" id="pf15304990760427" referenceLink="//@navigationRule.12/@navigationCase.0/@toViewId|" inlinks="pf15304990760411 pf15304990760426" path="/templates/streaming.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/profile.xhtml" x="338" y="1735" id="pf153056912294912" referenceLink="//@navigationRule.13/@navigationCase.0/@toViewId|" inlinks="pf15305691229498" path="/templates/profile.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/suscripcion.xhtml" x="338" y="2119" id="pf153056912294913" referenceLink="//@navigationRule.15/@fromViewId|" outlinks="pf153056912294911" inlinks="pf15305691229499" path="/templates/suscripcion.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/borrarUsuario.xhtml" x="622" y="1111" id="pf15309267177981" referenceLink="//@navigationRule.18/@navigationCase.0/@toViewId|" outlinks="pf15309268037124" inlinks="pf15309267177970 pf15309268037124" path="/templates/borrarUsuario.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/listarUsuarios.xhtml" x="495" y="1204" id="pf15309267683773" referenceLink="//@navigationRule.17/@navigationCase.0/@toViewId|" inlinks="pf15309267683772" path="/templates/listarUsuarios.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/upload.xhtml" x="721" y="949" id="pf15310025103831" referenceLink="//@navigationRule.21/@navigationCase.0/@toViewId|" outlinks="pf15310026174212" inlinks="pf15310025103810 pf15310026834454" path="/templates/upload.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/listarContenidos.xhtml" x="763" y="600" id="pf15310026174213" referenceLink="//@navigationRule.21/@fromViewId|" outlinks="pf15310026834454" inlinks="pf15310026174212" path="/templates/listarContenidos.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/Estadisticas.xhtml" x="85" y="541" id="pf15310755918426" inlinks="pf15310755918425" path="/templates/Estadisticas.xhtml"/>
-  <links id="pf15291950747893" target="pf15291950747894" source="pf15291948030760" outcome="login" redirect="true"/>
-  <links id="pf15291965500385" target="pf15291965500387" source="pf15291948030760" outcome="register" redirect="true"/>
-  <links id="pf15293748121380" target="pf15291948030760" source="pf15291950747894" outcome="home" redirect="true"/>
-  <links id="pf15293748507891" target="pf15291948030760" source="pf15291965500387" outcome="home" redirect="true"/>
-  <links id="pf15298978236972" target="pf15298978236973" source="pf15291948030760" outcome="verVideo" redirect="true"/>
-  <links id="pf15304807006760" target="pf15304807006781" source="pf15291948030760" outcome="billetera" redirect="true"/>
-  <links id="pf15304811876822" target="pf15304811876823" source="pf15304807006781" outcome="recarga" redirect="true"/>
-  <links id="pf15304990760412" target="pf15291948030760" source="pf15298978236973" outcome="home" redirect="true"/>
-  <links id="pf15304990760413" target="pf15291948030760" source="pf15304990760424" outcome="home" redirect="true"/>
-  <links id="pf15304990760410" target="pf15304990760424" source="pf15291948030760" outcome="searchResult" redirect="true"/>
-  <links id="pf15304990760411" target="pf15304990760427" source="pf15291948030760" outcome="streaming" redirect="true"/>
-  <links id="pf15304990760426" target="pf15304990760427" source="pf15304990760424" outcome="streaming" redirect="true"/>
-  <links id="pf153056912294910" target="pf15304807006781" source="pf15304811876823" outcome="billetera" redirect="true"/>
-  <links id="pf15305691229498" target="pf153056912294912" source="pf15291948030760" outcome="profile" redirect="true"/>
-  <links id="pf153056912294911" target="pf15304811876823" source="pf153056912294913" outcome="recarga" redirect="true"/>
-  <links id="pf15309324065090" target="pf153056912294913" source="pf15291948030760" outcome="suscripcion" redirect="true"/>
-  <links id="pf15309828821780" target="pf15298978236973" source="pf15309828821791" outcome="verVideo" redirect="true"/>
-  <links id="pf15291965500386" target="pf15291948030760" source="pf15291948030760" outcome="home" redirect="true">
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15310901160587" configfile="/Mostar/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="templates/home.xhtml" x="122" y="2098" id="pf15310903258278" referenceLink="//@navigationRule.24/@fromViewId|" outlinks="pf15310903258279 pf153109032582710 pf153109032582711 pf153109032582712 pf153109032582713 pf153109032582714 pf153109032582715 pf153109032582716 pf153109032582717 pf153109032582718 pf153109032582719 pf153109032582720 pf153109032582721" inlinks="pf153109032582711 pf153109032582722 pf153109032582723 pf153109032582724 pf153109032582725" path="/templates/home.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/login.xhtml" x="438" y="1812" id="pf153109032582826" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf153109032582722 pf153109032582827 pf153109037594252" inlinks="pf15310903258279" path="/templates/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/register.xhtml" x="338" y="946" id="pf153109032582828" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf153109032582723" inlinks="pf153109032582710" path="/templates/register.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/verVideo.xhtml" x="338" y="178" id="pf153109032582829" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" outlinks="pf153109032582724" inlinks="pf153109032582712 pf153109032582830" path="/templates/verVideo.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/searchResult.xhtml" x="338" y="3271" id="pf153109032582831" referenceLink="//@navigationRule.13/@fromViewId|" outlinks="pf153109032582725 pf153109032582832 pf153109032582833" inlinks="pf153109032582714 pf153109032582832" path="/templates/searchResult.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/favoritos.xhtml" x="122" y="178" id="pf153109032582834" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf153109032582830" path="/templates/favoritos.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/billetera.xhtml" x="770" y="2199" id="pf153109032582935" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" outlinks="pf153109032582936" inlinks="pf153109032582713 pf153109032582937" path="/templates/billetera.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/recagaWallet.xhtml" x="554" y="2098" id="pf153109032582938" referenceLink="//@navigationRule.17/@navigationCase.0/@toViewId|" outlinks="pf153109032582937" inlinks="pf153109032582936 pf153109032582939" path="/templates/recagaWallet.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/streaming.xhtml" x="554" y="3473" id="pf153109032582940" referenceLink="//@navigationRule.13/@navigationCase.0/@toViewId|" inlinks="pf153109032582715 pf153109032582833" path="/templates/streaming.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/profile.xhtml" x="804" y="1836" id="pf153109032582941" referenceLink="//@navigationRule.14/@navigationCase.0/@toViewId|" inlinks="pf153109032582716" path="/templates/profile.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/suscripcion.xhtml" x="744" y="1968" id="pf153109032582942" referenceLink="//@navigationRule.17/@fromViewId|" outlinks="pf153109032582943 pf153109032582939" inlinks="pf153109032582717 pf153109032582943" path="/templates/suscripcion.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/borrarUsuario.xhtml" x="338" y="2098" id="pf153109032582944" referenceLink="//@navigationRule.20/@navigationCase.0/@toViewId|" outlinks="pf153109032582945" inlinks="pf153109032582718 pf153109032582945" path="/templates/borrarUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/listarUsuarios.xhtml" x="438" y="2376" id="pf153109032582946" referenceLink="//@navigationRule.19/@navigationCase.0/@toViewId|" inlinks="pf153109032582719" path="/templates/listarUsuarios.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/upload.xhtml" x="-36" y="2199" id="pf153109032582947" referenceLink="//@navigationRule.23/@navigationCase.0/@toViewId|" outlinks="pf153109032582948" inlinks="pf153109032582720 pf153109032583049" path="/templates/upload.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/listarContenidos.xhtml" x="-36" y="1848" id="pf153109032583050" referenceLink="//@navigationRule.23/@fromViewId|" outlinks="pf153109032583049" inlinks="pf153109032582948 pf153109032582827" path="/templates/listarContenidos.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/Estadisticas.xhtml" x="360" y="2508" id="pf153109032583051" referenceLink="//@navigationRule.24/@navigationCase.0/@toViewId|" inlinks="pf153109032582721" path="/templates/Estadisticas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="templates/listarContenidosSis.xhtml" x="24" y="1668" id="pf153109037594353" inlinks="pf153109037594252" path="/templates/listarContenidosSis.xhtml"/>
+  <links id="pf15310903258279" target="pf153109032582826" source="pf15310903258278" outcome="login" redirect="true"/>
+  <links id="pf153109032582710" target="pf153109032582828" source="pf15310903258278" outcome="register" redirect="true"/>
+  <links id="pf153109032582722" target="pf15310903258278" source="pf153109032582826" outcome="home" redirect="true"/>
+  <links id="pf153109032582723" target="pf15310903258278" source="pf153109032582828" outcome="home" redirect="true"/>
+  <links id="pf153109032582724" target="pf15310903258278" source="pf153109032582829" outcome="home" redirect="true"/>
+  <links id="pf153109032582725" target="pf15310903258278" source="pf153109032582831" outcome="home" redirect="true"/>
+  <links id="pf153109032582712" target="pf153109032582829" source="pf15310903258278" outcome="verVideo" redirect="true"/>
+  <links id="pf153109032582830" target="pf153109032582829" source="pf153109032582834" outcome="verVideo" redirect="true"/>
+  <links id="pf153109032582713" target="pf153109032582935" source="pf15310903258278" outcome="billetera" redirect="true"/>
+  <links id="pf153109032582936" target="pf153109032582938" source="pf153109032582935" outcome="recarga" redirect="true"/>
+  <links id="pf153109032582937" target="pf153109032582935" source="pf153109032582938" outcome="billetera" redirect="true"/>
+  <links id="pf153109032582714" target="pf153109032582831" source="pf15310903258278" outcome="searchResult" redirect="true"/>
+  <links id="pf153109032582715" target="pf153109032582940" source="pf15310903258278" outcome="streaming" redirect="true"/>
+  <links id="pf153109032582833" target="pf153109032582940" source="pf153109032582831" outcome="streaming" redirect="true"/>
+  <links id="pf153109032582716" target="pf153109032582941" source="pf15310903258278" outcome="profile" redirect="true"/>
+  <links id="pf153109032582717" target="pf153109032582942" source="pf15310903258278" outcome="suscripcion" redirect="true"/>
+  <links id="pf153109032582939" target="pf153109032582938" source="pf153109032582942" outcome="recarga" redirect="true"/>
+  <links id="pf153109032582718" target="pf153109032582944" source="pf15310903258278" outcome="BorrarUser" redirect="true"/>
+  <links id="pf153109032582719" target="pf153109032582946" source="pf15310903258278" outcome="ModifUser" redirect="true"/>
+  <links id="pf153109032582720" target="pf153109032582947" source="pf15310903258278" outcome="NuevoContenido" redirect="true"/>
+  <links id="pf153109032582948" target="pf153109032583050" source="pf153109032582947" outcome="admContent" redirect="true"/>
+  <links id="pf153109032583049" target="pf153109032582947" source="pf153109032583050" outcome="NuevoContenido" redirect="true"/>
+  <links id="pf153109032582721" target="pf153109032583051" source="pf15310903258278" outcome="Estadisticas" redirect="true"/>
+  <links id="pf153109032582711" target="pf15310903258278" source="pf15310903258278" outcome="home" redirect="true">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
-  <links id="pf15304990760425" target="pf15304990760424" source="pf15304990760424" outcome="searchResult" redirect="true">
+  <links id="pf153109032582832" target="pf153109032582831" source="pf153109032582831" outcome="searchResult" redirect="true">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
-  <links id="pf15309324065101" target="pf153056912294913" source="pf153056912294913" outcome="suscripcion" redirect="true">
+  <links id="pf153109032582943" target="pf153109032582942" source="pf153109032582942" outcome="suscripcion" redirect="true">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
-  <links id="pf153056912294911" target="pf15304811876823" source="pf153056912294913" outcome="recarga" redirect="true"/>
-  <links id="pf15309267177970" target="pf15309267177981" source="pf15291948030760" outcome="BorrarUser" redirect="true"/>
-  <links id="pf15309267683772" target="pf15309267683773" source="pf15291948030760" outcome="ModifUser" redirect="true"/>
-  <links id="pf15309268037124" target="pf15309267177981" source="pf15309267177981" outcome="BorrarUser" redirect="true">
+  <links id="pf153109032582945" target="pf153109032582944" source="pf153109032582944" outcome="BorrarUser" redirect="true">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
-  <links id="pf15310025103810" target="pf15310025103831" source="pf15291948030760" outcome="NuevoContenido" redirect="true"/>
-  <links id="pf15310026174212" target="pf15310026174213" source="pf15310025103831" outcome="admContent" redirect="true"/>
-  <links id="pf15310026834454" target="pf15310025103831" source="pf15310026174213" outcome="NuevoContenido" redirect="true"/>
-  <links id="pf15310755918425" target="pf15310755918426" source="pf15291948030760" outcome="Estadisticas" redirect="true"/>
+  <links id="pf153109032582827" target="pf153109032583050" source="pf153109032582826" outcome="listarContenidos" redirect="true"/>
+  <links id="pf153109037594252" target="pf153109037594353" source="pf153109032582826" outcome="listarContenidosSis" redirect="true"/>
 </pageflow:Pageflow>
